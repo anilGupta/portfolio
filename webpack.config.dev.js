@@ -12,7 +12,7 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 const HMRConfig = new webpack.HotModuleReplacementPlugin();
 const CopyAssetPluginConfig = new CopyWebpackPlugin([
   { from: './src/assets', to: './assets' },
-  { from: './src/manifest.webapp', to: './manifest.webapp' },
+  //{ from: './src/manifest.webapp', to: './manifest.webapp' },
 ]);
 
 const ExtractTextPluginConfig = new ExtractTextPlugin({ filename: 'style.css', disable: false, allChunks: false });
