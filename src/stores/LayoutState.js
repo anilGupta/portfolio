@@ -1,7 +1,6 @@
 import { observable, action } from "mobx";
 
-const staticLength = 12;
-class LayoutLayoutState {
+class LayoutState {
 
   @observable index = false;
 

@@ -4,10 +4,10 @@ import App from './containers/App';
 
 export default class extends Component {
   render() {
-    return <HashRouter>
+    return <BrowserRouter>
             <div>
               <Route path="/" component={App} />
             </div>
-          </HashRouter>
+          </BrowserRouter>
   }
 }
