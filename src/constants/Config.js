@@ -4,6 +4,7 @@ const Config = {
      { id:2, name: 'about', url: '/about'},
      { id:3, name: 'projects', url: '/projects'},
      { id:4, name: 'contact', url: '/contact-us'},
+     { id:5, name: 'download cv', url: '/download-cv'},
    ],
    social: [
      { id:1, name: 'facebook', url: 'http://facebook.com/anil6080'},

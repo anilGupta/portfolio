@@ -6,17 +6,17 @@ import { Home, About, Contact, Projects} from './Index';
 class App extends Component{
     render() {
         return (
-          <div>
+          <div className="page" id="top">
               <Header/>
                <div className="container">
-                 <Switch>
+                 {/*<Switch>
                    <Route exact path="/" component={Home} />
                    <Route path="/about" component={About} />
                    <Route path="/contact-us" component={Contact} />
                    <Route path="/projects" component={Projects} />
-                 </Switch>
+                 </Switch>*/}
                </div>
-              <Footer/>
+              {/*<Footer/>*/}
           </div>
         );
     }

@@ -1,0 +1,82 @@
+
+.top-bar{
+  min-height: 40px;
+  background: #fbfbfb;
+  border-bottom: 1px solid rgba(0,0,0, .05);
+  font-size: 11px;
+  letter-spacing: 1px;
+}
+
+/*
+ * Top links
+ */
+
+.top-links{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  text-transform: uppercase;
+}
+.top-links li{
+  float: left;
+  border-left: 1px solid rgba(0,0,0, .05);
+}
+.top-links li:last-child{
+  border-right: 1px solid rgba(0,0,0, .05);
+}
+.top-links li .fa{
+  font-size: 14px;
+  position: relative;
+  top: 1px;
+}
+.top-links li .tooltip{
+  text-transform: none;
+  letter-spacing: normal;
+  z-index: 2003;
+
+}
+.top-links li a{
+  display: block;
+  min-width: 40px;
+  height: 40px;
+  line-height: 40px;
+  padding: 0 10px;
+  text-decoration: none;
+  text-align: center;
+  color: #999;
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+  -webkit-transition: all 0.1s cubic-bezier(0.000, 0.000, 0.580, 1.000);
+  -moz-transition: all 0.1s cubic-bezier(0.000, 0.000, 0.580, 1.000);
+  -o-transition: all 0.1s cubic-bezier(0.000, 0.000, 0.580, 1.000);
+  -ms-transition: all 0.1s cubic-bezier(0.000, 0.000, 0.580, 1.000);
+  transition: all 0.1s cubic-bezier(0.000, 0.000, 0.580, 1.000);
+}
+.top-links li a:hover{
+  color: #555;
+  background-color: rgba(0,0,0, .02);
+}
+
+/*
+ * Top bar dark
+ */
+
+.top-bar.dark{
+  background-color: #333;
+  border-bottom: none;
+}
+.top-bar.dark .top-links li,
+.top-bar.dark .top-links li:last-child{
+  border-color: rgba(255,255,255, .07);
+}
+.top-bar.dark .top-links li a{
+  color: #aaa;
+}
+.top-bar.dark .top-links li a:hover{
+  color: #ccc;
+  background-color: rgba(255,255,255, .05);
+}
+

@@ -1,0 +1,39 @@
+/*
+ * Alert messages
+ */
+
+.alert{
+  margin: 0 auto 10px;
+  padding: 14px 20px;
+
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+
+  border: 1px solid #ddd;
+  font-size: 11px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: #777;
+
+  -webkit-border-radius: 0;
+  -moz-border-radius: 0;
+  border-radius: 0;
+
+}
+.success{
+  border-color: #a9e2c2;
+  color: #36a367;
+}
+.info{
+  border-color: #9ecdfc;
+  color: #297ad3;
+}
+.notice{
+  border-color: #f9ce75;
+  color: #e9a00a;
+}
+.error{
+  border-color: #ffbbbb;
+  color: #e33131;
+}

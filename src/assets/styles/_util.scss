@@ -1,0 +1,74 @@
+.align-center{ text-align:center !important; }
+.align-left{ text-align:left !important;}
+.align-right{ text-align:right !important; }
+.left{float:left !important;}
+.right{float:right !important;}
+.relative{position:relative;}
+.hidden{display:none;}
+.inline-block{display:inline-block;}
+.white{ color: #fff !important; }
+.black{ color: #111 !important; }
+.color{ color: #e41919 !important; }
+.glass{ opacity: .5; };
+.image-fullwidth img{
+  width: 100%;
+}
+.stick-fixed{
+  position: fixed !important;
+  top: 0;
+  left: 0;
+}
+.round{
+  -webkit-border-radius: 2px !important;
+  -moz-border-radius: 2px !important;
+  border-radius: 2px !important;
+}
+
+::-moz-selection{ color: $white; background:$black; }
+::-webkit-selection{ color: $white;	background:$black; }
+::selection{ color: $white;	background:$black; }
+
+.animate, .animate *{
+  -webkit-transition: all 0.27s cubic-bezier(0.000, 0.000, 0.580, 1.000);
+  -moz-transition: all 0.27s cubic-bezier(0.000, 0.000, 0.580, 1.000);
+  -o-transition: all 0.27s cubic-bezier(0.000, 0.000, 0.580, 1.000);
+  -ms-transition: all 0.27s cubic-bezier(0.000, 0.000, 0.580, 1.000);
+  transition: all 0.27s cubic-bezier(0.000, 0.000, 0.580, 1.000);
+}
+.no-animate, .no-animate *{
+  -webkit-transition: none !important;
+  -moz-transition: none !important;
+  -ms-transition: none !important;
+  -o-transition: none !important;
+  transition: none !important;
+}
+
+.shadow{
+  -webkit-box-shadow: 0 3px 50px rgba($black, .15);
+  -moz-box-shadow: 0 3px 50px rgba($black, .15);
+  box-shadow: 0 3px 50px rgba($black, .15);
+}
+.white-shadow{
+  -webkit-box-shadow: 0 0 200px rgba($white, .2);
+  -moz-box-shadow: 0 0 200px rgba($white, .2);
+  box-shadow: 0 0 200px rgba($white, .2);
+}
+
+.clearlist, .clearlist li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  background: none;
+}
+
+.full-wrapper {
+  margin: 0 2%;
+}
+.container-fluid{
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 0 20px;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
