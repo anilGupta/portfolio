@@ -1,3 +1,9 @@
+
+
+/*
+ * Tabs
+ */
+
 .tpl-tabs{
   border-color: #e5e5e5;
   font-size: 12px;
@@ -24,53 +30,11 @@
   line-height: 1.8;
 }
 
-/*
- * Tabs minimal
- */
-
-.tpl-minimal-tabs{
-  display: inline-block;
-  font-size: 12px;
-  font-weight: 400;
-  text-transform: uppercase;
-  text-align: center;
-  letter-spacing: 1px;
-  border: none;
-}
-.tpl-minimal-tabs > li{
-  padding: 0 30px;
-  background: none !important;
-}
-.tpl-minimal-tabs > li > a{
-  padding: 6px 20px 5px;
-  text-decoration: none;
-  color: #000;
-  background: none;
-  border: 1px solid transparent;
-
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  border-radius: 20px;
-}
-.tpl-minimal-tabs > li > a:hover{
-  background: none;
-  border-color: #e9e9e9;
-  color: #777;
-}
-.tpl-minimal-tabs li.active a,
-.tpl-minimal-tabs li.active a:hover{
-  border: 1px solid #222 !important;
-  background: none !important;
-  color: #000;
-  cursor: default;
-}
-.tpl-minimal-tabs-cont{
-}
-
 
 /*
  * Tabs Alternative
  */
+
 
 .tpl-alt-tabs{
   font-size: 14px;
@@ -105,7 +69,8 @@
   color: #111;
 }
 .tpl-alt-tabs li.active a,
-.tpl-alt-tabs li.active a:hover{
+.tpl-alt-tabs li.active a:hover,
+.tpl-alt-tabs li.active a:focus{
   cursor: default;
   color: #111;
 }

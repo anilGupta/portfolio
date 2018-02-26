@@ -1,21 +1,123 @@
-@import "module/loader";
-@import "module/typography";
-@import "module/button";
-@import "module/forms";
-@import "module/homeSection";
-@import "module/topBar";
-@import "module/menu";
-@import "module/sections";
-@import "module/portfolio";
-@import "module/contact";
-@import "module/blog";
-@import "module/tabs";
+@charset "utf-8";
+/*------------------------------------------------------------------
+[Master Stylesheet]
+
+Project:    Rhythm
+Version:    2.9.5
+Last change:    10.04.2017
+Primary use:    MultiPurpose Template
+-------------------------------------------------------------------*/
+/*------------------------------------------------------------------
+[Table of contents]
+
+1. Common styles
+2. Page loader / .page-loader
+3. Typography
+4. Buttons
+5. Forms fields
+6. Home sections / .home-section
+    6.1. Home content
+    6.2. Scroll down icon
+    6.3. Headings styles
+7. Compact bar / .nav-bar-compact
+8. Classic menu bar / .main-nav
+9. Sections styles / .page-section, .small-section, .split-section
+10. Alternative services / .alt-service-grid
+11. Team / .team-grid
+12. Features
+13. Benefits (Process)
+14. Counters
+15. Portfolio / #portfolio
+    15.1. Works filter
+    15.2. Works grid
+    15.3. Works full view
+16. Banner section
+17. Testimonial
+    18.1. Logotypes
+18. Post previews (news section)
+19. Newsletter
+20. Contact section
+    20.1. Contact form
+21. Bottom menu / .bot-menu
+22. Google maps  /.google-map
+23. Footer / .footer
+24. Blog
+    24.1. Pagination
+    24.2. Comments
+    24.3. Sidebar
+25. Shop
+26. Pricing
+27. Shortcodes
+    27.1. Owl Carousel
+    27.2. Tabs
+    27.3. Tabs minimal
+    27.4. Alert messages
+    27.5. Accordion
+    27.6. Toggle
+    27.7. Progress bars
+    27.8. Font icons examples
+    27.9. Intro page
+28. Special demos
+29. Bootstrap multicolumn grid
+
+
+/*------------------------------------------------------------------
+# [Color codes]
+
+# Black (active elements, links, text) #111
+# Gray (text) #777
+# Dark #111
+# Dark Lighter #252525
+# Gray BG #f4f4f4
+# Gray BG Lighter #f8f8f8
+# Mid grey #5f5f5f
+# Borders #e9e9e9
+
+# */
+
+
 @import "module/alerts";
 @import "module/accordion";
-@import "module/toggle";
-@import "module/googleMap";
-@import "module/progress";
-@import "module/filterMenu";
-@import "module/icons";
-@import "module/grid";
+@import "module/alt-service";
+@import "module/button";
+@import "module/benifits";
+@import "module/blog";
+@import "module/breadcrumbs";
+@import "module/comments";
+@import "module/contact";
+@import "module/countdown";
+@import "module/counters";
+@import "module/filter-menu";
+@import "module/features";
 @import "module/footer";
+@import "module/forms";
+@import "module/full-menu";
+@import "module/grid";
+@import "module/heading";
+@import "module/icons";
+@import "module/loader";
+@import "module/maps";
+@import "module/menu";
+@import "module/nav";
+@import "module/news-letter";
+@import "module/owl-crasoual";
+@import "module/pagination";
+@import "module/portfolio";
+@import "module/postPreview";
+@import "module/pricing";
+@import "module/progress";
+@import "module/scroll";
+@import "module/sections";
+@import "module/special";
+@import "module/special-landing";
+@import "module/special-landing";
+@import "module/special-magzine";
+@import "module/special-photography";
+@import "module/typography";
+@import "module/tabs";
+@import "module/team";
+@import "module/text-effects";
+@import "module/toggle";
+@import "module/topbar";
+@import "module/widgets";
+@import "module/work";
