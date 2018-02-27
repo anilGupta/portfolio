@@ -9,9 +9,10 @@ const Config = {
    social: [
      { id:1, name: 'facebook', url: 'http://facebook.com/anil6080'},
      { id:2, name: 'github', url: 'https://github.com/anilGupta'},
-     { id:3, name: 'stack overflow', url: 'https://stackoverflow.com/users/1353052/anil-gupta'},
+     { id:3, name: 'stack-overflow', url: 'https://stackoverflow.com/users/1353052/anil-gupta'},
      { id:4, name: 'twitter', url: 'https://twitter.com/__anilGupta'},
-   ]
+   ],
+   googleMapKey: 'AIzaSyBkc9o7kDYAR6GNiHBWghrhE-2OfVeXVKs'
 };
 
 export default Config;

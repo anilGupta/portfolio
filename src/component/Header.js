@@ -5,7 +5,7 @@ import Config from '../constants/Config';
 const Header = () => {
   return (
     <header>
-      <nav className="main-nav mobile-on">
+      <nav className="main-nav transparent stick-fixed">
         <div className="full-wrapper relative clearfix">
           <div className="nav-logo-wrap local-scroll">
             <NavLink to="/" className="logo">
@@ -17,7 +17,13 @@ const Header = () => {
           </div>
           <div className="inner-nav desktop-nav">
             <ul className="clearlist">
-              {Config.menu.map(({id, name, url}) => <li key={id} ><NavLink to={url} activeClassName={'active'} className="mn-has-sub" >{name}</NavLink></li>)}
+              {Config.menu.map(({id, name, url}) =>
+                  <li key={id} >
+                    <NavLink to={url} activeClassName={'active'} className="mn-has-sub" >
+                      {url == '/download-cv' ? <span className="btn btn-mod btn-circle"><i className="fa fa-cloud-download"/> {name}</span>: name}
+                    </NavLink>
+                  </li>
+              )}
             </ul>
           </div>
         </div>

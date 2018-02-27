@@ -34,6 +34,41 @@ module.exports = {
   module: {
     loaders: [
       { test: /\.(js|jsx)$/, loader: 'babel-loader', exclude: /node_modules/ },
+      { test: /\.css$/,
+        use: [
+          require.resolve('style-loader'),
+          {
+            loader: require.resolve('css-loader'),
+            options: {
+              importLoaders: 1,
+            },
+          },
+          {
+            loader: require.resolve('postcss-loader'),
+            options: {
+              // Necessary for external CSS imports to work
+              // https://github.com/facebookincubator/create-react-app/issues/2677
+              ident: 'postcss',
+              plugins: () => [
+                require('postcss-flexbugs-fixes'),
+                autoprefixer({
+                  browsers: [
+                    '>1%',
+                    'last 4 versions',
+                    'Firefox ESR',
+                    'not ie < 9', // React doesn't support IE8 anyway
+                  ],
+                  flexbox: 'no-2009',
+                }),
+              ],
+            },
+          },
+        ],
+      },
+      { test: /\.woff?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&minetype=application/font-woff" },
+      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&minetype=application/font-woff" },
+      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" },
+
       {
         test: /\.scss$/,
         use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
@@ -42,39 +77,17 @@ module.exports = {
             { loader: "sass-loader" }
           ],
         }))
-      },
-      /*{ test: /\.scss$/,
-        exclude: /node_modules/,
-        use: ExtractTextPlugin.extract({ fallback: 'style-loader',
-              use: [
-                {
-                  loader: 'css-loader',
-                  options: {
-                    importLoaders: 1,
-                    sourceMap: true,
-                    modules: false,
-                    context: path.join(process.cwd(), './src'),
-                    localIdentName: '[name]__[local].[hash:base64:5]',
-                    minimize: true,
-                  },
-                },
-                {
-                  loader: 'sass-loader',
-                  options: {
-                    outputStyle: 'expanded',
-                    sourceMap: true,
-                    sourceMapContents: true,
-                  },
-                },
-              ]
-        }),
-      },*/
+      }
     ],
   },
   resolve: {
     extensions: ['.js', '.jsx'],
   },
   plugins: [
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery'
+    }),
     ExtractTextPluginConfig,
     HtmlWebpackPluginConfig,
     CopyAssetPluginConfig,
