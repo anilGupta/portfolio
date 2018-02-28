@@ -10,8 +10,6 @@ class GoogleMap extends Component{
   }
 
   loadSDK(){
-    console.log("calling sdk");
-    
     (function(d, s, id){
       let js, fjs = d.getElementsByTagName(s)[0];
       if(d.getElementById(id)){ return; }
