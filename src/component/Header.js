@@ -69,14 +69,12 @@ class Header extends Component{
   }
 
   render(){
-     const { scrolled, small, open} = this.state;
-
-
+     const { scrolled, small, open, transparent, dark} = this.state;
      return <header>
-       <nav className={`main-nav stick-fixed ${scrolled ? 'js-transparent small-height': 'transparent'} ${small ? 'mobile-on': ''}`} ref={el => { el ? this.navBar = el: null}}>
+       <nav className={`main-nav stick-fixed ${dark? 'dark': ''} ${scrolled ? 'js-transparent small-height': transparent? 'transparent': ''} ${small ? 'mobile-on': ''}`} ref={el => { el ? this.navBar = el: null}}>
          <div className="full-wrapper relative clearfix">
            <div className="nav-logo-wrap local-scroll">
-             <NavLink to="/" className={`logo ${scrolled ? 'small-height': ''}`}>
+             <NavLink to="/" className={`logo ${scrolled ? 'small-height': ''}`} >
                <img src="/assets/images/logo.png" alt="home page" />
              </NavLink>
            </div>
@@ -88,7 +86,7 @@ class Header extends Component{
                {Config.menu.map(({id, name, url}) =>
                  <li key={id} >
                    <NavLink to={url} activeClassName={'active'} className="mn-has-sub" >
-                     {url == '/download-cv' ? <span className="btn btn-mod btn-circle"><i className="fa fa-cloud-download"/> {name}</span>: name}
+                     {(url == '/download-cv' && !small) ? <span className="btn btn-mod btn-circle"><i className="fa fa-cloud-download"/> {name}</span>: name}
                    </NavLink>
                  </li>
                )}
