@@ -1,11 +1,14 @@
-import { autorun } from "mobx";
-import layoutState from "./LayoutState";
-
-const stores = {
-  layout : layoutState,
+import { createStore, applyMiddleware, compose } from 'redux'
+import thunk from 'redux-thunk'
+import rootReducer from '../reducers'
+const configureStore = preLoadedState => {
+  return createStore(
+    rootReducer,
+    preLoadedState,
+    compose(
+      applyMiddleware(thunk)
+    )
+  );
 };
 
-autorun(()=>{
-});
-
-export default stores;
+export default configureStore

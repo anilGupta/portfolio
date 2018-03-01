@@ -1,8 +1,17 @@
 import React, { Component } from 'react';
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom';
+import { bindActionCreators } from 'redux';
+import { initialize } from '../actions/appActions';
+import { connect } from 'react-redux';
 import { Header, Footer } from '../component/Index';
 import { Home, About, Contact, Projects} from './Index';
 
+@connect(
+  state =>{ return {app: state.app}},
+  dispatch => ( bindActionCreators({
+      initialize
+  }, dispatch))
+)
 class App extends Component{
     render() {
         return (

@@ -24,7 +24,6 @@ const skills = [
 
 class Home extends Component{
   render() {
-
     const skillCollection = [
       skills.slice(0, Math.round(skills.length/2)),
       skills.slice(Math.round(skills.length/2), skills.length)
@@ -47,7 +46,7 @@ class Home extends Component{
             <div className="row">
               {skillCollection.map(items=>
                  <div className="col-sm-6 mb-sm-50 mb-xs-30">
-                   {items.map(item => <ProgressBar {...item} />)}
+                   {items.map((item, key) => <ProgressBar  key={key} {...item} />)}
                  </div>
               )}
             </div>
