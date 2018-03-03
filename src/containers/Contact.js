@@ -27,7 +27,7 @@ class Contact extends Component{
           <div className="container relative">
             <div className="row">
               <div className="col-md-8 col-md-offset-2">
-                <div className="section-text align-center mb-70 mb-xs-40">
+                <div className="section-heading align-center mb-120 mb-xs-40">
                   Contact Me
                 </div>
               </div>

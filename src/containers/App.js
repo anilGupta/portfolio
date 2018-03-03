@@ -17,7 +17,7 @@ class App extends Component{
         return (
           <div className="appear-animate">
                <div className="page" id="top">
-                 <Header transparent />
+                 <Header transparent={true} />
                  <div>
                    <Switch>
                      <Route exact path="/" component={Home} />
