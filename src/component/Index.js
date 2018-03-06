@@ -7,6 +7,7 @@ import ProgressBar from './ProgressBar';
 import PortfolioList from './PortfolioList';
 import PortfolioListItem from './PortfolioListItem';
 import PortfolioListFilter from './PortfolioListFilter';
+import Tags from './Tags';
 
 
 export {
@@ -18,5 +19,6 @@ export {
   ProgressBar,
   PortfolioList,
   PortfolioListItem,
-  PortfolioListFilter
+  PortfolioListFilter,
+  Tags
 }

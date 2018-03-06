@@ -9,8 +9,9 @@ class Projects extends Component{
   }
 
   state = {
-    showFilter: false
-  }
+    showFilter: false,
+    projects: [...Array(10).keys()]
+  };
 
   @autobind
   toggleFilter(){
@@ -19,19 +20,26 @@ class Projects extends Component{
      })
   }
 
+  @autobind
+  filterProjects(){
+      const items =  Math.floor(Math.random() * 15) + 1;
+      this.setState({
+        projects: [...Array(items).keys()]
+      })
+  }
 
   render() {
-
-    const items = [...Array(7).keys()],
-          { showFilter } = this.state;
+    const { showFilter, projects } = this.state;
 
     return (
       <div>
         <Section type="light">
           <div className="relative">
             <PortfolioListFilter toggleFilter={this.toggleFilter} open={showFilter} />
+            <button className="btn btn-border" onClick={this.filterProjects}>temp filter</button>
+            <Divider/>
             <PortfolioList>
-              {items.map((item, key) => <PortfolioListItem data={item} key={key} loop={key} />)}
+              {projects.map((item, key) => <PortfolioListItem data={item} key={key} loop={key} />)}
             </PortfolioList>
           </div>
         </Section>

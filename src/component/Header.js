@@ -71,7 +71,7 @@ class Header extends Component{
   render(){
      const { scrolled, small, open, transparent, dark} = this.state;
      return <header>
-       <nav className={`main-nav stick-fixed ${dark? 'dark': ''} ${scrolled ? 'js-transparent small-height': transparent ? 'js-transparent': ''} ${small ? 'mobile-on': ''}`} ref={el => { el ? this.navBar = el: null}}>
+       <nav className={`main-nav stick-fixed ${dark? 'dark': ''} ${scrolled ? 'js-transparent small-height': transparent ? 'js-transparent': 'transparent'} ${small ? 'mobile-on': ''}`} ref={el => { el ? this.navBar = el: null}}>
          <div className="full-wrapper relative clearfix">
            <div className="nav-logo-wrap local-scroll">
              <NavLink to="/" className={`logo ${scrolled ? 'small-height': ''}`} >
