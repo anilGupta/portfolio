@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom'
 const PortfolioListItem = ({loop}) => {
   const id = Math.floor(Math.random() * 7) + 1;
   return <li className="work-item mix photography">
-    <NavLink to={`/projects/${id}`} className="work-lightbox-link mfp-image">
+    <NavLink to={`/project/${id}`} className="work-lightbox-link mfp-image">
       <div className="work-img">
         <img src={`/assets/images/projects-${id}.jpg`} alt="Work" />
       </div>

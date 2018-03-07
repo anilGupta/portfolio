@@ -10,7 +10,8 @@ class Projects extends Component{
 
   state = {
     showFilter: false,
-    projects: [...Array(10).keys()]
+    projects: [...Array(10).keys()],
+    selectedTags :[]
   };
 
   @autobind
@@ -28,15 +29,24 @@ class Projects extends Component{
       })
   }
 
+  @autobind
+  handleFilterAction(operation, tag){
+      const { selectedTags } = this.state;
+              operation == 'add' ? selectedTags.push(tag): selectedTags.splice(tag, 1)
+              this.setState({
+                 selectedTags: selectedTags,
+                 showFilter: false
+              })
+  }
+
   render() {
-    const { showFilter, projects } = this.state;
+    const { showFilter, projects, selectedTags } = this.state;
 
     return (
       <div>
         <Section type="light">
           <div className="relative">
-            <PortfolioListFilter toggleFilter={this.toggleFilter} open={showFilter} />
-            <button className="btn btn-border" onClick={this.filterProjects}>temp filter</button>
+            <PortfolioListFilter toggleFilter={this.toggleFilter} open={showFilter} selectedTags={selectedTags} filterAction={this.handleFilterAction} />
             <Divider/>
             <PortfolioList>
               {projects.map((item, key) => <PortfolioListItem data={item} key={key} loop={key} />)}
