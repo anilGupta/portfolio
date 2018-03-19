@@ -1,37 +1,49 @@
 import React, { Component } from 'react';
-import { Section, Divider, ProgressBar} from '../component/Index';
-const skills = [
-  { title: 'PHP', value: 90 },
-  { title: 'MySql', value: 65 },
-  { title: 'Mongodb', value: 60 },
-  { title: 'CSS3', value: 70 },
-  { title: 'JS/jQuery', value: 95 },
-  { title: 'JS/ MV* Pattern', value: 90},
-  { title: 'Bootstrap/Foundation', value: 80 },
-  { title: 'LESS/SASS', value: 85 },
-  { title: 'SVN/GIT', value: 85 },
-  { title: 'Grunt/Gulp/Webpack', value: 75},
-  { title: 'Symfony 1.x, 2.x', value: 90 },
-  { title: 'WordPress', value: 85 },
-  { title: 'OpenCart', value: 80 },
-  { title: 'ExpressJS/LoopbackJS', value: 75 },
-  { title: 'ReactJS', value: 90},
-  { title: 'KnockoutJS', value: 85 },
-  { title: 'AngularJS 1.X', value: 90 },
-  { title: 'Tumblr', value: 85},
-  { title: 'Photoshop', value: 50 }
-]
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import autobind from 'autobind-decorator';
+import { fetchBrandIfNeeded, fetchSkillIfNeed } from "../actions/userActions";
+import { Section, Divider, ProgressBar, Spinner } from '../component/Index';
 
+@connect(
+  state =>{ return {user: state.user}},
+  dispatch => ( bindActionCreators({
+    fetchBrandIfNeeded,
+    fetchSkillIfNeed
+  }, dispatch))
+)
 class Home extends Component{
+
+  constructor(props) {
+    super(props);
+  }
+
+  fetchData(props){
+     const { fetchBrandIfNeeded, fetchSkillIfNeed } = props;
+             fetchBrandIfNeeded();
+             fetchSkillIfNeed()
+  }
+
+  componentWillMount(){
+     this.fetchData(this.props);
+  }
+
   render() {
+
+    const { user: { brands, skills, brandsLoading, skillsLoading}, user } = this.props;
+
+    if(brandsLoading || skillsLoading){
+      return <Spinner />
+    }
+
     const skillCollection = [
       skills.slice(0, Math.round(skills.length/2)),
       skills.slice(Math.round(skills.length/2), skills.length)
     ];
 
+
     return (
       <div>
-
         <Section background="/assets/images/section-bg-1.jpg" id="home" alpha="90" type="dark">
           <div className="home-content">
             <div className="home-text">
@@ -39,13 +51,12 @@ class Home extends Component{
                 <div className="col-sm-6">
                   <img src="" alt="" className="hover-white"/>
                 </div>
-
                 <div className="col-sm-6 col-lg-5 align-center pt-20 pt-lg-0 mb-xs-30 col-lg-offset-1">
                   <div className="hs-line-15 font-alt">Anil Gupta</div>
                   <h1 className="hs-line-4 font-alt mb-40 mb-xs-20">FullStack Developer</h1>
                   <div className="section-text white mb-70 mb-xs-40 text-justify">
-                    <p><span className="dropcap font-alt">M</span>y name is Anil Gupta, a create full stack developer from India. I am a creative, highly motivated web developer with over 6+ years of experience working with HTML, CSS, JavaScript, NodeJS, PHP, and related technologies.</p>
-                    <p>I thrive in a challenging, fast-paced environment. I have multiple years of experience managing a web development team within a small creative firm. </p>
+                    <p><span className="dropcap font-alt">M</span>y name is Anil Gupta, I am a creative, highly motivated software engineer with over 7+ years of experience working with  JavaScript, NodeJS, PHP, and related technologies.</p>
+                    <p>I thrive in a challenging, fast-paced environment. An enthusiastic team player with phenomenal time management skills and a can-do attitude </p>
                     <hr className="white mb-30" />
                       <div>
                         <h4 className="font-alt mt-0 mb-20">Profile</h4>
@@ -57,6 +68,51 @@ class Home extends Component{
                       </div>
                   </div>
                 </div>
+              </div>
+            </div>
+          </div>
+        </Section>
+        
+        <Section type='light'>
+          <div className="section-text">
+            <div className="row">
+              <div className="col-sm-6">
+                <h2 className="section-title font-alt align-center mt-0 mb-70 mb-sm-40">AGENCY EXPERIENCE</h2>
+                <table className="table table-hover">
+                  <tbody>
+                    <tr>
+                      <td>Network18 <div className="small"> Senior Software Engineer, Lead Developer </div></td>
+                      <td className="align-right small">Dec 2016 — Present</td>
+                    </tr>
+                    <tr>
+                      <td>ZEE Digital Convergence Limited<div className="small">  Senior Software Engineer, Lead Developer</div></td>
+                      <td className="align-right small">May 2015 — Dec 2016</td>
+                    </tr>
+                    <tr>
+                      <td> Mediatech Interactive <div className="small">Web Developer, Backend Developer</div></td>
+                      <td className="align-right small">Aug 2010 — May 2013</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div className="col-sm-6">
+                <h2 className="section-title font-alt align-center mt-0 mb-70 mb-sm-40">EDUCATION</h2>
+                <table className="table table-hover">
+                  <tbody>
+                    <tr>
+                      <td> Master of Computer Application <div className="small">Mumbai University, India</div></td>
+                      <td className="align-right">2015–2016</td>
+                    </tr>
+                    <tr>
+                      <td>BSC Computer Science <div className="small">SIWS College, Mumbai</div></td>
+                      <td className="align-right">2006–2009</td>
+                    </tr>
+                    <tr>
+                      <td>HSC Science <div className="small">SIWS College, Mumbai</div></td>
+                      <td className="align-right"> 2004–2010 </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>
@@ -80,6 +136,20 @@ class Home extends Component{
                    {items.map((item, key) => <ProgressBar  key={key} {...item} />)}
                  </div>
               )}
+            </div>
+          </div>
+        </Section>
+
+        <Section className="small-section">
+          <div className="container relative">
+            <div className="row">
+              <div className="col-md-10 col-md-offset-1">
+                <div className="small-item-carousel black owl-carousel mb-0 animate-init" data-anim-type="fade-in-right-large" data-anim-delay="100">
+                  {brands.map(({id, name, logo}) => <div className="logo-item" key={id}>
+                    <img src={logo} width="67" height="67" alt={name} />
+                  </div>)}
+                </div>
+              </div>
             </div>
           </div>
         </Section>

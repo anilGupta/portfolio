@@ -1,7 +1,6 @@
 const Config = {
    menu : [
-     { id:1, name: 'home', url: '/'},
-     { id:2, name: 'about', url: '/about'},
+     { id:1, name: 'about', url: '/'},
      { id:3, name: 'projects', url: '/projects'},
      { id:4, name: 'contact', url: '/contact-us'},
      { id:5, name: 'download cv', url: '/download-cv'},
@@ -12,7 +11,8 @@ const Config = {
      { id:3, name: 'stack-overflow', url: 'https://stackoverflow.com/users/1353052/anil-gupta'},
      { id:4, name: 'twitter', url: 'https://twitter.com/__anilGupta'},
    ],
-   googleMapKey: 'AIzaSyBkc9o7kDYAR6GNiHBWghrhE-2OfVeXVKs'
+   googleMapKey: 'AIzaSyBkc9o7kDYAR6GNiHBWghrhE-2OfVeXVKs',
+   apiURL: 'https://anil-portfolio-api.herokuapp.com/api'
 };
 
 export default Config;

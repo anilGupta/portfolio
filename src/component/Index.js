@@ -8,6 +8,7 @@ import PortfolioList from './PortfolioList';
 import PortfolioListItem from './PortfolioListItem';
 import PortfolioListFilter from './PortfolioListFilter';
 import Tags from './Tags';
+import Spinner from './Spinner';
 
 
 export {
@@ -20,5 +21,6 @@ export {
   PortfolioList,
   PortfolioListItem,
   PortfolioListFilter,
-  Tags
+  Tags,
+  Spinner
 }
