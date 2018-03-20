@@ -14,7 +14,7 @@ class PortfolioList extends Component{
   }
 
   componentDidMount(){
-    this.masonry.on('layoutComplete', this.handleLayoutComplete);
+    this.masonry ? this.masonry.on('layoutComplete', this.handleLayoutComplete): null;
   }
 
   componentWillUnmount(){

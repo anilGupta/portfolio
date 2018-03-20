@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { fetchProjectIfNeeded } from "../actions/workActions";
-import { Section, Divider, PortfolioList, PortfolioListItem, PortfolioListFilter } from '../component/Index';
+import { Section, Divider, PortfolioList, PortfolioListItem, PortfolioListFilter, Spinner } from '../component/Index';
 import autobind from 'autobind-decorator';
 
 
@@ -42,14 +42,6 @@ class Projects extends Component{
   }
 
   @autobind
-  filterProjects(){
-    const items =  Math.floor(Math.random() * 15) + 1;
-    this.setState({
-      projects: [...Array(items).keys()]
-    })
-  }
-
-  @autobind
   handleFilterAction(operation, tag){
     const { selectedTags } = this.state;
     operation == 'add' ? selectedTags.push(tag): selectedTags.splice(tag, 1)
@@ -60,7 +52,12 @@ class Projects extends Component{
   }
 
   render() {
-    const { showFilter, projects, selectedTags } = this.state;
+    const { work: { projects, projectsLoading }} = this.props,
+          { showFilter, selectedTags } = this.state;
+
+          if(projectsLoading){
+            return <Spinner />
+          }
 
     return (
       <div>
@@ -77,7 +74,5 @@ class Projects extends Component{
     );
   }
 }
-import {bindActionCreators} from "redux/index";
-import {connect} from "react-redux";
 
 export default Projects;

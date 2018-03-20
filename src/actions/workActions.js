@@ -31,5 +31,5 @@ const
   };
 
 export {
-  fetchProjectIfNeeded,
+  fetchProjectIfNeeded
 }
