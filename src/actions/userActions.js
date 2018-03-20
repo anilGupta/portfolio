@@ -4,13 +4,13 @@ import Network from '../utils/network';
 
 const
   fetchBrand =() => {
-     return dispatch => {
-         dispatch(requestBrand());
-         const url = `${Config.apiURL}/Brands`;
-         return Network.get(url).then(result => {
-            return dispatch(receiveBrand(result));
-         })
-     }
+    return dispatch => {
+      dispatch(requestBrand());
+      const url = `${Config.apiURL}/Brands`;
+      return Network.get(url).then(result => {
+        return dispatch(receiveBrand(result));
+      })
+    }
   },
   fetchSkills =() => {
     return dispatch => {
@@ -44,10 +44,10 @@ const
     }
   },
   fetchBrandIfNeeded = () =>{
-     return (dispatch, getState) => {
-        const { user: { brands}} = getState();
-        return brands.length ? Promise.resolve(brands) : dispatch(fetchBrand());
-     }
+    return (dispatch, getState) => {
+      const { user: { brands}} = getState();
+      return brands.length ? Promise.resolve(brands) : dispatch(fetchBrand());
+    }
   },
   fetchSkillIfNeed = () => {
     return (dispatch, getState) => {

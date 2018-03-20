@@ -1,3 +1,4 @@
+import BrandsList from './BrandsList';
 import Header from './Header';
 import Footer from './Footer';
 import Divider from './Divider';
@@ -12,6 +13,7 @@ import Spinner from './Spinner';
 
 
 export {
+  BrandsList,
   Header,
   Footer,
   Divider,

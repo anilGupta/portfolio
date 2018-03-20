@@ -1,7 +1,17 @@
 import React, { Component } from 'react';
-import { Section, Divider, PortfolioList, PortfolioListItem, PortfolioListFilter } from '../component/Index'
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { fetchProjectIfNeeded } from "../actions/workActions";
+import { Section, Divider, PortfolioList, PortfolioListItem, PortfolioListFilter } from '../component/Index';
 import autobind from 'autobind-decorator';
 
+
+@connect(
+  state =>{ return {user: state.user}},
+  dispatch => ( bindActionCreators({
+    fetchProjectIfNeeded
+  }, dispatch))
+)
 class Projects extends Component{
 
   constructor(props) {
@@ -14,29 +24,39 @@ class Projects extends Component{
     selectedTags :[]
   };
 
+  fetchData(props){
+    const { fetchProjectIfNeeded } = props;
+    fetchProjectIfNeeded();
+  }
+
+
+  componentWillMount(){
+    this.fetchData(this.props);
+  }
+
   @autobind
   toggleFilter(){
-     this.setState({
-       showFilter: !this.state.showFilter
-     })
+    this.setState({
+      showFilter: !this.state.showFilter
+    })
   }
 
   @autobind
   filterProjects(){
-      const items =  Math.floor(Math.random() * 15) + 1;
-      this.setState({
-        projects: [...Array(items).keys()]
-      })
+    const items =  Math.floor(Math.random() * 15) + 1;
+    this.setState({
+      projects: [...Array(items).keys()]
+    })
   }
 
   @autobind
   handleFilterAction(operation, tag){
-      const { selectedTags } = this.state;
-              operation == 'add' ? selectedTags.push(tag): selectedTags.splice(tag, 1)
-              this.setState({
-                 selectedTags: selectedTags,
-                 showFilter: false
-              })
+    const { selectedTags } = this.state;
+    operation == 'add' ? selectedTags.push(tag): selectedTags.splice(tag, 1)
+    this.setState({
+      selectedTags: selectedTags,
+      showFilter: false
+    })
   }
 
   render() {
@@ -57,5 +77,7 @@ class Projects extends Component{
     );
   }
 }
+import {bindActionCreators} from "redux/index";
+import {connect} from "react-redux";
 
 export default Projects;

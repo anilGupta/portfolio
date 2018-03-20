@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import autobind from 'autobind-decorator';
 import { fetchBrandIfNeeded, fetchSkillIfNeed } from "../actions/userActions";
-import { Section, Divider, ProgressBar, Spinner } from '../component/Index';
+import { Section, Divider, ProgressBar, Spinner, BrandsList } from '../component/Index';
 
 @connect(
   state =>{ return {user: state.user}},
@@ -32,7 +32,7 @@ class Home extends Component{
 
     const { user: { brands, skills, brandsLoading, skillsLoading}, user } = this.props;
 
-    if(brandsLoading || skillsLoading){
+    if((brandsLoading || skillsLoading) && !brands.length){
       return <Spinner />
     }
 
@@ -131,29 +131,28 @@ class Home extends Component{
               consectetur fermentum nibh volutpat, accumsan purus.
             </div>
             <div className="row">
-              {skillCollection.map(items=>
-                 <div className="col-sm-6 mb-sm-50 mb-xs-30">
-                   {items.map((item, key) => <ProgressBar  key={key} {...item} />)}
+              {skillCollection.map((items, i)=>
+                 <div className="col-sm-6 mb-sm-50 mb-xs-30" key={i}>
+                   {items.map(item => <ProgressBar  key={item.id} {...item} />)}
                  </div>
               )}
             </div>
           </div>
         </Section>
 
-        <Section className="small-section">
-          <div className="container relative">
-            <div className="row">
-              <div className="col-md-10 col-md-offset-1">
-                <div className="small-item-carousel black owl-carousel mb-0 animate-init" data-anim-type="fade-in-right-large" data-anim-delay="100">
-                  {brands.map(({id, name, logo}) => <div className="logo-item" key={id}>
-                    <img src={logo} width="67" height="67" alt={name} />
-                  </div>)}
-                </div>
+        <BrandsList collection={brands} />
+
+        <Section small className="bg-dark">
+            <div className="align-center">
+              <h3 className="banner-heading font-alt">Want to discuss your new project?</h3>
+              <div>
+                <a href="" className="btn btn-mod btn-w btn-medium btn-round">Lets tallk</a>
               </div>
             </div>
-          </div>
         </Section>
         <Divider/>
+
+
       </div>
     );
   }

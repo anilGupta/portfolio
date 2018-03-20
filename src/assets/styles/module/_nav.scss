@@ -8,7 +8,8 @@
   height: 80px;
   text-align: center;
   opacity: .75;
-
+  -webkit-filter: grayscale(100%);
+   filter: grayscale(100%);
   -webkit-transition: all 0.27s cubic-bezier(0.300, 0.100, 0.580, 1.000);
   -moz-transition: all 0.27s cubic-bezier(0.300, 0.100, 0.580, 1.000);
   -o-transition: all 0.27s cubic-bezier(0.300, 0.100, 0.580, 1.000);
@@ -18,11 +19,13 @@
 }
 .logo-item:hover{
   opacity: 1;
+  -webkit-filter: grayscale(90%);
+  filter: grayscale(90%);
 }
 .logo-item img{
   position: relative;
   top: 50%;
-
+  opacity: 0.5;
   -webkit-transform: translateY(-50%);
   -moz-transform: translateY(-50%);
   -o-transform: translateY(-50%);
