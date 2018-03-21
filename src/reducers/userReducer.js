@@ -3,8 +3,10 @@ import types from '../constants/ActionType';
 const initialState = {
          brands: [],
          skills: [],
+         tags: [],
          brandsLoading: false,
          skillsLoading: false,
+         tagsLoading: false
       },
       userReducer = (state = initialState, action) =>{
           switch(action.type){
@@ -24,6 +26,15 @@ const initialState = {
               return Object.assign({}, state, {
                 skills: action.skills,
                 skillsLoading: false
+              });
+
+            case types.REQUEST_TAGS:
+              return Object.assign({}, state, { tagsLoading: true});
+
+            case types.RECEIVE_TAGS:
+              return Object.assign({}, state, {
+                tags: action.tags,
+                tagsLoading: false
               });
 
             default:

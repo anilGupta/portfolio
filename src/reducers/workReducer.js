@@ -9,7 +9,7 @@ const initialState = {
             case types.REQUEST_PROJECT:
               return Object.assign({}, state, { projectsLoading: true});
 
-            case types.RECEIVE_BRAND:
+            case types.RECEIVE_PROJECT:
               return Object.assign({}, state, {
                 projects: action.projects,
                 projectsLoading: false

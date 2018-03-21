@@ -14,11 +14,9 @@ class PortfolioList extends Component{
   }
 
   componentDidMount(){
-    this.masonry ? this.masonry.on('layoutComplete', this.handleLayoutComplete): null;
   }
 
   componentWillUnmount(){
-    this.masonry.off('layoutComplete', this.handleLayoutComplete);
   }
 
   render(){
@@ -33,7 +31,6 @@ class PortfolioList extends Component{
               options={options}
               disableImagesLoaded={true}
               updateOnEachImageLoad={true}
-              ref={el => el ? this.masonry = el: null}
             >{children}</Masonry>
   }
 }

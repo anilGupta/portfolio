@@ -21,6 +21,20 @@ const
       })
     }
   },
+  fetchTags =() => {
+    return dispatch => {
+      dispatch(requestTags());
+      const url = `${Config.apiURL}/Tags`;
+      return Network.get(url).then(data => {
+        const tags = data.reduce((result, next)=> {
+          const group = next.group;
+                result[next.group] ? result[group].push(next): result[group] = [next]
+                return result;
+        }, {});
+        return dispatch(receiveTags(tags));
+      })
+    }
+  },
   requestBrand = () => {
     return {
       type: types.REQUEST_BRAND
@@ -43,6 +57,17 @@ const
       skills
     }
   },
+  requestTags = () => {
+    return {
+      type: types.REQUEST_TAGS
+    }
+  },
+  receiveTags = tags => {
+    return {
+      type: types.RECEIVE_TAGS,
+      tags
+    }
+  },
   fetchBrandIfNeeded = () =>{
     return (dispatch, getState) => {
       const { user: { brands}} = getState();
@@ -54,9 +79,16 @@ const
       const { user: { skills }} = getState();
       return skills.length ? Promise.resolve(skills) : dispatch(fetchSkills());
     }
+  },
+  fetchTagsIfNeeded = () => {
+    return (dispatch, getState) => {
+      const { user: { tags }} = getState();
+      return tags.length ? Promise.resolve(tags) : dispatch(fetchTags());
+    }
   };
 
 export {
   fetchBrandIfNeeded,
-  fetchSkillIfNeed
+  fetchSkillIfNeed,
+  fetchTagsIfNeeded
 }

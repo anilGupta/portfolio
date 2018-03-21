@@ -26,7 +26,9 @@ const
   fetchProjectIfNeeded = () => {
     return (dispatch, getState) => {
       const { work : { projects }} = getState();
-      return projects.length ? projects.resolve(projects) : dispatch(fetchProjects());
+      console.log(getState());
+
+      return !projects && projects.length ? projects.resolve(projects) : dispatch(fetchProjects());
     }
   };
 
