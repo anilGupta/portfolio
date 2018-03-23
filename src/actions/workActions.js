@@ -6,7 +6,7 @@ const
   fetchProjects =() => {
     return dispatch => {
       dispatch(requestProject());
-      const url = `${Config.apiURL}/Projects`;
+      const url = `${Config.apiURL}/Projects?filter[include]=tags&filter[include]=brand`;
       return Network.get(url).then(result => {
         return dispatch(receiveProject(result));
       })
@@ -26,12 +26,24 @@ const
   fetchProjectIfNeeded = () => {
     return (dispatch, getState) => {
       const { work : { projects }} = getState();
-      console.log(getState());
-
       return !projects && projects.length ? projects.resolve(projects) : dispatch(fetchProjects());
     }
-  };
+  },
+  filterProject = (tag, operation) => {
+    return {
+       type: types.FILTER_PROJECT,
+       tag,
+       operation
+    }
+  },
+  toggleFilter = () => {
+    return {
+      type: types.TOGGLE_FILTER
+    }
+  }
 
 export {
-  fetchProjectIfNeeded
+  fetchProjectIfNeeded,
+  filterProject,
+  toggleFilter
 }

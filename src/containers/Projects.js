@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import { fetchProjectIfNeeded } from "../actions/workActions";
+import { fetchProjectIfNeeded, filterProject, toggleFilter } from "../actions/workActions";
 import { fetchSkillIfNeed, fetchTagsIfNeeded } from "../actions/userActions";
 import { Section, Divider, PortfolioList, PortfolioListItem, PortfolioListFilter, Spinner } from '../component/Index';
 import autobind from 'autobind-decorator';
@@ -12,7 +12,9 @@ import autobind from 'autobind-decorator';
   dispatch => ( bindActionCreators({
     fetchProjectIfNeeded,
     fetchSkillIfNeed,
-    fetchTagsIfNeeded
+    fetchTagsIfNeeded,
+    filterProject,
+    toggleFilter
   }, dispatch))
 )
 class Projects extends Component{
@@ -20,12 +22,6 @@ class Projects extends Component{
   constructor(props) {
     super(props);
   }
-
-  state = {
-    showFilter: false,
-    projects: [...Array(10).keys()],
-    selectedTags :[]
-  };
 
   fetchData(props){
     const { fetchProjectIfNeeded, fetchTagsIfNeeded } = props;
@@ -40,24 +36,17 @@ class Projects extends Component{
 
   @autobind
   toggleFilter(){
-    this.setState({
-      showFilter: !this.state.showFilter
-    })
+
   }
 
   @autobind
   handleFilterAction(operation, tag){
-    const { selectedTags } = this.state;
-    operation == 'add' ? selectedTags.push(tag): selectedTags.splice(tag, 1)
-    this.setState({
-      selectedTags: selectedTags,
-      showFilter: false
-    })
+    const { filterProject } = this.props;
+       filterProject(tag, operation);
   }
 
   render() {
-    const { work: { projects, projectsLoading }, user: { tags, tagsLoading} } = this.props,
-          { showFilter, selectedTags } = this.state;
+    const { work: { projects, projectsLoading, filterTags, showFilterTags }, user: { tags, tagsLoading}, toggleFilter } = this.props;
 
           if(projectsLoading || tagsLoading){
             return <Spinner />
@@ -67,7 +56,7 @@ class Projects extends Component{
             <div>
               <Section type="light">
                 <div className="relative">
-                  <PortfolioListFilter collection={tags} toggleFilter={this.toggleFilter} open={showFilter} selectedTags={selectedTags} filterAction={this.handleFilterAction} />
+                  <PortfolioListFilter collection={tags} toggleFilter={toggleFilter} open={showFilterTags} filterTags={filterTags} filterAction={this.handleFilterAction} />
                   <Divider/>
                   <PortfolioList>
                     {projects.map((item, key) => <PortfolioListItem data={item} key={key} loop={key} />)}

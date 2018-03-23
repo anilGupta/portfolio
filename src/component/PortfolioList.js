@@ -22,11 +22,11 @@ class PortfolioList extends Component{
   render(){
     const { children } = this.props,
             options = {
-              transitionDuration: 1000
+              transitionDuration: 1000,
             };
 
     return <Masonry
-              className="works-grid work-grid-3 clearfix font-alt hover-white hide-titles masonry"
+              className="works-grid work-grid-3 work-grid-gut clearfix font-alt hover-white hide-titles masonry"
               id="work-grid"
               options={options}
               disableImagesLoaded={true}
