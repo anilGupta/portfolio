@@ -1,0 +1,70 @@
+
+.countdown{
+  display: inline-block;
+}
+.countdown > li{
+  float: left;
+  margin: 0 30px;
+}
+.countdown-number{
+  position: relative;
+  display: block;
+  width: 94px;
+  height: 94px;
+  color: #111;
+  font-size: 36px;
+  text-align: center;
+  line-height: 84px;
+}
+.countdown-number > span{
+  position: relative;
+  z-index: 2;
+}
+.countdown-number > b{
+  display: block;
+  width: 100%;
+  position: absolute;
+  bottom: 20px;
+  left: 0;
+  font-size: 10px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  line-height: 1;
+  color: #999;
+  z-index: 2;
+}
+.countdown-number:before{
+  content: "";
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: rgba(255,255,255, .95);
+
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+
+  z-index: 1;
+}
+
+/* Dark Timer */
+
+.countdown.dark .countdown-number{
+  color: #fff;
+}
+.countdown.dark .countdown-number > b{
+  color: #aaa;
+}
+.countdown.dark .countdown-number:before{
+  background: rgba(0,0,0, .8);
+}

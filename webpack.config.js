@@ -13,7 +13,7 @@ const HMRConfig = new webpack.HotModuleReplacementPlugin();
 const CopyAssetPluginConfig = new CopyWebpackPlugin([
   { from: './src/assets', to: './assets' },
 ]);
-const ExtractTextPluginConfig = new ExtractTextPlugin({ filename: 'style.css', disable: false, allChunks: true });
+const ExtractTextPluginConfig = new ExtractTextPlugin({ filename: 'style.css', disable: false, allChunks: true, publicPath: "" });
 
 module.exports = {
   entry:[
@@ -28,11 +28,10 @@ module.exports = {
   },
   module: {
     loaders: [
+      { test: /\.(js|jsx)$/, loader: 'babel-loader', exclude: /node_modules/ },
       {
-        test: /\.(js|jsx)$/, loader: 'babel-loader', exclude: /node_modules/
-      },
-      {
-        test: /\.scss$/, exclude: /node_modules/, use: ExtractTextPlugin.extract({ fallback: 'style-loader', use: [ 'css-loader', { loader: 'sass-loader', query: { sourceMap: false } }, ], }),
+        test: /masonry|imagesloaded|fizzy\-ui\-utils|desandro\-|outlayer|get\-size|doc\-ready|eventie|eventemitter/,
+        loader: 'imports-loader?define=>false&this=>window'
       },
       { test: /\.css$/,
         use: [
@@ -65,6 +64,19 @@ module.exports = {
           },
         ],
       },
+      { test: /\.woff?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&minetype=application/font-woff" },
+      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "url-loader?limit=10000&minetype=application/font-woff" },
+      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, loader: "file-loader" },
+
+      {
+        test: /\.scss$/,
+        use: ['css-hot-loader'].concat(ExtractTextPlugin.extract({
+          use: [
+            { loader: "css-loader" },
+            { loader: "sass-loader" }
+          ],
+        }))
+      }
     ],
   },
   resolve: {
@@ -72,7 +84,9 @@ module.exports = {
   },
   plugins: [
     new webpack.ProvidePlugin({
-      fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch'
+      fetch: 'imports-loader?this=>global!exports-loader?global.fetch!whatwg-fetch',
+      $: 'jquery',
+      jQuery: 'jquery'
     }),
     ExtractTextPluginConfig,
     HtmlWebpackPluginConfig,
