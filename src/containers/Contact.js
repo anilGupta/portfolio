@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import GoogleMap from '../component/GoogleMap';
+import BgEffect from '../component/BgEffect';
+import Section from '../component/Section';
 
 
 class Contact extends Component{
@@ -10,7 +12,7 @@ class Contact extends Component{
   }
 
   state = {
-     showMap : false
+     showMap : true
   };
 
   toggleMap(){
@@ -22,9 +24,7 @@ class Contact extends Component{
 
     return (
       <div>
-
-        <section className="page-section" id="contact">
-          <div className="container relative">
+        <Section className="page-section" background="/assets/bg/6.jpeg" alpha="30" type="light">
             <div className="row">
               <div className="col-md-8 col-md-offset-2">
                 <div className="section-heading align-center mb-120 mb-xs-40">
@@ -62,8 +62,6 @@ class Contact extends Component{
               </div>
 
             </div>
-
-
             <div className="row">
               <div className="col-md-8 col-md-offset-2">
                 <form className="form contact-form" id="contact_form">
@@ -103,23 +101,17 @@ class Contact extends Component{
                 </form>
               </div>
             </div>
+        </Section>
 
-
-
-
-          </div>
-        </section>
-        
-        
-        <div className="google-map mt-80">
+        <div className="google-map">
           <GoogleMap address="Belt Parkway, Queens, NY, United States" />
           <div className={`map-section ${showMap ? '': 'js-active'}`} onClick={this.toggleMap}>
             <div className="map-toggle">
               <div className="mt-icon"><i className="fa fa-map-marker" /></div>
               <div className="mt-text font-alt">
                 { showMap
-                  ? <div className="mt-open">Close the map <i className="fa fa-angle-down" /></div>
-                  : <div className="mt-open">Open the map <i className="fa fa-angle-up" /></div>
+                  ? <div className="mt-open">Open the map <i className="fa fa-angle-down" /></div>
+                  : <div className="mt-open">Close the map <i className="fa fa-angle-up" /></div>
                 }
               </div>
             </div>

@@ -72,7 +72,6 @@ class Home extends Component{
             </div>
           </div>
         </Section>
-        
         <Section type='light'>
           <div className="section-text">
             <div className="row">

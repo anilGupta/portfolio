@@ -10,7 +10,7 @@ import PortfolioListItem from './PortfolioListItem';
 import PortfolioListFilter from './PortfolioListFilter';
 import Tags from './Tags';
 import Spinner from './Spinner';
-
+import BgEffect from './BgEffect';
 
 export {
   BrandsList,
@@ -24,5 +24,6 @@ export {
   PortfolioListItem,
   PortfolioListFilter,
   Tags,
-  Spinner
+  Spinner,
+  BgEffect
 }

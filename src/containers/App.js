@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { initialize } from '../actions/appActions';
 import { connect } from 'react-redux';
-import { Header, Footer } from '../component/Index';
+import { Header, Footer, BgEffect } from '../component/Index';
 import { Home, About, Contact, Projects, ProjectView} from './Index';
 
 @connect(
@@ -29,6 +29,7 @@ class App extends Component{
                    <Footer/>
                  </div>
                </div>
+               {/*<BgEffect />*/}
           </div>
         );
     }

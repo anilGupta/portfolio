@@ -5,8 +5,10 @@ import 'gmap3';
 class GoogleMap extends Component{
 
   componentWillMount(){
-     this.loadSDK()
+     this.loadSDK();
      this.mapElement = null
+     console.log("")
+     
   }
 
   loadSDK(){
@@ -23,6 +25,7 @@ class GoogleMap extends Component{
   componentDidMount(){
        setTimeout(()=>{
           this.initMap();
+          
        }, 1000)
   }
 
