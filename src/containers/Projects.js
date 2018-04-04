@@ -25,13 +25,14 @@ class Projects extends Component{
 
   fetchData(props){
     const { fetchProjectIfNeeded, fetchTagsIfNeeded } = props;
-    fetchProjectIfNeeded();
-    fetchTagsIfNeeded();
+    return Promise.all[fetchProjectIfNeeded(), fetchTagsIfNeeded()]
   }
 
 
   componentWillMount(){
-    this.fetchData(this.props);
+    this.fetchData(this.props).then(() => {
+      console.log('project is filtered ');
+    })
   }
 
   @autobind
@@ -46,13 +47,16 @@ class Projects extends Component{
   }
 
   render() {
-    const { work: { projects, projectsLoading, filterTags, showFilterTags }, user: { tags, tagsLoading}, toggleFilter } = this.props;
+    const { work: { projects, projectsLoading, filterTags, showFilterTags }, user: { tags, tagsLoading}, toggleFilter, match } = this.props;
 
           if(projectsLoading || tagsLoading){
             return <Spinner />
           }
 
-          return (
+          console.log(this.props);
+
+
+    return (
             <div>
               <Section type="light">
                 <div className="relative">

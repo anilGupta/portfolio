@@ -1,7 +1,5 @@
 import React from 'react';
 const PortfolioListFilter = ({collection, toggleFilter, open, filterTags, filterAction}) => {
-  console.log(filterTags)
-
   return <div>
             <div className="row center row-nav-animation">
               <div className="col-sm-12 col-md-2">
@@ -22,7 +20,7 @@ const PortfolioListFilter = ({collection, toggleFilter, open, filterTags, filter
                       <li className="filter_heading">{category.toUpperCase()}</li>
                       {collection[category].map((item, key) => {
                         const has = filterTags.find(tag => tag.id == item.id) ? true: false;
-                        return <li key={key} onClick={filterAction.bind(null, has ? "REMOVE": "ADD", item)}><span>{item.name.toUpperCase()} {has ? <i className="fa fa-remove" /> : null}</span></li>
+                        return <li key={key} onClick={filterAction.bind(null, has ? "REMOVE": "ADD", item)}><span>{item.id} -- {item.name.toUpperCase()} {has ? <i className="fa fa-remove" /> : null}</span></li>
                       })}
                     </ul>
                   )}

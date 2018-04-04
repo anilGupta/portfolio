@@ -1,27 +1,57 @@
 import React, { Component } from 'react';
 import {NavLink} from 'react-router-dom';
-import { Section, Divider, Tags } from '../component/Index'
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
+import { fetchProjectIfNeeded } from "../actions/workActions";
 import autobind from 'autobind-decorator';
+import { Section, Divider, Tags, Spinner } from '../component/Index';
 
+
+
+@connect(
+  state =>{ return {user: state.user, work: state.work}},
+  dispatch => ( bindActionCreators({
+    fetchProjectIfNeeded
+  }, dispatch))
+)
 class ProjectView extends Component{
 
   constructor(props) {
     super(props);
   }
 
-  state = {
-  };
+  fetchData(props){
+     const { fetchProjectIfNeeded } = props;
+             fetchProjectIfNeeded();
+  }
+
+  componentWillMount(){
+     this.fetchData(this.props);
+  }
 
 
   render() {
+
+    const { work: { allProjects=[], projectsLoading }, match: { params: { id}} } = this.props,
+            activeProject = allProjects.find(project => project.id == id);
+
+            if(projectsLoading || !activeProject){
+              return <Spinner />
+            }
+
+            const { name, summery, tags, _images, _thumbnail, clientName } = activeProject;
+
+            console.log(activeProject);
+
+
     return (
       <div>
-        <Section  background="/assets/images/projects-6.jpg" theme="dark" alpha={60} parallax >
+        <Section background={_thumbnail.url} theme="dark" alpha={60} parallax >
           <div className="js-height-full container">
             <div className="home-content">
               <div className="home-text">
                 <h1 className="hs-line-8 no-transp font-alt mb-50 mb-xs-30">Branding / Design / Photography</h1>
-                <h2 className="hs-line-14 font-alt mb-50 mb-xs-30"> Creative Project</h2>
+                <h2 className="hs-line-14 font-alt mb-50 mb-xs-30">{name}</h2>
               </div>
             </div>
             <div className="local-scroll">
@@ -35,23 +65,17 @@ class ProjectView extends Component{
              <div className="section-text">
                <div className="row">
                  <div className="col-md-3 mb-sm-50 mb-xs-30">
-                   <Tags />
+                   <Tags collection={tags} />
                    <div className="work-detail">
                      <h5 className="font-alt mt-0 mb-20">Project Details</h5>
                      <div className="work-full-detail">
-                       <p><strong>Client:</strong>Envato Users</p>
+                       <p><strong>Client:</strong>{clientName}</p>
                        <p><strong>Date:</strong>1th Februery, 2014</p>
                       {/* <p><strong>Link:</strong><a href="#" target="_blank">www.rhythm.bestlooker.pro</a></p>*/}
                      </div>
                    </div>
                  </div>
-                 <div className="col-md-9 col-sm-6 mb-sm-50 mb-xs-30">
-                   Etiam sit amet fringilla lacus. Pellentesque suscipit ante at ullamcorper pulvinar neque porttitor. Integer lectus. Praesent sed nisi eleifend, fermentum orci amet, iaculis libero. Donec vel ultricies purus. Nam dictum sem, eu aliquam.
-                   Etiam sit amet fringilla lacus. Pellentesque suscipit ante at ullamcorper pulvinar neque porttitor. Integer lectus. Praesent sed nisi eleifend, fermentum orci amet, iaculis libero. Donec vel ultricies purus. Nam dictum sem, eu aliquam.
-                 </div>
-                 <div className="col-md-4 col-sm-6 mb-sm-50 mb-xs-30">
-
-                 </div>
+                 <div className="col-md-9 col-sm-6 mb-sm-50 mb-xs-30">{summery}</div>
                </div>
                <div className="row">
 

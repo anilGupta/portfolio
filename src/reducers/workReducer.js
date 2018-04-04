@@ -22,10 +22,10 @@ const initialState = {
             case types.FILTER_PROJECT:
               const tags = action.operation == 'ADD' ? [...state.filterTags, action.tag ]:  state.filterTags.filter(item => item.code != action.tag.code),
                     filterIds = tags.map(tag => tag.id),
-                    projects = tags.length ? state.projects.filter(project => {
+                    projects = tags.length ? state.allProjects.filter(project => {
                         const containIds = project.tags.map(tag => tag.id);
-                              return filterIds.every(filterId => containIds.includes(filterId))
-                    }): state.allProjects;
+                        return filterIds.every(filterId => containIds.includes(filterId));
+                      }): state.allProjects;
 
               return Object.assign({}, state, {
                 filterTags: tags,

@@ -5,7 +5,6 @@ import ImageLoader from '../component/ImageLoader';
 const PortfolioListItem = ({loop, data}) => {
   const { name, summery, _thumbnail } = data,
           src = _thumbnail && _thumbnail.url ? _thumbnail.url.replace("download/", "") : false;
-          console.log(loop, src)
 
   const id = Math.floor(Math.random() * 7) + 1;
   return <li className="work-item mix photography">
