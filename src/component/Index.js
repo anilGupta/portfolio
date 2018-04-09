@@ -11,6 +11,7 @@ import PortfolioListFilter from './PortfolioListFilter';
 import Tags from './Tags';
 import Spinner from './Spinner';
 import BgEffect from './BgEffect';
+import FloatTexts from './FloatTexts';
 
 export {
   BrandsList,
@@ -25,5 +26,6 @@ export {
   PortfolioListFilter,
   Tags,
   Spinner,
-  BgEffect
+  BgEffect,
+  FloatTexts
 }

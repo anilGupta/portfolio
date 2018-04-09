@@ -1,0 +1,11 @@
+.letter{
+  display: inline-block;
+  transition: all 0.3s;
+  transform: translate(0px, -100px);
+}
+
+.animate-word{
+  .letter{
+    transform: translate(0px, 0px);
+  }
+}

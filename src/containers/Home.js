@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import autobind from 'autobind-decorator';
 import { fetchBrandIfNeeded, fetchSkillIfNeed } from "../actions/userActions";
-import { Section, Divider, ProgressBar, Spinner, BrandsList } from '../component/Index';
+import { Section, Divider, ProgressBar, Spinner, BrandsList, FloatTexts } from '../component/Index';
 
 @connect(
   state =>{ return {user: state.user}},
@@ -52,7 +52,9 @@ class Home extends Component{
                   <img src="" alt="" className="hover-white"/>
                 </div>
                 <div className="col-sm-6 col-lg-5 align-center pt-20 pt-lg-0 mb-xs-30 col-lg-offset-1">
-                  <div className="hs-line-15 font-alt">Anil Gupta</div>
+                  <div className="hs-line-15 font-alt">
+                    <FloatTexts>ANIL GUPTA <br /> just a tech</FloatTexts>
+                  </div>
                   <h1 className="hs-line-4 font-alt mb-40 mb-xs-20">FullStack Developer</h1>
                   <div className="section-text white mb-70 mb-xs-40 text-justify">
                     <p><span className="dropcap font-alt">M</span>y name is Anil Gupta, I am a creative, highly motivated software engineer with over 7+ years of experience working with  JavaScript, NodeJS, PHP, and related technologies.</p>
