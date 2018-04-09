@@ -12,6 +12,7 @@ import Tags from './Tags';
 import Spinner from './Spinner';
 import BgEffect from './BgEffect';
 import FloatTexts from './FloatTexts';
+import TextLineAnimation from './TextLineAnimation';
 
 export {
   BrandsList,
@@ -27,5 +28,6 @@ export {
   Tags,
   Spinner,
   BgEffect,
-  FloatTexts
+  FloatTexts,
+  TextLineAnimation
 }
