@@ -9,3 +9,68 @@
     transform: translate(0px, 0px);
   }
 }
+
+.text-line-animation{
+  .split-line-wrapper{
+    overflow: hidden;
+    position: relative;
+    .line-wrapper{
+      transform: translateY(60px);
+      transition: all 0.8s;
+      &:nth-child(1){
+        .inner-text{
+          opacity: 0.5;
+        }
+      }
+      &:nth-child(2){
+        .inner-text{
+          transition-timing-function: ease-in;
+          text-align: left;
+          position: absolute;
+          height: 30px;
+          top: -25px;
+          width:0;
+          overflow: hidden;
+        }
+      }
+    }
+  }
+  &.animate-line{
+    .split-line-wrapper{
+      .line-wrapper{
+        transform: translateY(0);
+        &:nth-child(2){
+          .inner-text{
+            width: 100%;
+          }
+        }
+      }
+    }
+  }
+}
+
+
+.text-word-animation{
+    overflow: hidden;
+    .word-wrapper{
+      display: inline-block;
+      .word{
+        display: inline-block;
+        overflow: hidden;
+        opacity: 0;
+        transition: width 0.4s cubic-bezier(0.2,0,0.3,1), opacity 1.4s cubic-bezier(0.2,0,0.3,1);
+      }
+    }
+
+   &.animate-word{
+      .word{
+        opacity: 1;
+        width: 100% !important;
+      }
+   }
+}
+
+
+
+
+

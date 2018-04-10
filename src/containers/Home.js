@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import autobind from 'autobind-decorator';
 import { fetchBrandIfNeeded, fetchSkillIfNeed } from "../actions/userActions";
-import { Section, Divider, ProgressBar, Spinner, BrandsList, FloatTexts, TextLineAnimation } from '../component/Index';
+import { Section, Divider, ProgressBar, Spinner, BrandsList, FloatTexts, LineAnimation, WordAnimation } from '../component/Index';
 
 @connect(
   state =>{ return {user: state.user}},
@@ -58,11 +58,13 @@ class Home extends Component{
                   <h1 className="hs-line-4 font-alt mb-40 mb-xs-20">FullStack Developer</h1>
                   <div className="section-text white mb-70 mb-xs-40 text-justify">
                     <p><span className="dropcap font-alt">M</span>y name is Anil Gupta, I am a creative, highly motivated software engineer with over 7+ years of experience working with  JavaScript, NodeJS, PHP, and related technologies.</p>
-                    <TextLineAnimation>
+                    <LineAnimation>
                       I thrive in a challenging, fast-paced environment. An enthusiastic team player with phenomenal time management skills and a can-do attitude
-                    </TextLineAnimation>
+                    </LineAnimation>
 
-                    {/*<p>I thrive in a challenging, fast-paced environment. An enthusiastic team player with phenomenal time management skills and a can-do attitude </p>*/}
+                    <WordAnimation>
+                      I thrive in a challenging, fast paced environment. An enthusiastic team player with phenomenal time management skills and a can do attitude enthusiastic team player with phenomenal time management skills and a can do attitude
+                    </WordAnimation>
                     <hr className="white mb-30" />
                       <div>
                         <h4 className="font-alt mt-0 mb-20">Profile</h4>
@@ -122,7 +124,6 @@ class Home extends Component{
             </div>
           </div>
         </Section>
-
         <Section>
           <div className="col-sm-3">
             <h2 className="section-title font-alt align-left mt-0 mb-70 mb-sm-40">Skills</h2>
@@ -130,10 +131,10 @@ class Home extends Component{
 
           <div className="col-sm-9">
             <div className="section-text mb-50 mb-xs-30">
-              Larensy in&nbsp;auctor ex&nbsp;id&nbsp;urna faucibus porttitor. Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit. In&nbsp;maximus ligula semper metus pellentesque mattis.
-              Maecenas volutpat, diam enim sagittis quam, id&nbsp;porta quam. Sed id&nbsp;dolor
-              consectetur fermentum nibh volutpat, accumsan purus.
+              <LineAnimation>
+              Larensy in auctor ex id urna faucibus porttitor. Lorem ipsum dolor sit amet,
+              consectetur adipiscing elit. In maximus ligula semper metus pellentesque mattis.
+              Maecenas volutpat, diam enim sagittis quam, id porta quam. Sed id dolor consectetur fermentum nibh volutpat, accumsan purus.</LineAnimation>
             </div>
             <div className="row">
               {skillCollection.map((items, i)=>
