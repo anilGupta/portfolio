@@ -23,14 +23,14 @@ class SVGTextAnimation extends Component{
   }
 
   componentDidMount(){
-    setTimeout(()=> this.wrapper.classList.add('animate'), 1000)
+    setTimeout(()=> this.wrapper.classList.add('animate-path'), 1000)
   }
 
   initialStyle(el){
      if(el){
         const length = el.getTotalLength();
-              el.style['stroke-dasharray'] = length;
-              el.style['stroke-dashOffset'] = length;
+              el.style.strokeDasharray = length + ' ' + length;
+              el.style.strokeDashoffset = length;
      }
   }
 

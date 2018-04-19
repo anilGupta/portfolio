@@ -4,11 +4,10 @@
       fill: none;
       transition: all 1s ease-in;
    }
-
-   &.animate {
-      path {
-         stroke-dashOffset:0;
-      }
-   }
 }
 
+.animate-path{
+  path {
+    stroke-dashoffset:0;
+  }
+}
