@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import helper from '../utils/helper';
 
-class WordAnimation extends Component{
+class SVGTextAnimation extends Component{
 
   componentWillMount(){
     this.wrapper = null;
@@ -17,12 +17,12 @@ class WordAnimation extends Component{
   }
 
   setWidth(el){
-     if(el){
-       el.style.width = `${el.clientWidth + 5}px`;
-       //el.style.height = `${el.clientHeight/2 + 5 }px`;
-       //el.style.lineHeight = `${el.clientHeight}px`;
-       el.firstChild.style.width = 0
-     }
+    if(el){
+      el.style.width = `${el.clientWidth + 5}px`;
+      //el.style.height = `${el.clientHeight/2 + 5 }px`;
+      //el.style.lineHeight = `${el.clientHeight}px`;
+      el.firstChild.style.width = 0
+    }
   }
 
   render() {
@@ -38,4 +38,4 @@ class WordAnimation extends Component{
   }
 }
 
-export default WordAnimation;
+export default SVGTextAnimation;

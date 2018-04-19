@@ -61,10 +61,9 @@ class Home extends Component{
                     <LineAnimation>
                       I thrive in a challenging, fast-paced environment. An enthusiastic team player with phenomenal time management skills and a can-do attitude
                     </LineAnimation>
-
-                    <WordAnimation>
+                    {/*<WordAnimation>
                       I thrive in a challenging, fast paced environment. An enthusiastic team player with phenomenal time management skills and a can do attitude enthusiastic team player with phenomenal time management skills and a can do attitude
-                    </WordAnimation>
+                    </WordAnimation>*/}
                     <hr className="white mb-30" />
                       <div>
                         <h4 className="font-alt mt-0 mb-20">Profile</h4>
