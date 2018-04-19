@@ -14,6 +14,7 @@ import BgEffect from './BgEffect';
 import FloatTexts from './FloatTexts';
 import LineAnimation from './LineAnimation';
 import WordAnimation from './WordAnimation';
+import SVGTextAnimation from './SVGTextAnimation';
 
 export {
   BrandsList,
@@ -31,5 +32,6 @@ export {
   BgEffect,
   FloatTexts,
   LineAnimation,
-  WordAnimation
+  WordAnimation,
+  SVGTextAnimation
 }

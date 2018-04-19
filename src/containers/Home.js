@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import autobind from 'autobind-decorator';
 import { fetchBrandIfNeeded, fetchSkillIfNeed } from "../actions/userActions";
-import { Section, Divider, ProgressBar, Spinner, BrandsList, FloatTexts, LineAnimation, WordAnimation } from '../component/Index';
+import { Section, Divider, ProgressBar, Spinner, BrandsList, FloatTexts, LineAnimation, WordAnimation, SVGTextAnimation } from '../component/Index';
 
 @connect(
   state =>{ return {user: state.user}},
@@ -83,6 +83,10 @@ class Home extends Component{
           <div className="section-text">
             <div className="row">
               <div className="col-sm-6">
+                <div style={{width: "250px"}}>
+                  <SVGTextAnimation />
+                </div>
+                <br/>
                 <h2 className="section-title font-alt align-center mt-0 mb-70 mb-sm-40">AGENCY EXPERIENCE</h2>
                 <table className="table table-hover">
                   <tbody>
