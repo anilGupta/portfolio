@@ -1,15 +1,18 @@
 .svgTextAnimation{
+  width: 400px;
    path{
       stroke: #000;
       fill: none !important;
-      transition: all 1s ease-in;
-      display: none;
-      stroke-width: 1;
+      transition-property: all;
+      transition-duration: 1s;
+      stroke-dashoffset: 100;
+      stroke-dasharray: 100;
    }
 }
 
-.animate-path{
+
+.svgTextAnimation.animate-path{
   path {
-    stroke-dashoffset:0;
+    stroke-dashoffset :0 !important;
   }
 }

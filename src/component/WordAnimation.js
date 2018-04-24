@@ -13,7 +13,7 @@ class WordAnimation extends Component{
 
 
   componentDidMount(){
-    setTimeout(()=> this.wrapper.classList.add('animate-word'), 1000)
+    //setTimeout(()=> this.wrapper.classList.add('animate-word'), 1000)
   }
 
   setWidth(el){
