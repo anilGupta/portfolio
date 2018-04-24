@@ -1,8 +1,10 @@
 .svgTextAnimation{
    path{
       stroke: #000;
-      fill: none;
+      fill: none !important;
       transition: all 1s ease-in;
+      display: none;
+      stroke-width: 1;
    }
 }
 
