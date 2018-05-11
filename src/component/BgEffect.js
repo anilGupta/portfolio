@@ -80,7 +80,7 @@ class BgEffect extends Component{
   }
 
   animate(event){
-       console.log("calling aniatmin --")
+       //console.log("calling aniatmin --")
        
        const { totalParticles } = this.props;
        this.top +=($(window).scrollTop()- this.top) * 0.5;
