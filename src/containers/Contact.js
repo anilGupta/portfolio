@@ -104,7 +104,7 @@ class Contact extends Component{
         </Section>
 
         <div className="google-map">
-          <GoogleMap address="Belt Parkway, Queens, NY, United States" />
+          <GoogleMap />
           <div className={`map-section ${showMap ? '': 'js-active'}`} onClick={this.toggleMap}>
             <div className="map-toggle">
               <div className="mt-icon"><i className="fa fa-map-marker" /></div>

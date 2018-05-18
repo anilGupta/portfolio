@@ -1,87 +1,64 @@
 import React, { Component } from 'react';
 import Config from '../constants/Config'
-import ScriptCache from '../utils/scriptCache';
-import GoogleApi from '../utils/googleApi';
 class GoogleMap extends Component{
-
   constructor(props){
     super(props);
     this.mapElement = null;
-    this.mapInstance = null;
-    this.styles   = [{"featureType":"water","elementType":"geometry.fill","stylers":[{"color":"#d3d3d3"}]},{"featureType":"transit","stylers":[{"color":"#808080"},{"visibility":"off"}]},{"featureType":"road.highway","elementType":"geometry.stroke","stylers":[{"visibility":"on"},{"color":"#b3b3b3"}]},{"featureType":"road.highway","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"road.local","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#ffffff"},{"weight":1.8}]},{"featureType":"road.local","elementType":"geometry.stroke","stylers":[{"color":"#d7d7d7"}]},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#ebebeb"}]},{"featureType":"administrative","elementType":"geometry","stylers":[{"color":"#a7a7a7"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"road.arterial","elementType":"geometry.fill","stylers":[{"color":"#ffffff"}]},{"featureType":"landscape","elementType":"geometry.fill","stylers":[{"visibility":"on"},{"color":"#efefef"}]},{"featureType":"road","elementType":"labels.text.fill","stylers":[{"color":"#696969"}]},{"featureType":"administrative","elementType":"labels.text.fill","stylers":[{"visibility":"on"},{"color":"#737373"}]},{"featureType":"poi","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"featureType":"poi","elementType":"labels","stylers":[{"visibility":"off"}]},{"featureType":"road.arterial","elementType":"geometry.stroke","stylers":[{"color":"#d6d6d6"}]},{"featureType":"road","elementType":"labels.icon","stylers":[{"visibility":"off"}]},{},{"featureType":"poi","elementType":"geometry.fill","stylers":[{"color":"#dadada"}]}];
+    this.styles   =  [{"elementType":"geometry","stylers":[{"color":"#f5f5f5"}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"elementType":"labels.text.fill","stylers":[{"color":"#616161"}]},{"elementType":"labels.text.stroke","stylers":[{"color":"#f5f5f5"}]},{"featureType":"administrative.land_parcel","elementType":"labels.text.fill","stylers":[{"color":"#bdbdbd"}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#eeeeee"}]},{"featureType":"poi","elementType":"labels.text.fill","stylers":[{"color":"#757575"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#e5e5e5"}]},{"featureType":"poi.park","elementType":"labels.text.fill","stylers":[{"color":"#9e9e9e"}]},{"featureType":"road","elementType":"geometry","stylers":[{"color":"#ffffff"}]},{"featureType":"road.arterial","elementType":"labels.text.fill","stylers":[{"color":"#757575"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#dadada"}]},{"featureType":"road.highway","elementType":"labels.text.fill","stylers":[{"color":"#616161"}]},{"featureType":"road.local","elementType":"labels.text.fill","stylers":[{"color":"#9e9e9e"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"color":"#e5e5e5"}]},{"featureType":"transit.station","elementType":"geometry","stylers":[{"color":"#eeeeee"}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#c9c9c9"}]},{"featureType":"water","elementType":"labels.text.fill","stylers":[{"color":"#9e9e9e"}]}]
+    this.createMap = this.createMap.bind(this);
   }
 
-  defaultProps = {
-    height       : '100%',
-    width        : '100%',
-    lat          : 40.674,
-    lng          : -73.945,
-    zoom         : 14,
-    scroll       : false
+  static defaultProps = {
+    center : {lat: 19.028344, lng: 72.869804},
+    zoom   : 16,
+    zoomControl: false,
+    mapTypeControl: false,
+    scaleControl: false,
+    streetViewControl: false,
+    rotateControl: false,
+    fullscreenControl: false
   };
 
   componentWillMount(){
-     this.loadSDK();
   }
 
-  componentDidMount() {
-    const { lat, lng } = this.props;
-    this.scriptCache.google.onLoad((err, tag) => {
-      console.log("on loaded");
-      const maps = window.google.maps;
-      const props = Object.assign({}, this.props, {
-        loaded: this.state.loaded
-      });
+  componentDidMount(){
+    this.loadSDK().then(this.createMap);
+  }
 
-      let center = new maps.LatLng(lat, lng);
-      let mapConfig = Object.assign({}, {
-        center, zoom: this.props.zoom
-      });
-
-      this.map = new maps.Map(this.mapElement, mapConfig);
-      this.setState({
-        loaded: true,
-        map: this.map,
-        google: window.google
-      })
+  createMap(){
+    const Map = google.maps;
+    this.map = new Map.Map(this.mapElement, Object.assign({}, this.props, { styles: this.styles }));
+    this.marker = new Map.Marker({
+      position: this.props.center,
+      map: this.map,
+      icon: '/assets/images/map-marker.png'
     });
+    this.infoWindow = new Map.InfoWindow({ content:
+        `<div>
+              <h2 class="section-title font-alt" style="margin:5px">Anil Gupta</h2>
+              <hr style="margin: 1px 0" />
+              <p style="margin:5px">57, S.M. Road, Antophill church, Mumbai - 400037</p>
+          </div>`
+    });
+    this.marker.addListener('click', ()=>{
+       this.infoWindow.open(this.map, this.marker);
+    });
+    this.setState({  map: this.map, marker: this.marker })
   }
+
 
   loadSDK(){
-    const  handleResult = (state) => {
-      return evt => {
-        let stored = scriptMap.get(key);
-        if (state === 'loaded') {
-          stored.resolved = true;
-          resolve(src);
-        } else if (state === 'error') {
-          stored.errored = true;
-          reject(evt)
-        }
-        stored.loaded = true;
-        cleanup();
-      }
-    };
-    return  promise = new Promise((resolve, reject) => {
-       const body = document.getElementsByTagName('body')[0],
-             tag  = document.createElement('script');
-             tag.type = 'text/javascript';
-             tag.async = false; // Load in order
-             tag.onload = ()=>('loaded');
-              tag.onerror = handleResult('error')
-              tag.onreadystatechange = () => {
-                handleResult(tag.readyState)
-              }
-    }
-
-
-    ScriptCache({
-      google: GoogleApi({
-        apiKey: Config.googleMapKey,
-        language: 'en',
-        libraries: ['places'],
-        version: version,
-      })
+    return new Promise((resolve, reject) => {
+      const src = `https://maps.googleapis.com/maps/api/js?key=${Config.googleMapKey}&libraries=places&v=3.31&language=en`,
+            body = document.getElementsByTagName('body')[0],
+            tag  = document.createElement('script');
+            tag.type = 'text/javascript';
+            tag.async = false; // Load in order
+            tag.src = src;
+            tag.onload = (res)=> resolve(res);
+            tag.onerror = () => (err) => reject(err);
+            body.appendChild(tag);
     })
   }
 
