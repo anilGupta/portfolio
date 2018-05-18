@@ -1,10 +1,12 @@
 import React, { Component } from 'react';
-import Config from '../constants/Config'
+import Config from '../constants/Config';
+let SdkLoaded = false;
 class GoogleMap extends Component{
   constructor(props){
     super(props);
     this.mapElement = null;
     this.styles   =  [{"elementType":"geometry","stylers":[{"color":"#f5f5f5"}]},{"elementType":"labels.icon","stylers":[{"visibility":"off"}]},{"elementType":"labels.text.fill","stylers":[{"color":"#616161"}]},{"elementType":"labels.text.stroke","stylers":[{"color":"#f5f5f5"}]},{"featureType":"administrative.land_parcel","elementType":"labels.text.fill","stylers":[{"color":"#bdbdbd"}]},{"featureType":"poi","elementType":"geometry","stylers":[{"color":"#eeeeee"}]},{"featureType":"poi","elementType":"labels.text.fill","stylers":[{"color":"#757575"}]},{"featureType":"poi.park","elementType":"geometry","stylers":[{"color":"#e5e5e5"}]},{"featureType":"poi.park","elementType":"labels.text.fill","stylers":[{"color":"#9e9e9e"}]},{"featureType":"road","elementType":"geometry","stylers":[{"color":"#ffffff"}]},{"featureType":"road.arterial","elementType":"labels.text.fill","stylers":[{"color":"#757575"}]},{"featureType":"road.highway","elementType":"geometry","stylers":[{"color":"#dadada"}]},{"featureType":"road.highway","elementType":"labels.text.fill","stylers":[{"color":"#616161"}]},{"featureType":"road.local","elementType":"labels.text.fill","stylers":[{"color":"#9e9e9e"}]},{"featureType":"transit.line","elementType":"geometry","stylers":[{"color":"#e5e5e5"}]},{"featureType":"transit.station","elementType":"geometry","stylers":[{"color":"#eeeeee"}]},{"featureType":"water","elementType":"geometry","stylers":[{"color":"#c9c9c9"}]},{"featureType":"water","elementType":"labels.text.fill","stylers":[{"color":"#9e9e9e"}]}]
+    this.loadSDK = this.loadSDK.bind(this);
     this.createMap = this.createMap.bind(this);
   }
 
@@ -17,6 +19,10 @@ class GoogleMap extends Component{
     streetViewControl: false,
     rotateControl: false,
     fullscreenControl: false
+  };
+
+  state= {
+    map: false
   };
 
   componentWillMount(){
@@ -44,19 +50,21 @@ class GoogleMap extends Component{
     this.marker.addListener('click', ()=>{
        this.infoWindow.open(this.map, this.marker);
     });
-    this.setState({  map: this.map, marker: this.marker })
+    this.setState({ map: this.map, marker: this.marker })
   }
 
-
   loadSDK(){
-    return new Promise((resolve, reject) => {
+    return SdkLoaded ? Promise.resolve(true) : new Promise((resolve, reject) => {
       const src = `https://maps.googleapis.com/maps/api/js?key=${Config.googleMapKey}&libraries=places&v=3.31&language=en`,
             body = document.getElementsByTagName('body')[0],
             tag  = document.createElement('script');
             tag.type = 'text/javascript';
             tag.async = false; // Load in order
             tag.src = src;
-            tag.onload = (res)=> resolve(res);
+            tag.onload = (res)=> {
+              SdkLoaded = true;
+              return resolve(res);
+            };
             tag.onerror = () => (err) => reject(err);
             body.appendChild(tag);
     })
