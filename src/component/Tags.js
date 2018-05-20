@@ -6,7 +6,7 @@ const Tags = ({collection =[]}) => {
             <h5 className="widget-title font-alt">Tags</h5>
             <div className="widget-body">
               <div className="tags">
-                {collection.map(({ name, id}) => <NavLink to={`/projects?filters=${name}`} key={id}>{name}</NavLink>)}
+                {collection.map(({ name, id}, key) => <NavLink to={`/projects?filters=${name}`} key={key}>{name}</NavLink>)}
               </div>
             </div>
           </div>

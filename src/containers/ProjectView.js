@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { fetchProjectIfNeeded } from "../actions/workActions";
 import autobind from 'autobind-decorator';
-import { Section, Divider, Tags, Spinner } from '../component/Index';
+import { Section, Divider, Tags, Spinner, FloatTexts, WordAnimation } from '../component/Index';
 
 
 
@@ -41,17 +41,21 @@ class ProjectView extends Component{
 
             const { name, summery, tags, _images, _thumbnail, clientName } = activeProject;
 
-            console.log(activeProject);
+
 
 
     return (
       <div>
-        <Section background={_thumbnail.url} theme="dark" alpha={60} parallax >
+        <Section background={'/assets/bg/2.jpeg'} theme="dark" alpha={70} parallax className={'blurry'} >
           <div className="js-height-full container">
             <div className="home-content">
               <div className="home-text">
-                <h1 className="hs-line-8 no-transp font-alt mb-50 mb-xs-30">Branding / Design / Photography</h1>
-                <h2 className="hs-line-14 font-alt mb-50 mb-xs-30">{name}</h2>
+                <h2 className="hs-line-14 font-alt mb-50 mb-xs-30">
+                  <FloatTexts>{name}</FloatTexts>
+                </h2>
+                <h1 className="hs-line-8 no-transp font-alt mb-50 mb-xs-30">
+                  <WordAnimation>{tags.map(item => item.name).join(" / ")}</WordAnimation>
+                </h1>
               </div>
             </div>
             <div className="local-scroll">

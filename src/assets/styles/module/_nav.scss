@@ -523,3 +523,12 @@ a.logo:hover{
   transition: all 0.27s cubic-bezier(0.000, 0.000, 0.580, 1.000);
 }
 
+
+
+.main-nav{
+   &.transparent{
+      .inner-nav ul li a:hover, .inner-nav ul li a.active{
+         color: white;
+      }
+   }
+}

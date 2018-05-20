@@ -558,3 +558,19 @@
   font-weight: 300;
   line-height: 1.75;
 }
+
+
+.work-img {
+   .list-image{
+      background-size: cover;
+      background-repeat: no-repeat ;
+   }
+}
+
+.works-grid.hide-titles .work-item > a {
+   height: auto;
+   &:hover{
+     box-shadow: 0 1px 5px rgba(0,0,0,.5);
+   }
+
+}

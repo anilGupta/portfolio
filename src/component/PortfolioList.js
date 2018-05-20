@@ -26,11 +26,11 @@ class PortfolioList extends Component{
             };
 
     return <Masonry
-              className="works-grid work-grid-3 work-grid-gut clearfix font-alt hover-white hide-titles masonry"
+              className="works-grid work-grid-4 work-grid-gut clearfix font-alt hover-white hide-titles masonry"
               id="work-grid"
               options={options}
-              disableImagesLoaded={true}
-              updateOnEachImageLoad={true}
+              //disableImagesLoaded={true}
+              //updateOnEachImageLoad={false}
             >{children}</Masonry>
   }
 }

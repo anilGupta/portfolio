@@ -52,3 +52,8 @@ img:not([draggable]), embed, object, video{
 .margin-block{
   margin-bottom: 30px;
 }
+
+.blurry{
+  -ms-filter: progid:DXImageTransform.Microsoft.blur(2px);
+  filter: progid:DXImageTransform.Microsoft.blur(2px);
+}

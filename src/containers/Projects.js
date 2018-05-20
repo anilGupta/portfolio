@@ -30,9 +30,7 @@ class Projects extends Component{
 
 
   componentWillMount(){
-    this.fetchData(this.props).then(() => {
-      console.log('project is filtered ');
-    })
+    this.fetchData(this.props)
   }
 
   @autobind
@@ -52,9 +50,6 @@ class Projects extends Component{
           if(projectsLoading || tagsLoading){
             return <Spinner />
           }
-
-          console.log(this.props);
-
 
     return (
             <div>

@@ -48,8 +48,8 @@ class Home extends Component{
           <div className="home-content">
             <div className="home-text">
               <div className="row mt-60 mt-xs-20">
-                <div className="col-sm-6">
-                  <img src="" alt="" className="hover-white"/>
+                <div className="col-sm-6 text-center">
+                  <img src="/assets/bg/me.jpg" alt="" className="hover-white" width={"60%"}/>
                 </div>
                 <div className="col-sm-6 col-lg-5 align-center pt-20 pt-lg-0 mb-xs-30 col-lg-offset-1">
                   <div className="hs-line-15 font-alt">

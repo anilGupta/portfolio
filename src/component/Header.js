@@ -75,7 +75,7 @@ class Header extends Component{
          <div className="full-wrapper relative clearfix">
            <div className="nav-logo-wrap local-scroll">
              <NavLink to="/" className={`logo ${scrolled ? 'small-height': ''}`} >
-               <img src="/assets/images/logo.png" alt="home page" />
+               <img src={`/assets/images/${scrolled ? 'logo-dark': 'logo-light'}.png`} alt="home page" />
              </NavLink>
            </div>
            <div className={`mobile-nav ${scrolled ? 'small-height': ''}`} ref={el => { el ? this.mobileNavEl = el: null}} onClick={this.toggleMobileMenu}>

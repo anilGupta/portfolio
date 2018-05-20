@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { NavLink }  from 'react-router-dom'
+import React from 'react';
+import { NavLink }  from 'react-router-dom';
 import Config from '../constants/Config';
 
 const Footer = () => {
@@ -12,7 +12,7 @@ const Footer = () => {
           </div>
           <div className="footer-text">
             <div className="footer-copy font-alt">
-              <a href="http://themeforest.net/user/theme-guru/portfolio" target="_blank">&copy; {year} Anil Gupta</a>.
+              <a href="#" target="_blank">&copy; {year} Anil Gupta</a>.
             </div>
             <div className="footer-made">__just a tech__ </div>
           </div>
