@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import GoogleMap from '../component/GoogleMap';
 import BgEffect from '../component/BgEffect';
 import Section from '../component/Section';
+import FloatTexts from '../component/FloatTexts'
 
 
 class Contact extends Component{
@@ -24,11 +25,11 @@ class Contact extends Component{
 
     return (
       <div>
-        <Section className="page-section" background="/assets/bg/6.jpeg" alpha="30" type="light">
+        <Section className="page-section section-mask" background="/assets/bg/6.jpeg" alpha="30" type="light">
             <div className="row">
               <div className="col-md-8 col-md-offset-2">
                 <div className="section-heading align-center mb-120 mb-xs-40">
-                  Contact Me
+                  <FloatTexts>Contact Me</FloatTexts>
                 </div>
               </div>
             </div>
@@ -93,7 +94,7 @@ class Contact extends Component{
                     </div>
                     <div className="cf-right-col">
                       <div className="align-right pt-10">
-                        <button className="submit_btn btn btn-mod btn-medium btn-round" id="submit_btn">Submit Message</button>
+                        <button className="submit_btn btn btn-mod btn-medium btn-round btn-mask" id="submit_btn">Submit Message</button>
                       </div>
                     </div>
                   </div>

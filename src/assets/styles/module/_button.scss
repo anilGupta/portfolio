@@ -204,3 +204,11 @@ a.btn-mod:focus{
 .btn-full{
   width: 100%;
 }
+
+.btn-mask{
+   background: transparent;
+   border: solid 2px  rgba(0, 0,0, 0.4);
+   &:hover{
+      background: rgba(0, 0,0, 0.4);
+   }
+}
