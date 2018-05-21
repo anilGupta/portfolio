@@ -12,6 +12,14 @@ class Contact extends Component{
     this.toggleMap = this.toggleMap.bind(this);
   }
 
+  static defaultProps = {
+     items: [
+       { icon : 'phone', title: 'Call Me', desc: '+91 9870675742' },
+       { icon : 'map-marker', title: 'Address', desc: 'Sion, Mumbai' },
+       { icon : 'envelope', title: 'Email', email: '_anil@mail.com' },
+     ]
+  };
+
   state = {
      showMap : true
   };
@@ -21,7 +29,8 @@ class Contact extends Component{
   }
 
   render() {
-    const { showMap } = this.state;
+    const { items } = this.props,
+          { showMap } = this.state;
 
     return (
       <div>
@@ -29,62 +38,45 @@ class Contact extends Component{
             <div className="row">
               <div className="col-md-8 col-md-offset-2">
                 <div className="section-heading align-center mb-120 mb-xs-40">
-                  <FloatTexts>Contact Me</FloatTexts>
+                  <FloatTexts dealy={10}>Contact Me</FloatTexts>
                 </div>
               </div>
             </div>
-            <div className="row mb-60 mb-xs-40">
-              <div className="col-md-8 col-md-offset-2">
-                <div className="row">
-                  <div className="col-sm-6 col-lg-4 pt-20 pb-20 pb-xs-0">
-                    <div className="contact-item">
-                      <div className="ci-icon"><i className="fa fa-phone" /></div>
-                      <div className="ci-title font-alt">Call Me</div>
-                      <div className="ci-text">+91 9870675742</div>
-                    </div>
-                  </div>
-                  <div className="col-sm-6 col-lg-4 pt-20 pb-20 pb-xs-0">
-                    <div className="contact-item">
-                      <div className="ci-icon"><i className="fa fa-map-marker" /></div>
-                      <div className="ci-title font-alt">Address</div>
-                      <div className="ci-text"> Antophill, Mumbai, IN</div>
-                    </div>
-                  </div>
 
-                  <div className="col-sm-6 col-lg-4 pt-20 pb-20 pb-xs-0">
-                    <div className="contact-item">
-                      <div className="ci-icon"><i className="fa fa-envelope" /></div>
-                      <div className="ci-title font-alt">Email</div>
-                      <div className="ci-text"><a href="mailto:support@bestlooker.pro">_anil@mail.com</a>
+            <div className="row mb-60 mb-xs-40">
+              <div className="col-md-8 col-md-offset-2 col-xs-12">
+                <div className="row">
+                  {items.map(({icon, title, desc, email}, key) => {
+                    return  <div className="col-sm-6 col-lg-4 pt-20 pb-20 pb-xs-0" key={key}>
+                      <div className="contact-item">
+                        <div className="ci-icon"><i className={`fa fa-${icon}`} /></div>
+                        <div className="ci-title font-alt">{title}</div>
+                        <div className="ci-text">{email ?  <a href={`mailto:${email}`}>{email}</a> : desc}</div>
                       </div>
                     </div>
-                  </div>
+                  })}
                 </div>
               </div>
 
             </div>
             <div className="row">
-              <div className="col-md-8 col-md-offset-2">
+              <div className="col-md-8 col-md-offset-2 col-xs-12">
                 <form className="form contact-form" id="contact_form">
-
                   <div className="clearfix">
-                    <div className="cf-left-col">
+                    <div className="col-xs-12 col-sm-6 reset-col">
                       <div className="form-group">
-                        <input type="text" name="name" id="name" className="input-md round form-control" placeholder="Name" pattern=".{3,100}" required />
+                        <input type="text" name="name" id="name" className="input-md round form-control text-transform" placeholder="NAME" pattern=".{3,100}" required />
                       </div>
                       <div className="form-group">
-                        <input type="email" name="email" id="email" className="input-md round form-control" placeholder="Email" pattern=".{5,100}" required />
+                        <input type="email" name="email" id="email" className="input-md round form-control" placeholder="EMAIL" pattern=".{5,100}" required />
                       </div>
                     </div>
-
-                    <div className="cf-right-col">
+                    <div className="col-xs-12 col-sm-6 reset-col">
                       <div className="form-group">
-                        <textarea name="message" id="message" className="input-md round form-control" style={{ height: '84px'}} placeholder="Message" />
+                        <textarea name="message" id="message" className="input-md round form-control" style={{ height: '84px'}} placeholder="MESSAGE" />
                       </div>
                     </div>
                   </div>
-
-
 
                   <div className="clearfix">
                     <div className="cf-left-col">
@@ -98,7 +90,7 @@ class Contact extends Component{
                       </div>
                     </div>
                   </div>
-                  <div id="result"></div>
+                  <div id="result" />
                 </form>
               </div>
             </div>

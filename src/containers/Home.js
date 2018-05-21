@@ -83,10 +83,10 @@ class Home extends Component{
           <div className="section-text">
             <div className="row">
               <div className="col-sm-6">
-                <div style={{width: "250px"}}>
+                {/*<div style={{width: "250px"}}>
                   <SVGTextAnimation />
-                </div>
-                <br/>
+                </div>*/}
+               {/* <br/>*/}
                 <h2 className="section-title font-alt align-center mt-0 mb-70 mb-sm-40">AGENCY EXPERIENCE</h2>
                 <table className="table table-hover">
                   <tbody>
@@ -155,13 +155,11 @@ class Home extends Component{
             <div className="align-center">
               <h3 className="banner-heading font-alt">Want to discuss your new project?</h3>
               <div>
-                <a href="" className="btn btn-mod btn-w btn-medium btn-round">Lets tallk</a>
+                <a href="mailto:anil6080@gmail.com" className="btn btn-mod btn-w btn-medium btn-round">Lets tallk</a>
               </div>
             </div>
         </Section>
         <Divider/>
-
-
       </div>
     );
   }

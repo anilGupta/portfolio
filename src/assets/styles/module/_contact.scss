@@ -85,3 +85,36 @@
   margin-bottom: 10px;
 }
 
+
+.reset-col{
+  margin: 0;
+  padding: 0;
+  &:first-child{
+    padding-right:4px
+  }
+  &:last-child{
+    padding-left: 4px;
+  }
+  @media(max-width:576px){
+    padding: 0 !important;
+  }
+}
+
+
+.contact-form{
+  ::-webkit-input-placeholder { color: #bebebe; }
+  ::-moz-placeholder { color: #bebebe; }
+  :-ms-input-placeholder { color: #bebebe; }
+  :-moz-placeholder { color: #bebebe; }
+  input, textarea{
+     color: white !important;
+     text-transform: none !important;
+     &:focus {
+       background: rgba(0,0,0, 0.5);
+     }
+     &.text-transform{
+       text-transform: capitalize !important;
+     }
+
+  }
+}

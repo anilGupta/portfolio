@@ -20,6 +20,15 @@ class ProjectView extends Component{
     super(props);
   }
 
+  static defaultProps={
+    pagination : [
+      { title: 'PREVIOUS', icon: 'chevron-left', className: 'work-prev'},
+      { title: 'ALL', icon: 'times', className: 'work-all'},
+      { title: 'NEXT', icon: 'chevron-right', className: 'work-next'}
+    ]
+  };
+
+
   fetchData(props){
      const { fetchProjectIfNeeded } = props;
              fetchProjectIfNeeded();
@@ -29,10 +38,21 @@ class ProjectView extends Component{
      this.fetchData(this.props);
   }
 
+  @autobind
+  goToProject(direction, id){
+     const { work: { allProjects }, history } = this.props,
+             index = allProjects.findIndex(item => item.id == id);
+             switch(direction){
+               case "ALL": history.push("/projects"); break;
+               case "PREVIOUS": index > 0 && history.push(`/project/${allProjects[index - 1].id}`); break;
+               case "NEXT": index < allProjects.length - 1 && history.push(`/project/${allProjects[index + 1].id}`); break;
+             }
+  }
+
 
   render() {
 
-    const { work: { allProjects=[], projectsLoading }, match: { params: { id}} } = this.props,
+    const { work: { allProjects=[], projectsLoading }, match: { params: { id}}, pagination } = this.props,
             activeProject = allProjects.find(project => project.id == id);
 
             if(projectsLoading || !activeProject){
@@ -40,9 +60,6 @@ class ProjectView extends Component{
             }
 
             const { name, summery, tags, _images, _thumbnail, clientName } = activeProject;
-
-
-
 
     return (
       <div>
@@ -71,7 +88,7 @@ class ProjectView extends Component{
                  <div className="col-md-3 mb-sm-50 mb-xs-30">
                    <Tags collection={tags} />
                    <div className="work-detail">
-                     <h5 className="font-alt mt-0 mb-20">Project Details</h5>
+                     <h5 className="widget-title font-alt">Project Details</h5>
                      <div className="work-full-detail">
                        <p><strong>Client:</strong>{clientName}</p>
                        <p><strong>Date:</strong>1th Februery, 2014</p>
@@ -79,7 +96,37 @@ class ProjectView extends Component{
                      </div>
                    </div>
                  </div>
-                 <div className="col-md-9 col-sm-6 mb-sm-50 mb-xs-30">{summery}</div>
+                 <div className="col-md-9 col-sm-6 mb-sm-50 mb-xs-30">
+                   <h3 className="blog-item-title font-alt mb-10"><a href="#">Description</a></h3>
+                   <hr className="mt-0 mb-30"/>
+                   <p>
+                     {summery}
+                   </p>
+
+                   <h5 className="blog-item-title font-alt mb-10"><a href="#">Other Screens</a></h5>
+                   <hr className="mt-0 mb-30"/>
+
+                   <div className="col-sm-6 col-md-3 col-lg-3 mb-sm-30 wow fadeInUp" style={{visibility: 'visible'}}>
+                     <div className="team-item">
+                       <div className="team-item-image">
+                         <img src="http://rhythm.bestlooker.pro/images/team/team-1.jpg" alt="" />
+                           <div className="team-item-detail">
+                             <h4 className="font-alt normal">Hello &amp; Welcome!</h4>
+                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit lacus, a&nbsp;iaculis diam.</p>
+                             <div className="team-social-links">
+                               <a href="#" target="_blank"><i className="fa fa-facebook" /></a>
+                               <a href="#" target="_blank"><i className="fa fa-twitter" /></a>
+                               <a href="#" target="_blank"><i className="fa fa-pinterest" /></a>
+                             </div>
+                           </div>
+                       </div>
+                     </div>
+                   </div>
+
+
+
+
+                 </div>
                </div>
                <div className="row">
 
@@ -92,9 +139,9 @@ class ProjectView extends Component{
 
         <Divider/>
         <div className="work-navigation clearfix">
-          <NavLink to="/project/1" className="work-prev"><span><i className="fa fa-chevron-left" />&nbsp;Previous</span></NavLink>
-          <NavLink to="/projects" className="work-all"><span><i className="fa fa-times" />&nbsp;All works</span></NavLink>
-          <NavLink to="/project/2" className="work-next"><span>Next&nbsp;<i className="fa fa-chevron-right" /></span></NavLink>
+          {pagination.map((item, key) =>{
+            return  <NavLink key={key} to="#" className={item.className} onClick={this.goToProject.bind(this, item.title, activeProject.id)}><span><i className={`fa fa-${item.icon}`} />&nbsp;{item.title}</span></NavLink>
+          })}
         </div>
       </div>
     );

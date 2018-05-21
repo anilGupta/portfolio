@@ -560,17 +560,31 @@
 }
 
 
+.work-grid{
+   padding-top: 15px;
+}
+
 .work-img {
    .list-image{
       background-size: cover;
-      background-repeat: no-repeat ;
+      background-repeat: no-repeat;
+      background-position: center center;
+      filter: grayscale(100%);
+      &:hover{
+        filter: grayscale(0%);
+      }
    }
 }
 
 .works-grid.hide-titles .work-item > a {
    height: auto;
-   &:hover{
+   border: 1px solid transparent;
+   box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+   padding: 5px !important;
+
+
+   /*&:hover{
      box-shadow: 0 1px 5px rgba(0,0,0,.5);
-   }
+   }*/
 
 }

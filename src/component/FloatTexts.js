@@ -7,8 +7,13 @@ class FloatTexts extends Component{
     this.wrapper = null;
   }
 
+  static defaultProps= {
+    dealy : 1000
+  }
+
   componentDidMount(){
-    setTimeout(() => this.wrapper.classList.add("animate-word"), 1000)
+    const { dealy } = this.props;
+    setTimeout(() => this.wrapper.classList.add("animate-word"), dealy)
   }
 
   render() {

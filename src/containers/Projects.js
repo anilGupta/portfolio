@@ -58,7 +58,7 @@ class Projects extends Component{
                   <PortfolioListFilter collection={tags} toggleFilter={toggleFilter} open={showFilterTags} filterTags={filterTags} filterAction={this.handleFilterAction} />
                   <Divider/>
                   <PortfolioList>
-                    {projects.map((item, key) => <PortfolioListItem data={item} key={key} loop={key} />)}
+                    {projects.filter(item => item._thumbnail).map((item, key) => <PortfolioListItem data={item} key={key} loop={key} />)}
                   </PortfolioList>
                 </div>
               </Section>
