@@ -14,6 +14,7 @@ const CopyAssetPluginConfig = new CopyWebpackPlugin([
   { from: './src/assets', to: './assets' },
   //{ from: './src/manifest.webapp', to: './manifest.webapp' },
 ]);
+const autoprefixer = require('autoprefixer');
 
 const ExtractTextPluginConfig = new ExtractTextPlugin({ filename: 'style.css', disable: false, allChunks: false });
 
@@ -81,11 +82,21 @@ module.exports = {
             { loader: "sass-loader" }
           ],
         }))
+      },
+      {
+        test: /\.(gif|png|jp(e*)g|svg)$/,
+        use: [{
+          loader: 'url-loader',
+          options: {
+            limit: 80000, // Convert images < 8kb to base64 strings
+            name: 'images/[hash]-[name].[ext]'
+          }
+        }]
       }
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.js', '.jsx', '.css', '.scss'],
   },
   plugins: [
     new webpack.ProvidePlugin({

@@ -54,3 +54,19 @@
   .multi-columns-row .col-lg-2:nth-child(6n + 7) { clear: left; }
   .multi-columns-row .col-lg-1:nth-child(12n + 13) { clear: left; }
 }
+
+.grid-small-gutter{
+  & > div {
+     padding: 7px;
+     img{
+       transition: all 0.27s ease-in;
+       box-shadow: 0 2px 20px rgba(0,0,0,0.3);
+       filter: grayscale(100%);
+       &:hover{
+         box-shadow: 0 2px 20px rgba(0,0,0,0.8);
+         filter: grayscale(0%);
+       }
+     }
+   }
+
+}
