@@ -83,8 +83,6 @@ class ProjectView extends Component{
             activeProject = allProjects.find(project => project.id == id);
 
             if(projectsLoading || !activeProject){
-              console.log('inside spinner', projectsLoading,allProjects,  activeProject);
-
               return <Spinner />
             }
 
