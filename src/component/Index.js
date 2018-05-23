@@ -15,6 +15,7 @@ import FloatTexts from './FloatTexts';
 import LineAnimation from './LineAnimation';
 import WordAnimation from './WordAnimation';
 import SVGTextAnimation from './SVGTextAnimation';
+import FlareAnimation from './FlareAnimation';
 
 export {
   BrandsList,
@@ -33,5 +34,6 @@ export {
   FloatTexts,
   LineAnimation,
   WordAnimation,
-  SVGTextAnimation
+  SVGTextAnimation,
+  FlareAnimation
 }

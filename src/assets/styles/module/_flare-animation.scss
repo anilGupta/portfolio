@@ -1,0 +1,41 @@
+.flare-wrapper{
+  position: relative;
+  .flare-track{
+     position: absolute;
+     //background: black;
+     top: 0;
+     left: 0;
+     height: 100%;
+     width: 100%;
+     overflow: hidden;
+     .flare{
+       position: absolute;
+       transition: all 1s ease;
+       //background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, #000 75%, #000 100%);
+       //background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, #000 75%, #000 100%);
+       //filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#ffffff', GradientType=0);
+       //background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #000 75%, #000 100%);
+       animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
+       animation-fill-mode: forwards;
+     }
+     .flare-top{
+         top:0;
+         left:0;
+         width: 20%;
+         height: 1px;
+     }
+  }
+}
+
+
+@keyframes flare {
+  0% { left: -20%; }
+  60% { left: calc(100% + 20%); }
+  100% { left: calc(100%); }
+}
+
+@keyframes flare-reverse {
+  0% { left: calc(100%); }
+  60% { left: calc(100% + 20%); }
+  100% { left:  -20%; }
+}

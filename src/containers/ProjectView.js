@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { fetchProjectIfNeeded } from "../actions/workActions";
 import autobind from 'autobind-decorator';
-import { Section, Divider, Tags, Spinner, FloatTexts, WordAnimation } from '../component/Index';
+import { Section, Divider, Tags, Spinner, FloatTexts, WordAnimation, FlareAnimation } from '../component/Index';
 import Masonry from 'react-masonry-component';
 import 'react-photoswipe/lib/photoswipe.css';
 import {PhotoSwipe} from 'react-photoswipe';
@@ -124,8 +124,9 @@ class ProjectView extends Component{
                    </p>
 
                    <h5 className="blog-item-title font-alt mb-10"><a href="#">Other Screens</a></h5>
-                   <hr className="mt-0 mb-20"/>
-
+                   <FlareAnimation dark >
+                      <hr className="mt-0 mb-20"/>
+                   </FlareAnimation>
 
                    <Masonry
                      className="row grid-small-gutter clearfix font-alt hover-white hide-titles masonry"
@@ -135,7 +136,9 @@ class ProjectView extends Component{
                      const url=  item && item.url ? item.url.replace("download/", "") : false;
                      return <div className="col-xs-2" key={key}>
                        <div className="work-grid-thumb">
-                         <img src={`${url}m.jpg`} alt="" onClick={this.togglePhotoSwipe.bind(this, key)} />
+                         <FlareAnimation dark >
+                            <img src={`${url}m.jpg`} alt="" onClick={this.togglePhotoSwipe.bind(this, key)} />
+                         </FlareAnimation>
                        </div>
                      </div>
                    })}</Masonry>
