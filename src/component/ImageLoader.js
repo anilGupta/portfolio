@@ -60,12 +60,12 @@ class ImageLoader extends PureComponent {
     const {className="", style, src, placeholder} = this.props,
       {status } = this.state,
       imageSrc = Status.LOADED ? src : placeholder;
-    return {
-      className : `${className} ${status}`,
-      style : Object.assign({}, style, {
-        backgroundImage : `url("${imageSrc}")`
-      })
-    }
+      return {
+        className : `${className} ${status}`,
+        style : Object.assign({}, style, {
+          backgroundImage : `url("${imageSrc}")`
+        })
+      }
   }
 
   createLoader() {

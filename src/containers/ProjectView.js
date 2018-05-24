@@ -136,7 +136,7 @@ class ProjectView extends Component{
                      const url=  item && item.url ? item.url.replace("download/", "") : false;
                      return <div className="col-xs-2" key={key}>
                        <div className="work-grid-thumb">
-                         <FlareAnimation dark >
+                         <FlareAnimation dark top left right bottom >
                             <img src={`${url}m.jpg`} alt="" onClick={this.togglePhotoSwipe.bind(this, key)} />
                          </FlareAnimation>
                        </div>

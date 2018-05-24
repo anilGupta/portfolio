@@ -1,16 +1,10 @@
 import React, { Component } from 'react';
 import Masonry from 'react-masonry-component';
 
-
-
 class PortfolioList extends Component{
   constructor(props) {
     super(props);
     this.masonry = null;
-  }
-
-  handleLayoutComplete(){
-      console.log("layout completed")
   }
 
   componentDidMount(){
@@ -24,14 +18,7 @@ class PortfolioList extends Component{
             options = {
               transitionDuration: 1000,
             };
-
-    return <Masonry
-              className="works-grid work-grid-4 work-grid-gut clearfix font-alt hover-white hide-titles masonry"
-              id="work-grid"
-              options={options}
-              //disableImagesLoaded={true}
-              //updateOnEachImageLoad={false}
-            >{children}</Masonry>
+    return <Masonry  id="work-grid" options={options} className="works-grid work-grid-4 work-grid-gut clearfix font-alt hover-white hide-titles masonry" >{children}</Masonry>
   }
 }
 
