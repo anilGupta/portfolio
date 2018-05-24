@@ -67,7 +67,7 @@ class BgEffect extends Component{
       this.paths[index].speedR = 0.1 + Math.random() * 0.4;
       this.paths[index].posY = 100 + Math.random() * $(window).height() * 3.5;
       this.paths[index].offsetY = 0;
-      this.paths[index].strokeColor = '#333333';
+      this.paths[index].strokeColor = '#fff';
       this.paths[index].strokeWidth = 2;
       //this.paths[index].dashArray = [1, 0];
       if(index/3 == parseInt(index/3)){
