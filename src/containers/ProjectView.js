@@ -94,7 +94,7 @@ class ProjectView extends Component{
 
     return (
       <div>
-        <Section background={'/assets/bg/2.jpeg'} theme="dark" alpha={70} parallax className={'blurry'} >
+        <Section background={'/assets/images/bg/2.jpeg'} theme="dark" alpha={70} parallax className={'blurry'} >
           <div className="js-height-full container">
             <div className="home-content">
               <div className="home-text">

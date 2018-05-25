@@ -34,7 +34,7 @@ class Contact extends Component{
 
     return (
       <div>
-        <Section className="page-section section-mask" background="/assets/bg/6.jpeg" alpha="30" type="light">
+        <Section className="page-section section-mask" background="/assets/images/bg/6.jpeg" alpha="30" type="light">
             <div className="row">
               <div className="col-md-8 col-md-offset-2">
                 <div className="section-heading align-center mb-120 mb-xs-40">
