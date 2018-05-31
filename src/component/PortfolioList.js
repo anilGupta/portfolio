@@ -18,7 +18,7 @@ class PortfolioList extends Component{
             options = {
               transitionDuration: 1000,
             };
-    return <Masonry  id="work-grid" options={options} className="works-grid work-grid-4 work-grid-gut clearfix font-alt hover-white hide-titles masonry" >{children}</Masonry>
+    return <Masonry id="work-grid" options={options} className="project-list" >{children}</Masonry>
   }
 }
 
