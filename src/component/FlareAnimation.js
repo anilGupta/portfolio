@@ -24,16 +24,17 @@ class FlareAnimation extends Component{
   }
 
   render() {
-    const { children, horizontal=true, reverse=false, color, dark, top, left, right, bottom } = this.props,
-            //useColor = color ? color : dark ? 'black': 'white',
-            useColor = '#'+Math.floor(Math.random()*16777215).toString(16),
+    const { children, horizontal=true, reverse=false, color, dark, top, left, right, bottom, light } = this.props,
+            useColor = dark ? "#000" : light ? '#fff': '#'+Math.floor(Math.random()*16777215).toString(16),
             corners = [top && 'top', left && 'left', bottom && 'bottom', right && 'right'],
             totalCorners = corners.filter(item => item),
             flares = totalCorners.length ? totalCorners : ['top'];
 
     return (
         <div className="flare-wrapper">
-          {children}
+          <div className="flare-content">
+            {children}
+          </div>
           <div className={`flare-track ${horizontal ? 'flare-track-horizontal': 'flare-track-vertical'}`}>
             {flares.map((corner, key) => {
               const style= {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import { NavLink }  from 'react-router-dom'
 import Config from '../constants/Config';
+import FlareAnimation from '../component/FlareAnimation';
 
 class Header extends Component{
 
@@ -72,6 +73,7 @@ class Header extends Component{
      const { scrolled, small, open, transparent, dark} = this.state;
      return <header>
        <nav className={`main-nav stick-fixed ${dark? 'dark': ''} ${scrolled ? 'js-transparent small-height': transparent ? 'js-transparent': 'transparent'} ${small ? 'mobile-on': ''}`} ref={el => { el ? this.navBar = el: null}}>
+         <FlareAnimation bottom light>
          <div className="full-wrapper relative clearfix">
            <div className="nav-logo-wrap local-scroll">
              <NavLink to="/" className={`logo ${scrolled ? 'small-height': ''}`} >
@@ -93,6 +95,7 @@ class Header extends Component{
              </ul>
            </div>
          </div>
+         </FlareAnimation>
        </nav>
      </header>
   }

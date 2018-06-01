@@ -11,7 +11,7 @@ const PortfolioListItem = ({loop, data}) => {
 
   const id = Math.floor(Math.random() * 7) + 1;
   return <div className={`col-sm-4 project-item ${loop%3 === 1 ? 'center': ''} ${loop%3===2 ? 'end': ''} ${loop%3===0 ? 'start': ''}`}>
-           <FlareAnimation dark  dark top left right bottom >
+           <FlareAnimation  top left right bottom >
              <div className="project-content">
                <h3 className="project-title font-alt">{name}</h3>
                <div className="project-info"><i className="fa fa-calendar-o"/> {date}</div>
