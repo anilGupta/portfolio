@@ -1,7 +1,9 @@
 import React from 'react';
 const PortfolioListFilter = ({collection, toggleFilter, open, filterTags, filterAction}) => {
+  console.log(filterTags)
+
   return <div>
-            <div className="row center row-nav-animation" onBlur={toggleFilter}>
+            <div className="row center row-nav-animation">
               <div className="col-sm-12 col-md-2">
                 <button className="btn btn-mod" onClick={toggleFilter}><span>Filter Project </span> <img src="/assets/images/icon-filter.png" /> </button>
               </div>
