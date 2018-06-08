@@ -29,6 +29,9 @@ class Projects extends Component{
     return Promise.all[fetchProjectIfNeeded(), fetchTagsIfNeeded()]
   }
 
+  state={
+     pageNo: 1
+  }
 
   componentWillMount(){
     this.fetchData(this.props)
@@ -36,13 +39,19 @@ class Projects extends Component{
 
   @autobind
   toggleFilter(){
-
   }
 
   @autobind
   handleFilterAction(operation, tag){
     const { filterProject } = this.props;
        filterProject(tag, operation);
+  }
+
+  @autobind
+  loadNext(){
+     this.setState({
+        pageNo : this.state.pageNo + 1
+     })
   }
 
   render() {
@@ -61,6 +70,8 @@ class Projects extends Component{
                   <PortfolioList>
                     {projects.filter(item => item._thumbnail).map((item, key) => <PortfolioListItem data={item} key={key} loop={key} />)}
                   </PortfolioList>
+                  <hr />
+                  <button className="btn btn-mod btn-medium btn-gray btn-full" onClick={this.loadNext}> Load More</button>
                 </div>
               </Section>
             </div>

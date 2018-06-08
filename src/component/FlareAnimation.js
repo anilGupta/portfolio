@@ -18,7 +18,7 @@ class FlareAnimation extends Component{
           presets =  reverse ? CornersReverse: Corners,
           currentIndex = presets.findIndex(i => i === corner),
           direction = currentIndex === presets.length - 1  ? presets[0] :  presets[currentIndex + 1];
-          console.log(currentIndex, presets.length -1, `linear-gradient(to ${direction}, ${initialColor} 0%, ${finalColor} 75%, ${finalColor} 100%)`);
+          //console.log(currentIndex, presets.length -1, `linear-gradient(to ${direction}, ${initialColor} 0%, ${finalColor} 75%, ${finalColor} 100%)`);
 
     return `linear-gradient(to ${direction}, ${initialColor} 0%, ${finalColor} 75%, ${finalColor} 100%)`
   }

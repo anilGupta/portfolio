@@ -90,7 +90,8 @@ class ProjectView extends Component{
 
             const { name, summery, tags, _images, _thumbnail, clientName } = activeProject,
                   { isOpen, index } = this.state,
-                    galleryImages = [..._images, ..._images, ..._images].concat();
+                    galleryImages = _images;
+                    console.log(galleryImages)
 
     return (
       <div>
@@ -132,13 +133,13 @@ class ProjectView extends Component{
                      className="row grid-small-gutter clearfix font-alt hover-white hide-titles masonry"
                      id="work-screen-grid"
                      options={{}}
-                   >{galleryImages.map((item, key) => {
+                   >{galleryImages.filter(item => typeof item.url === 'string' ).map((item, key) => {
                      const url=  item && item.url ? item.url.replace("download/", "") : false;
                      return <div className="col-xs-2" key={key}>
                        <div className="work-grid-thumb">
-                         <FlareAnimation dark top left right bottom >
+                         {/*<FlareAnimation dark top left right bottom >*/}
                             <img src={`${url}m.jpg`} alt="" onClick={this.togglePhotoSwipe.bind(this, key)} />
-                         </FlareAnimation>
+                         {/*</FlareAnimation>*/}
                        </div>
                      </div>
                    })}</Masonry>

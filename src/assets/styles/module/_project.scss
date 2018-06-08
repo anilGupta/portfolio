@@ -9,7 +9,13 @@ $semiDark: #777;
       &.center{ padding-left : 0; padding-right: 0}
       .project-content{
         padding: 15px;
-        border: 1px solid #e5e5e5;  background: #f8f8f8;
+        border: 1px solid #e5e5e5;
+        background: #f8f8f8;
+        transition: all 300ms ease-in;
+        &:hover{
+           border: 1;
+           box-shadow: 0 2px 15px rgba(0,0,0,0.3);
+        }
         .project-title{
           color: #333;
           letter-spacing: 1px;
@@ -42,6 +48,21 @@ $semiDark: #777;
             padding: 2px;
             margin-right: 2px;
             border: 1px solid #acacac;
+          }
+          .more-tile{
+             border: 1px solid #acacac;
+             height: 32px;
+             text-align: center;
+             display: inline-block;
+             line-height: 28px;
+             padding: 0 5px;
+             vertical-align: middle !important;
+             font-size: 10px;
+             background: white;
+             &:hover{
+                background: $dark;
+                color: white;
+             }
           }
         }
       }
