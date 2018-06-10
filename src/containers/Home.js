@@ -49,29 +49,34 @@ class Home extends Component{
             <div className="home-text">
               <div className="row mt-60 mt-xs-20">
                 <div className="col-sm-6 text-center">
-                  <img src="/assets/images/bg/me.jpg" alt="" className="hover-white" width={"60%"}/>
+                  <img src="/assets/images/me.jpg" alt="" className="hover-white" width={"60%"}/>
                 </div>
                 <div className="col-sm-6 col-lg-5 align-center pt-20 pt-lg-0 mb-xs-30 col-lg-offset-1">
                   <div className="hs-line-15 font-alt">
-                    <FloatTexts>anil gupta</FloatTexts>
+                    {/*<FloatTexts>anil gupta</FloatTexts>*/}
+                    <SVGTextAnimation />
                   </div>
                   <h1 className="hs-line-4 font-alt mb-40 mb-xs-20">FullStack Developer</h1>
                   <div className="section-text white mb-70 mb-xs-40 text-justify">
-                    <p><span className="dropcap font-alt">M</span>y name is Anil Gupta, I am a creative, highly motivated software engineer with over 7+ years of experience working with  JavaScript, NodeJS, PHP, and related technologies.</p>
+                    <p>
+                      <span className="dropcap font-alt">M</span>
+                      <FloatTexts>y name is Anil Gupta, I am a creative, highly motivated software engineer with over 7+ years of experience working with  JavaScript, NodeJS, PHP, and related technologies.</FloatTexts>
+                    </p>
+
                     <LineAnimation>
                       I thrive in a challenging, fast-paced environment. An enthusiastic team player with phenomenal time management skills and a can-do attitude
                     </LineAnimation>
-                    {/*<WordAnimation>
+                    <WordAnimation>
                       I thrive in a challenging, fast paced environment. An enthusiastic team player with phenomenal time management skills and a can do attitude enthusiastic team player with phenomenal time management skills and a can do attitude
-                    </WordAnimation>*/}
+                    </WordAnimation>
                     <hr className="white mb-30" />
                       <div>
                         <h4 className="font-alt mt-0 mb-20">Profile</h4>
-                        <div><strong>Age:</strong>28</div>
-                        <div><strong>Address:</strong>Antophill, Mumbai, India</div>
-                        <div><strong>Phone:</strong>+91 9870675742</div>
-                        <div><strong>Email:</strong><a href="#">_anil@mail.com</a></div>
-                        <div> <strong>Status:</strong>Available</div>
+                        <div><strong style={{display:'inline-block', minWidth: '80px'}}>Age </strong>: 28</div>
+                        <div><strong style={{display:'inline-block', minWidth: '80px'}}>Address </strong>: Antophill, Mumbai, India</div>
+                        <div><strong style={{display:'inline-block', minWidth: '80px'}}>Phone </strong>: +91 9870675742</div>
+                        <div><strong style={{display:'inline-block', minWidth: '80px'}}>Email </strong>: <a href="#">_anil@mail.com</a></div>
+                        <div><strong style={{display:'inline-block', minWidth: '80px'}}>Status </strong>: Available</div>
                       </div>
                   </div>
                 </div>
