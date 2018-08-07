@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import helper from '../utils/helper'
 
-class FloatTexts extends Component{
+class  FloatTexts extends Component{
 
   componentWillMount(){
     this.wrapper = null;

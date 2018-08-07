@@ -12,7 +12,8 @@ const Config = {
      { id:4, name: 'twitter', url: 'https://twitter.com/__anilGupta'},
    ],
    googleMapKey: 'AIzaSyBkc9o7kDYAR6GNiHBWghrhE-2OfVeXVKs',
-   apiURL: 'http://localhost:3000/api'
+   //apiURL: 'http://localhost:3000/api'
+   apiURL: 'https://anil-portfolio-api.herokuapp.com/api'
 };
 
 export default Config;

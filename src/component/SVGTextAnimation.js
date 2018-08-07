@@ -39,6 +39,7 @@ class SVGTextAnimation extends Component{
               transitionDelay = el.getAttribute('data-key') * 0.2 + 0.3,
               length = el.getTotalLength();
               el.style.strokeDasharray = length;
+              el.style.stroke = '#fff';
               el.style.strokeDashoffset = length;
               el.style.transitionDelay = `${transitionDelay}s`;
      }

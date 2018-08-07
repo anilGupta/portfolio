@@ -56,19 +56,16 @@ class Home extends Component{
                     {/*<FloatTexts>anil gupta</FloatTexts>*/}
                     <SVGTextAnimation />
                   </div>
-                  <h1 className="hs-line-4 font-alt mb-40 mb-xs-20">FullStack Developer</h1>
+                  <h1 className="font-alt mb-40 mb-xs-20">FullStack Developer</h1>
                   <div className="section-text white mb-70 mb-xs-40 text-justify">
                     <p>
                       <span className="dropcap font-alt">M</span>
                       <FloatTexts>y name is Anil Gupta, I am a creative, highly motivated software engineer with over 7+ years of experience working with  JavaScript, NodeJS, PHP, and related technologies.</FloatTexts>
                     </p>
 
-                    <LineAnimation>
+                    <LineAnimation dealy="1">
                       I thrive in a challenging, fast-paced environment. An enthusiastic team player with phenomenal time management skills and a can-do attitude
                     </LineAnimation>
-                    <WordAnimation>
-                      I thrive in a challenging, fast paced environment. An enthusiastic team player with phenomenal time management skills and a can do attitude enthusiastic team player with phenomenal time management skills and a can do attitude
-                    </WordAnimation>
                     <hr className="white mb-30" />
                       <div>
                         <h4 className="font-alt mt-0 mb-20">Profile</h4>
@@ -140,9 +137,7 @@ class Home extends Component{
           <div className="col-sm-9">
             <div className="section-text mb-50 mb-xs-30">
               <LineAnimation>
-              Larensy in auctor ex id urna faucibus porttitor. Lorem ipsum dolor sit amet,
-              consectetur adipiscing elit. In maximus ligula semper metus pellentesque mattis.
-              Maecenas volutpat, diam enim sagittis quam, id porta quam. Sed id dolor consectetur fermentum nibh volutpat, accumsan purus.</LineAnimation>
+              I have following skills in various programming language, frameworks, dev-tools and related technology .</LineAnimation>
             </div>
             <div className="row">
               {skillCollection.map((items, i)=>
