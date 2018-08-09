@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { NavLink }  from 'react-router-dom'
 import Config from '../constants/Config';
 import FlareAnimation from '../component/FlareAnimation';
+import Menu from '../component/Menu';
 
 class Header extends Component{
 
@@ -74,27 +75,28 @@ class Header extends Component{
      return <header>
        <nav className={`main-nav stick-fixed ${dark? 'dark': ''} ${scrolled ? 'js-transparent small-height': transparent ? 'js-transparent': 'transparent'} ${small ? 'mobile-on': ''}`} ref={el => { el ? this.navBar = el: null}}>
          <FlareAnimation bottom light>
-         <div className="full-wrapper relative clearfix">
-           <div className="nav-logo-wrap local-scroll">
-             <NavLink to="/" className={`logo ${scrolled ? 'small-height': ''}`} >
-               <img src={`/assets/images/${scrolled ? 'logo-dark': 'logo-light'}.png`} alt="home page" />
-             </NavLink>
+           <div className="full-wrapper relative clearfix">
+             <div className="nav-logo-wrap local-scroll">
+               <NavLink to="/" className={`logo ${scrolled ? 'small-height': ''}`} >
+                 <img src={`/assets/images/${scrolled ? 'logo-dark': 'logo-light'}.png`} alt="home page" />
+               </NavLink>
+             </div>
+             <div className={`mobile-nav ${scrolled ? 'small-height': ''}`} ref={el => { el ? this.mobileNavEl = el: null}} onClick={this.toggleMobileMenu}>
+               <i className="fa fa-bars" />
+             </div>
+             <Menu />
+             {/*<div className={`inner-nav desktop-nav ${open ? 'js-opened js-active': ''}`} ref={el => { el ? this.desktopNavEl = el: null}}>
+               <ul className="clearlist">
+                 {Config.menu.map(({id, name, url}) =>
+                   <li key={id} >
+                     <NavLink to={url} activeClassName={'active'} className="mn-has-sub" >
+                       {(url == '/download-cv' && !small) ? <span className="btn btn-mod btn-circle"><i className="fa fa-cloud-download"/> {name}</span>: name}
+                     </NavLink>
+                   </li>
+                 )}
+               </ul>
+             </div>*/}
            </div>
-           <div className={`mobile-nav ${scrolled ? 'small-height': ''}`} ref={el => { el ? this.mobileNavEl = el: null}} onClick={this.toggleMobileMenu}>
-             <i className="fa fa-bars" />
-           </div>
-           <div className={`inner-nav desktop-nav ${open ? 'js-opened js-active': ''}`} ref={el => { el ? this.desktopNavEl = el: null}}>
-             <ul className="clearlist">
-               {Config.menu.map(({id, name, url}) =>
-                 <li key={id} >
-                   <NavLink to={url} activeClassName={'active'} className="mn-has-sub" >
-                     {(url == '/download-cv' && !small) ? <span className="btn btn-mod btn-circle"><i className="fa fa-cloud-download"/> {name}</span>: name}
-                   </NavLink>
-                 </li>
-               )}
-             </ul>
-           </div>
-         </div>
          </FlareAnimation>
        </nav>
      </header>
