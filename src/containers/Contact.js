@@ -79,15 +79,14 @@ class Contact extends Component{
                   </div>
 
                   <div className="clearfix">
-                    <div className="cf-left-col">
-                      <div className="form-tip pt-20">
-                        <i className="fa fa-info-circle" /> All the fields are required
-                      </div>
-                    </div>
-                    <div className="cf-right-col">
+
+                    <div className="cf-right-col col-xs-12">
                       <div className="align-right pt-10">
                         <button className="submit_btn btn btn-mod btn-medium btn-round btn-mask" id="submit_btn">Submit Message</button>
                       </div>
+                    </div>
+                    <div className="form-tip pt-20 col-xs-12">
+                      <i className="fa fa-info-circle" /> All the fields are required
                     </div>
                   </div>
                   <div id="result" />

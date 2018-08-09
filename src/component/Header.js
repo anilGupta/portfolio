@@ -81,21 +81,20 @@ class Header extends Component{
                  <img src={`/assets/images/${scrolled ? 'logo-dark': 'logo-light'}.png`} alt="home page" />
                </NavLink>
              </div>
-             <div className={`mobile-nav ${scrolled ? 'small-height': ''}`} ref={el => { el ? this.mobileNavEl = el: null}} onClick={this.toggleMobileMenu}>
-               <i className="fa fa-bars" />
-             </div>
-             <Menu />
-             {/*<div className={`inner-nav desktop-nav ${open ? 'js-opened js-active': ''}`} ref={el => { el ? this.desktopNavEl = el: null}}>
-               <ul className="clearlist">
-                 {Config.menu.map(({id, name, url}) =>
-                   <li key={id} >
-                     <NavLink to={url} activeClassName={'active'} className="mn-has-sub" >
-                       {(url == '/download-cv' && !small) ? <span className="btn btn-mod btn-circle"><i className="fa fa-cloud-download"/> {name}</span>: name}
-                     </NavLink>
-                   </li>
-                 )}
-               </ul>
-             </div>*/}
+             {small
+               ? <Menu small={small} />
+               : <div className={`inner-nav desktop-nav ${open ? 'js-opened js-active': ''}`} ref={el => { el ? this.desktopNavEl = el: null}}>
+                 <ul className="clearlist">
+                   {Config.menu.map(({id, name, url}) =>
+                     <li key={id} >
+                       <NavLink to={url} activeClassName={'active'} className="mn-has-sub" >
+                         {(url == '/download-cv' && !small) ? <span className="btn btn-mod btn-circle"><i className="fa fa-cloud-download"/> {name}</span>: name}
+                       </NavLink>
+                     </li>
+                   )}
+                 </ul>
+               </div>
+             }
            </div>
          </FlareAnimation>
        </nav>
