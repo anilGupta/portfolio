@@ -72,6 +72,9 @@ class Header extends Component{
 
   render(){
      const { scrolled, small, open, transparent, dark} = this.state;
+
+     console.log("small", small)
+
      return <header>
        <nav className={`main-nav stick-fixed ${dark? 'dark': ''} ${scrolled ? 'js-transparent small-height': transparent ? 'js-transparent': 'transparent'} ${small ? 'mobile-on': ''}`} ref={el => { el ? this.navBar = el: null}}>
          <FlareAnimation bottom light>
