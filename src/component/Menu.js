@@ -6,32 +6,23 @@ class FullMenu extends Component{
 
   constructor(props) {
     super(props);
-    this.toggleMenu = this.toggleMenu.bind(this);
-  }
-
-  state = {
-     open: false
-  };
-
-  toggleMenu(){
-     this.setState({
-        open : !this.state.open
-     })
   }
 
   render(){
-    const { open, small }= this.state;
+    const { openMenu, toggleMenu, small } = this.props;
+    console.log('open menu', openMenu);
+
     return (
       <div>
-        <span className={`fm-button ${open ? 'active': ''}`} onClick={this.toggleMenu}><span />Menu</span>
-        <div className={`fm-wrapper  ${open ? 'active': ''}`}>
-          <div className={`fm-wrapper-content ${open ? 'active': ''}`}>
-            <div className={`fm-wrapper-sub  ${open ? 'js-active': ''}`}>
+        <span className={`fm-button ${openMenu ? 'active': ''}`} onClick={toggleMenu}><span />Menu</span>
+        <div className={`fm-wrapper  ${openMenu ? 'active': ''}`}>
+          <div className={`fm-wrapper-content ${openMenu ? 'active': ''}`}>
+            <div className={`fm-wrapper-sub  ${openMenu ? 'js-active': ''}`}>
               <div className="fm-wrapper-sub-sub">
                 <ul className="fm-menu-links local-scroll">
                   {Config.menu.map(({id, name, url}) =>
                     <li key={id} >
-                      <NavLink to={url} activeClassName={'active'} >
+                      <NavLink to={url} activeClassName={'active'} exact={true} >
                         {(url === '/download-cv' && !small) ? <span className="btn btn-mod btn-circle"><i className="fa fa-cloud-download"/> {name}</span>: name}
                       </NavLink>
                     </li>

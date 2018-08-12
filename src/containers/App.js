@@ -3,9 +3,9 @@ import { Route, Switch } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { initialize } from '../actions/appActions';
 import { connect } from 'react-redux';
-import autobind from 'autobind-decorator';
 import { Header, Footer, BgEffect } from '../component/Index';
 import { Home, About, Contact, Projects, ProjectView} from './Index';
+import autobind from 'autobind-decorator';
 
 @connect(
   state =>{ return {app: state.app}},
@@ -20,44 +20,46 @@ class App extends Component{
   }
 
   state = {
-    routeChange : false
+    openMenu : false
   };
 
   componentWillReceiveProps(prevProps) {
     if (this.props.location !== prevProps.location) {
-       this.setState()
+       this.setState({ openMenu: false})
     }
   }
 
   @autobind
   toggleMenu(){
-     this.state({
-       routeChange: !this.state.routeChange
+    console.log("toggole menu");
+
+    this.setState({
+       openMenu: !this.state.openMenu
      })
   }
     
 
-    render() {
-        const { openMenu } =this.state;
-        return (
-          <div className="appear-animate">
-               <div className="page" id="top">
-                 <Header routeChange={}/>
-                 <div>
-                   <Switch>
-                     <Route exact path="/" component={Home} />
-                     <Route path="/about" component={About} />
-                     <Route path="/contact-us" component={Contact} />
-                     <Route path="/projects/:tagId?" component={Projects} />
-                     <Route path="/project/:id" component={ProjectView} />
-                   </Switch>
-                   <Footer/>
-                 </div>
+  render() {
+      const { openMenu } =this.state;
+      return (
+        <div className="appear-animate">
+             <div className="page" id="top">
+               <Header toggleMenu={this.toggleMenu} openMenu={openMenu}/>
+               <div>
+                 <Switch>
+                   <Route exact path="/" component={Home} />
+                   <Route path="/about" component={About} />
+                   <Route path="/contact-us" component={Contact} />
+                   <Route path="/projects/:tagId?" component={Projects} />
+                   <Route path="/project/:id" component={ProjectView} />
+                 </Switch>
+                 <Footer/>
                </div>
-               {/*<BgEffect />*/}
-          </div>
-        );
-    }
+             </div>
+             {/*<BgEffect />*/}
+        </div>
+      );
+  }
 }
 
 export default App;
