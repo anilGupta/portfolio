@@ -51,7 +51,7 @@ class SVGTextAnimation extends Component{
       <div ref={el => el ? this.wrapper = el : null} className="svgTextAnimation">
         <svg  viewBox="0 0 242.2 52.5">
           <g>
-            {paths.map((path, key) => <path d={path} key={key} data-key={key} ref={this.initialStyle} />)}
+            {paths ? paths.map((path, key) => <path d={path} key={key} data-key={key} ref={this.initialStyle} />): null}
           </g>
         </svg>
       </div>

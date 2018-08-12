@@ -44,7 +44,7 @@ class Home extends Component{
 
     return (
       <div>
-        <Section background="/assets/images/section-bg-1.jpg" id="home" alpha="90" type="dark">
+        <Section  background="/assets/images/section-bg-1.jpg" id="home" alpha="90" type="dark" parallax={2}>
           <div className="home-content">
             <div className="home-text">
               <div className="row mt-60 mt-xs-20">
@@ -85,10 +85,6 @@ class Home extends Component{
           <div className="section-text">
             <div className="row">
               <div className="col-sm-6">
-                {/*<div style={{width: "250px"}}>
-                  <SVGTextAnimation />
-                </div>*/}
-               {/* <br/>*/}
                 <h2 className="section-title font-alt align-center mt-0 mb-70 mb-sm-40">AGENCY EXPERIENCE</h2>
                 <table className="table table-hover">
                   <tbody>
@@ -137,7 +133,8 @@ class Home extends Component{
           <div className="col-sm-9">
             <div className="section-text mb-50 mb-xs-30">
               <LineAnimation>
-              I have following skills in various programming language, frameworks, dev-tools and related technology .</LineAnimation>
+                I have following skills in various programming language, frameworks, dev-tools and related technology .
+              </LineAnimation>
             </div>
             <div className="row">
               {skillCollection.map((items, i)=>
