@@ -9,7 +9,32 @@ const settings = {
   slidesToShow: 6,
   slidesToScroll: 1,
   autoplay: true,
-  autoplaySpeed: 2000
+  autoplaySpeed: 2000,
+  responsive: [
+    {
+      breakpoint: 800,
+      settings: {
+        slidesToShow: 4,
+        slidesToScroll: 4,
+        initialSlide: 4
+      }
+    },
+    {
+      breakpoint: 600,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3,
+        initialSlide: 3
+      }
+    },
+    {
+      breakpoint: 480,
+      settings: {
+        slidesToShow: 3,
+        slidesToScroll: 3
+      }
+    }
+  ]
 };
 class BrandsList extends Component{
   constructor(props) {

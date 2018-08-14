@@ -27,6 +27,8 @@
   -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  width: 0;
+  transition: all 1s ease-in;
 }
 .tpl-progress .progress-bar > span{
   display: inline-block;

@@ -57,3 +57,9 @@ img:not([draggable]), embed, object, video{
   -ms-filter: progid:DXImageTransform.Microsoft.blur(2px);
   filter: progid:DXImageTransform.Microsoft.blur(2px);
 }
+
+.delay-2s{  animation-delay: 2s; }
+.delay-3s{  animation-delay: 3s; }
+.delay-4s{  animation-delay: 4s; }
+.delay-5s{  animation-delay: 5s; }
+

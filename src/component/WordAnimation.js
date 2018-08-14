@@ -13,15 +13,16 @@ class WordAnimation extends Component{
 
 
   componentDidMount(){
-    //setTimeout(()=> this.wrapper.classList.add('animate-word'), 1000)
+    setTimeout(()=> this.wrapper.classList.add('animate-word'), 1000)
   }
 
   setWidth(el){
      if(el){
        el.style.width = `${el.clientWidth + 5}px`;
+       el.firstChild.style.width = 0
        //el.style.height = `${el.clientHeight/2 + 5 }px`;
        //el.style.lineHeight = `${el.clientHeight}px`;
-       el.firstChild.style.width = 0
+
      }
   }
 

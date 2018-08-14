@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { fetchProjectIfNeeded } from "../actions/workActions";
 import autobind from 'autobind-decorator';
-import { Section, Divider, Tags, Spinner, FloatTexts, WordAnimation, FlareAnimation } from '../component/Index';
+import { Section, Divider, Tags, Spinner, FloatTexts, WordAnimation, FlareAnimation, LineAnimation } from '../component/Index';
 import Masonry from 'react-masonry-component';
 import 'react-photoswipe/lib/photoswipe.css';
 import {PhotoSwipe} from 'react-photoswipe';
@@ -86,29 +86,26 @@ class ProjectView extends Component{
               return <Spinner />
             }
 
-
-
             const { name, summery, tags, _images, _thumbnail, clientName } = activeProject,
                   { isOpen, index } = this.state,
                     galleryImages = _images;
-                    console.log(galleryImages)
 
     return (
       <div>
-        <Section background={'/assets/images/bg/2.jpeg'} theme="dark" alpha={70} parallax className={'blurry'} >
-          <div className="js-height-full container">
+        <Section background={'/assets/images/section-bg-1.jpg'} theme="dark" alpha="90" type="dark" parallax={2} >
+          <div className="container">
             <div className="home-content">
               <div className="home-text">
                 <h2 className="hs-line-14 font-alt mb-50 mb-xs-30">
                   <FloatTexts>{name}</FloatTexts>
                 </h2>
                 <h1 className="hs-line-8 no-transp font-alt mb-50 mb-xs-30">
-                  <WordAnimation>{tags.map(item => item.name).join(" / ")}</WordAnimation>
+                  <WordAnimation>{summery}</WordAnimation>
                 </h1>
               </div>
             </div>
             <div className="local-scroll">
-              <a href="#about" className="scroll-down"><i className="fa fa-angle-down scroll-down-icon" /></a>
+              <a href="#" className="scroll-down"><i className="fa fa-angle-down scroll-down-icon" /></a>
             </div>
           </div>
         </Section>
@@ -121,11 +118,14 @@ class ProjectView extends Component{
                    <h3 className="blog-item-title font-alt mb-10"><a href="#">Description</a></h3>
                    <hr className="mt-0 mb-30"/>
                    <p>
-                     {summery}
+                     <LineAnimation>
+                       {summery}
+                     </LineAnimation>
+
                    </p>
 
                    <h5 className="blog-item-title font-alt mb-10"><a href="#">Other Screens</a></h5>
-                   <FlareAnimation dark >
+                   <FlareAnimation >
                       <hr className="mt-0 mb-20"/>
                    </FlareAnimation>
 

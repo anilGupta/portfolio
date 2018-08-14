@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import autobind from 'autobind-decorator';
 import { fetchBrandIfNeeded, fetchSkillIfNeed } from "../actions/userActions";
+import Waypoint from 'react-waypoint';
 import { Section, Divider, ProgressBar, Spinner, BrandsList, FloatTexts, LineAnimation, WordAnimation, SVGTextAnimation } from '../component/Index';
 
 @connect(
@@ -24,13 +25,24 @@ class Home extends Component{
              fetchSkillIfNeed()
   }
 
+  state ={
+    animateSkills: false
+  };
+
   componentWillMount(){
      this.fetchData(this.props);
   }
 
-  render() {
+  @autobind
+  handleEnter(){
+      this.setState({
+         animateSkills: true
+      })
+  }
 
-    const { user: { brands, skills, brandsLoading, skillsLoading}, user } = this.props;
+  render() {
+    const { user: { brands, skills, brandsLoading, skillsLoading}} = this.props,
+          { animateSkills } = this.state;
 
     if((brandsLoading || skillsLoading) && !brands.length){
       return <Spinner />
@@ -56,7 +68,7 @@ class Home extends Component{
                     {/*<FloatTexts>anil gupta</FloatTexts>*/}
                     <SVGTextAnimation />
                   </div>
-                  <h1 className="font-alt mb-40 mb-xs-20">FullStack Developer</h1>
+                  <h1 className="font-alt mb-40 mb-xs-20 animated  fadeInRight delay-3s">FullStack Developer</h1>
                   <div className="section-text white mb-70 mb-xs-40 text-justify">
                     <p>
                       <span className="dropcap font-alt">M</span>
@@ -136,13 +148,15 @@ class Home extends Component{
                 I have following skills in various programming language, frameworks, dev-tools and related technology .
               </LineAnimation>
             </div>
-            <div className="row">
-              {skillCollection.map((items, i)=>
-                 <div className="col-sm-6 mb-sm-50 mb-xs-30" key={i}>
-                   {items.map(item => <ProgressBar  key={item.id} {...item} />)}
-                 </div>
-              )}
-            </div>
+            <Waypoint onEnter={this.handleEnter.bind(this, 'skills')}>
+              <div className={`row`}>
+                {skillCollection.map((items, i)=>
+                   <div className="col-sm-6 mb-sm-50 mb-xs-30" key={i}>
+                     {items.map((item, index) => <ProgressBar index={(i+1)*index} key={item.id} {...item} animate={animateSkills} />)}
+                   </div>
+                )}
+              </div>
+            </Waypoint>
           </div>
         </Section>
 

@@ -4,9 +4,6 @@ $semiDark: #777;
 .project-list{
    .project-item{
       margin-top: 15px;
-      &.start{  padding-left : 0}
-      &.end{ padding-right : 0}
-      &.center{ padding-left : 0; padding-right: 0}
       .project-content{
         padding: 15px;
         border: 1px solid #e5e5e5;
@@ -66,5 +63,22 @@ $semiDark: #777;
           }
         }
       }
+
    }
+}
+
+@media (min-width: 768px){
+  .project-item{
+    &.start{  padding-left : 0}
+    &.end{ padding-right : 0}
+    &.center{ padding-left : 0; padding-right: 0}
+  }
+}
+
+@media (max-width: 767px){
+  .project-item{
+    padding-left: 0;
+    padding-right: 0;
+    padding-top: 0;
+  }
 }

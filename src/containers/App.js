@@ -37,7 +37,7 @@ class App extends Component{
        openMenu: !this.state.openMenu
      })
   }
-    
+
 
   render() {
       const { openMenu } =this.state;
@@ -56,7 +56,7 @@ class App extends Component{
                  <Footer/>
                </div>
              </div>
-             {/*<BgEffect />*/}
+             <BgEffect />
         </div>
       );
   }

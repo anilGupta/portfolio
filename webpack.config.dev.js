@@ -116,6 +116,7 @@ module.exports = {
     contentBase: path.join(__dirname, "build"),
     publicPath: '/',
     port: 9000,
-    historyApiFallback: true
+    historyApiFallback: true,
+    host: '0.0.0.0'
   }
 };

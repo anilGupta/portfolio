@@ -9,8 +9,6 @@ const PortfolioListItem = ({loop, data}) => {
           date = endOn ? new Date(endOn).toDateString(): '',
           tagNames = tags.map(tag => `#${tag.name}`),
           images = _images.concat().filter(img => img.url);
-          console.log(images.length)
-
 
   const id = Math.floor(Math.random() * 7) + 1;
   return <div className={`col-sm-4 project-item ${loop%3 === 1 ? 'center': ''} ${loop%3===2 ? 'end': ''} ${loop%3===0 ? 'start': ''}`}>
