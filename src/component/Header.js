@@ -12,7 +12,6 @@ class Header extends Component{
     this.desktopNavEl = null;
     this.navBar = null;
     this.handleScroll = this.handleScroll.bind(this);
-    this.handleResize = this.handleResize.bind(this);
     this.toggleMobileMenu = this.toggleMobileMenu.bind(this);
   }
 
@@ -24,15 +23,12 @@ class Header extends Component{
 
   componentDidMount(){
     document.addEventListener('scroll', this.handleScroll);
-    window.addEventListener('resize', this.handleResize);
-    this.handleResize();
     this.handleScroll();
     this.init()
   }
 
   componentWillUnmount() {
     document.removeEventListener('scroll', this.handleScroll);
-    window.removeEventListener('resize', this.handleResize);
   }
 
   init(){
@@ -53,14 +49,6 @@ class Header extends Component{
           }
   }
 
-  handleResize(){
-    const small = $(window).width() <= 1024;
-    if(this.state.small != small) {
-      this.setState({
-        small: small
-      });
-    }
-  }
 
   toggleMobileMenu(){
     const $target =  $(this.desktopNavEl);
@@ -71,8 +59,9 @@ class Header extends Component{
   }
 
   render(){
-     const { toggleMenu, openMenu } = this.props,
-           { scrolled, small, open, transparent, dark} = this.state;
+     const { toggleMenu, openMenu, height, width } = this.props,
+           { scrolled, open, transparent, dark} = this.state,
+             small  = width < 768
 
      return <header>
        <nav className={`main-nav stick-fixed ${dark? 'dark': ''} ${scrolled ? 'js-transparent small-height': transparent ? 'js-transparent': 'transparent'} ${small ? 'mobile-on': ''}`} ref={el => { el ? this.navBar = el: null}}>

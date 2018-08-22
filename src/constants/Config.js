@@ -13,7 +13,9 @@ const Config = {
    ],
    googleMapKey: 'AIzaSyBkc9o7kDYAR6GNiHBWghrhE-2OfVeXVKs',
    //apiURL: 'http://localhost:3000/api'
-   apiURL: 'https://anil-portfolio-api.herokuapp.com/api'
+   apiURL: 'https://anil-portfolio-api.herokuapp.com/api',
+   MOBILE_WIDTH : 320,
+   TABLET_WIDTH : 736
 };
 
 export default Config;

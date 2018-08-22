@@ -101,7 +101,7 @@ class Home extends Component{
                 <table className="table table-hover">
                   <tbody>
                     <tr>
-                      <td>Network18 <div className="small"> Senior Software Engineer, Lead Developer </div></td>
+                      <td className="">Network18 <div className="small"> Senior Software Engineer, Lead Developer </div></td>
                       <td className="align-right small">Dec 2016 — Present</td>
                     </tr>
                     <tr>

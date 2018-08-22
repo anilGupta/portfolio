@@ -7,6 +7,7 @@ import { Header, Footer, BgEffect } from '../component/Index';
 import { Home, About, Contact, Projects, ProjectView} from './Index';
 import autobind from 'autobind-decorator';
 
+
 @connect(
   state =>{ return {app: state.app}},
   dispatch => ( bindActionCreators({
@@ -23,6 +24,10 @@ class App extends Component{
     openMenu : false
   };
 
+  componentWillMount(){
+    this.props.initialize();
+  }
+
   componentWillReceiveProps(prevProps) {
     if (this.props.location !== prevProps.location) {
        this.setState({ openMenu: false})
@@ -31,8 +36,6 @@ class App extends Component{
 
   @autobind
   toggleMenu(){
-    console.log("toggole menu");
-
     this.setState({
        openMenu: !this.state.openMenu
      })
@@ -40,11 +43,13 @@ class App extends Component{
 
 
   render() {
-      const { openMenu } =this.state;
-      return (
+      const { openMenu } =this.state,
+            { app } = this.props;
+
+    return (
         <div className="appear-animate">
              <div className="page" id="top">
-               <Header toggleMenu={this.toggleMenu} openMenu={openMenu}/>
+               <Header toggleMenu={this.toggleMenu} openMenu={openMenu} {...app}/>
                <div>
                  <Switch>
                    <Route exact path="/" component={Home} />
@@ -56,7 +61,7 @@ class App extends Component{
                  <Footer/>
                </div>
              </div>
-             <BgEffect />
+             <BgEffect  />
         </div>
       );
   }
