@@ -46,14 +46,14 @@ class ProjectSlider extends Component{
 
 
   render(){
-   const { collection } = this.props;
+   const { collection, onClick } = this.props;
    return <Section small type='light' className="pb-20 pt-20" container={false} >
              <div className="" >
                <Slider {...settings} customPaging={(i)=> <a key={i}><img src={`${collection[i].url}s.jpg`} /> </a>}>
                  {collection.map((item, i) => {
                    const url=  item && item.url ? `${item.url}.jpg` : false;
                    return <div className="slideItem" key={i} >
-                     <img src={url} alt={item.title} />
+                     <img src={url} alt={item.title} onClick={onClick.bind(null, i)} />
                    </div>
                  })}
                </Slider>

@@ -54,17 +54,17 @@ class Home extends Component{
               skills.slice(Math.round(skills.length/2), skills.length)
             ];
 
-              console.log("small is", small, width)
-
-
     return (
       <div>
-        <Section  background="/assets/images/section-bg-1.jpg" id="home" alpha="90" type="dark" parallax={2} >
+        <Section  background="/assets/images/section-bg-1.jpg" id="home" alpha="90" type="dark" parallax={2} container={!small}>
           <div className="home-content">
             <div className="home-text">
               <div className="row mt-60 mt-xs-20">
                 <div className="col-sm-5 col-lg-5 text-center">
-                  <ImageDistortion image1={'/assets/images/me.jpg'} image2={'/assets/images/0.jpg'} displacement={'/assets/images/fuse1.jpg'} small={small} />
+                  {small
+                    ? <div className="mobile-avatar-wrapper" style={{ backgroundImage: `url('/assets/images/mobile-avatar.jpg')`}} />
+                    : <ImageDistortion image1={'/assets/images/me.jpg'} image2={'/assets/images/0.jpg'} displacement={'/assets/images/fuse1.jpg'} small={small} />
+                  }
                 </div>
                 <div className="col-sm-7 col-lg-6 col-lg-of align-center pt-20 pt-lg-0 mb-xs-30">
                   <div className="hs-line-15 font-alt">
