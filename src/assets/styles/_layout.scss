@@ -63,3 +63,45 @@ img:not([draggable]), embed, object, video{
 .delay-4s{  animation-delay: 4s; }
 .delay-5s{  animation-delay: 5s; }
 
+
+.grid__item-img {
+  display: block;
+  width: 320px;
+  height: 569px;
+  position: relative;
+  margin: 15% auto;
+}
+
+.grid__item-img--small{
+  width: 160px;
+  height: 284px
+}
+
+.grid__item-img canvas {
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+}
+
+.grid__item-img img {
+  width: 100%;
+  display: block;
+}
+
+.grid__item-img img:nth-child(2) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.grid__item:hover .grid__item-img img:nth-child(2) {
+  opacity: 1;
+}
+
+.js .grid__item-img img {
+  display: none;
+}

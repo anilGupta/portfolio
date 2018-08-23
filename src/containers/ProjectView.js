@@ -4,14 +4,14 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { fetchProjectIfNeeded } from "../actions/workActions";
 import autobind from 'autobind-decorator';
-import { Section, Divider, Tags, Spinner, FloatTexts, WordAnimation, FlareAnimation, LineAnimation } from '../component/Index';
+import { Section, Divider, Tags, Spinner, FloatTexts, WordAnimation, FlareAnimation, LineAnimation, ProjectSlider } from '../component/Index';
 import Masonry from 'react-masonry-component';
 import 'react-photoswipe/lib/photoswipe.css';
 import {PhotoSwipe} from 'react-photoswipe';
 
 
 @connect(
-  state =>{ return {user: state.user, work: state.work}},
+  state =>{ return {user: state.user, work: state.work, app: state.app}},
   dispatch => ( bindActionCreators({
     fetchProjectIfNeeded
   }, dispatch))
@@ -79,16 +79,16 @@ class ProjectView extends Component{
 
   render() {
 
-    const { work: { allProjects=[], projectsLoading }, match: { params: { id}}, pagination } = this.props,
-            activeProject = allProjects.find(project => project.id == id);
-
+    const { work: { allProjects=[], projectsLoading }, match: { params: { id}}, pagination, app: { width } } = this.props,
+            activeProject = allProjects.find(project => project.id == id),
+            small = width < 768;
             if(projectsLoading || !activeProject){
               return <Spinner />
             }
 
             const { name, summery, tags, _images, _thumbnail, clientName } = activeProject,
                   { isOpen, index } = this.state,
-                    galleryImages = _images;
+                    galleryImages = _images.filter(item => typeof item.url === 'string' && item.url );
 
     return (
       <div>
@@ -111,7 +111,7 @@ class ProjectView extends Component{
         </Section>
 
         <Section alpha="70" type="light" >
-           <div className="container">
+           <div className="">
              <div className="section-text">
                <div className="row">
                  <div className="col-md-9 col-sm-6 mb-sm-50 mb-xs-30">
@@ -121,28 +121,26 @@ class ProjectView extends Component{
                      <LineAnimation>
                        {summery}
                      </LineAnimation>
-
                    </p>
-
                    <h5 className="blog-item-title font-alt mb-10"><a href="#">Other Screens</a></h5>
                    <FlareAnimation >
                       <hr className="mt-0 mb-20"/>
                    </FlareAnimation>
+                   {small
+                     ? <ProjectSlider collection={galleryImages} />
+                     : <Masonry className="row grid-small-gutter clearfix font-alt hover-white hide-titles masonry" id="work-screen-grid" options={{}} >
+                         {galleryImages.map((item, key) => {
+                           const url=  item && item.url ? item.url.replace("download/", "") : false;
+                           return <div className="col-xs-2" key={key}>
+                             <div className="work-grid-thumb">
+                               <img src={`${url}m.jpg`} alt="" onClick={this.togglePhotoSwipe.bind(this, key)} />
+                             </div>
+                           </div>
+                         })}
+                      </Masonry>
 
-                   <Masonry
-                     className="row grid-small-gutter clearfix font-alt hover-white hide-titles masonry"
-                     id="work-screen-grid"
-                     options={{}}
-                   >{galleryImages.filter(item => typeof item.url === 'string' ).map((item, key) => {
-                     const url=  item && item.url ? item.url.replace("download/", "") : false;
-                     return <div className="col-xs-2" key={key}>
-                       <div className="work-grid-thumb">
-                         {/*<FlareAnimation dark top left right bottom >*/}
-                            <img src={`${url}m.jpg`} alt="" onClick={this.togglePhotoSwipe.bind(this, key)} />
-                         {/*</FlareAnimation>*/}
-                       </div>
-                     </div>
-                   })}</Masonry>
+                   }
+
                  </div>
                  <div className="col-md-3 mb-sm-50 mb-xs-30">
                    <Tags collection={tags} />

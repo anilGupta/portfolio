@@ -16,6 +16,8 @@ import LineAnimation from './LineAnimation';
 import WordAnimation from './WordAnimation';
 import SVGTextAnimation from './SVGTextAnimation';
 import FlareAnimation from './FlareAnimation';
+import ProjectSlider from './ProjectSlider';
+import ImageDistortion from './ImageDistortion';
 
 export {
   BrandsList,
@@ -35,5 +37,7 @@ export {
   LineAnimation,
   WordAnimation,
   SVGTextAnimation,
-  FlareAnimation
+  FlareAnimation,
+  ProjectSlider,
+  ImageDistortion
 }

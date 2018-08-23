@@ -41,15 +41,15 @@ class App extends Component{
      })
   }
 
-
   render() {
       const { openMenu } =this.state,
-            { app } = this.props;
+            { app, history: {location: { pathname}} } = this.props,
+              light =  pathname.includes('projects');
 
     return (
         <div className="appear-animate">
              <div className="page" id="top">
-               <Header toggleMenu={this.toggleMenu} openMenu={openMenu} {...app}/>
+               <Header toggleMenu={this.toggleMenu} openMenu={openMenu} {...app} light={light}/>
                <div>
                  <Switch>
                    <Route exact path="/" component={Home} />
@@ -61,7 +61,7 @@ class App extends Component{
                  <Footer/>
                </div>
              </div>
-             <BgEffect  />
+            {/* <BgEffect  />*/}
         </div>
       );
   }

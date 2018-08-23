@@ -30,7 +30,8 @@ class Projects extends Component{
   }
 
   state={
-     pageNo: 1
+     pageNo: 1,
+     pageLimit: 9
   }
 
   componentWillMount(){
@@ -44,7 +45,11 @@ class Projects extends Component{
   @autobind
   handleFilterAction(operation, tag){
     const { filterProject } = this.props;
-       filterProject(tag, operation);
+       filterProject(tag, operation).then(() => {
+          this.setState({
+             pageNo : 1
+          });
+       });
   }
 
   @autobind
@@ -55,28 +60,29 @@ class Projects extends Component{
   }
 
   render() {
-    const { work: { projects, projectsLoading, filterTags, showFilterTags }, user: { tags, tagsLoading}, toggleFilter, match } = this.props;
-
-          if(projectsLoading || tagsLoading){
-            return <Spinner />
+    const { work: { projects, projectsLoading, filterTags, showFilterTags }, user: { tags, tagsLoading}, toggleFilter, match } = this.props,
+          { pageNo, pageLimit } = this.state,
+            totalItems = pageNo * pageLimit;
+            if(projectsLoading || tagsLoading){
+              return <Spinner />
+            }
+            const activeProject = projects.slice(0, totalItems);
+            return (
+                    <div>
+                      <Section type="light">
+                        <div className="relative">
+                          <PortfolioListFilter collection={tags} toggleFilter={toggleFilter} open={showFilterTags} filterTags={filterTags} filterAction={this.handleFilterAction} />
+                          <Divider/>
+                          <PortfolioList>
+                            {activeProject.filter(item => item._thumbnail).map((item, key) => <PortfolioListItem data={item} key={key} loop={key} />)}
+                          </PortfolioList>
+                          <hr />
+                          {totalItems < projects.length ?  <button className="btn btn-mod btn-medium btn-gray btn-full" onClick={this.loadNext}> Load More</button> : null }
+                        </div>
+                      </Section>
+                    </div>
+                  );
           }
-
-    return (
-            <div>
-              <Section type="light">
-                <div className="relative">
-                  <PortfolioListFilter collection={tags} toggleFilter={toggleFilter} open={showFilterTags} filterTags={filterTags} filterAction={this.handleFilterAction} />
-                  <Divider/>
-                  <PortfolioList>
-                    {projects.filter(item => item._thumbnail).map((item, key) => <PortfolioListItem data={item} key={key} loop={key} />)}
-                  </PortfolioList>
-                  <hr />
-                  <button className="btn btn-mod btn-medium btn-gray btn-full" onClick={this.loadNext}> Load More</button>
-                </div>
-              </Section>
-            </div>
-          );
-  }
 }
 
 export default Projects;

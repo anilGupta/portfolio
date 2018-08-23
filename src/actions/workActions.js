@@ -30,11 +30,15 @@ const
     }
   },
   filterProject = (tag, operation) => {
-    return {
-       type: types.FILTER_PROJECT,
-       tag,
-       operation
+    return dispatch => {
+      dispatch({
+        type: types.FILTER_PROJECT,
+        tag,
+        operation
+      })
+      return Promise.resolve(true)
     }
+
   },
   toggleFilter = () => {
     return {

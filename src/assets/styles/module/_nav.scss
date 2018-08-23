@@ -530,5 +530,10 @@ a.logo:hover{
       .inner-nav ul li a:hover, .inner-nav ul li a.active{
          color: white;
       }
+      &.light{
+        .inner-nav ul li a:hover, .inner-nav ul li a.active{
+          color: black;
+        }
+      }
    }
 }

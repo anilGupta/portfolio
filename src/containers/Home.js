@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 import autobind from 'autobind-decorator';
 import { fetchBrandIfNeeded, fetchSkillIfNeed } from "../actions/userActions";
 import Waypoint from 'react-waypoint';
-import { Section, Divider, ProgressBar, Spinner, BrandsList, FloatTexts, LineAnimation, WordAnimation, SVGTextAnimation } from '../component/Index';
+import { Section, Divider, ProgressBar, Spinner, BrandsList, FloatTexts, LineAnimation, WordAnimation, SVGTextAnimation,  ImageDistortion } from '../component/Index';
 
 @connect(
-  state =>{ return {user: state.user}},
+  state =>{ return {user: state.user, app: state.app}},
   dispatch => ( bindActionCreators({
     fetchBrandIfNeeded,
     fetchSkillIfNeed
@@ -41,31 +41,33 @@ class Home extends Component{
   }
 
   render() {
-    const { user: { brands, skills, brandsLoading, skillsLoading}} = this.props,
-          { animateSkills } = this.state;
+    const { user: { brands, skills, brandsLoading, skillsLoading}, app: { width }} = this.props,
+          { animateSkills } = this.state,
+            small = width < 768;
 
-    if((brandsLoading || skillsLoading) && !brands.length){
-      return <Spinner />
-    }
+            if((brandsLoading || skillsLoading) && !brands.length){
+              return <Spinner />
+            }
 
-    const skillCollection = [
-      skills.slice(0, Math.round(skills.length/2)),
-      skills.slice(Math.round(skills.length/2), skills.length)
-    ];
+            const skillCollection = [
+              skills.slice(0, Math.round(skills.length/2)),
+              skills.slice(Math.round(skills.length/2), skills.length)
+            ];
+
+              console.log("small is", small, width)
 
 
     return (
       <div>
-        <Section  background="/assets/images/section-bg-1.jpg" id="home" alpha="90" type="dark" parallax={2}>
+        <Section  background="/assets/images/section-bg-1.jpg" id="home" alpha="90" type="dark" parallax={2} >
           <div className="home-content">
             <div className="home-text">
               <div className="row mt-60 mt-xs-20">
-                <div className="col-sm-6 text-center">
-                 {/* <img src="/assets/images/me.jpg" alt="" className="hover-white" width={"60%"}/>*/}
+                <div className="col-sm-5 col-lg-5 text-center">
+                  <ImageDistortion image1={'/assets/images/me.jpg'} image2={'/assets/images/0.jpg'} displacement={'/assets/images/fuse1.jpg'} small={small} />
                 </div>
-                <div className="col-sm-6 col-lg-5 align-center pt-20 pt-lg-0 mb-xs-30 col-lg-offset-1">
+                <div className="col-sm-7 col-lg-6 col-lg-of align-center pt-20 pt-lg-0 mb-xs-30">
                   <div className="hs-line-15 font-alt">
-                    {/*<FloatTexts>anil gupta</FloatTexts>*/}
                     <SVGTextAnimation />
                   </div>
                   <h1 className="font-alt mb-40 mb-xs-20 animated  fadeInRight delay-3s">FullStack Developer</h1>

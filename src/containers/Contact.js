@@ -1,10 +1,15 @@
 import React, { Component } from 'react';
 import GoogleMap from '../component/GoogleMap';
-import BgEffect from '../component/BgEffect';
+import { bindActionCreators } from 'redux';
+import { connect } from 'react-redux';
 import Section from '../component/Section';
 import FloatTexts from '../component/FloatTexts'
 
-
+@connect(
+  state =>{ return { app: state.app}},
+  dispatch => ( bindActionCreators({
+  }, dispatch))
+)
 class Contact extends Component{
 
   constructor(props){
@@ -29,8 +34,9 @@ class Contact extends Component{
   }
 
   render() {
-    const { items } = this.props,
-          { showMap } = this.state;
+    const { items, app: {width} } = this.props,
+          { showMap } = this.state,
+            small = width < 768
 
     return (
       <div>
@@ -71,7 +77,7 @@ class Contact extends Component{
                         <input type="email" name="email" id="email" className="input-md round form-control" placeholder="EMAIL" pattern=".{5,100}" required />
                       </div>
                     </div>
-                    <div className="col-xs-12 col-sm-6 reset-col">
+                    <div className="col-xs-12  col-sm-6 reset-col">
                       <div className="form-group">
                         <textarea name="message" id="message" className="input-md round form-control" style={{ height: '84px'}} placeholder="MESSAGE" />
                       </div>
@@ -79,15 +85,25 @@ class Contact extends Component{
                   </div>
 
                   <div className="clearfix">
+                    {small
+                      ? null
+                      : <div className="form-tip pt-10 col-xs-12 col-sm-6">
+                          <i className="fa fa-info-circle" /> All the fields are required
+                        </div>
+                    }
 
-                    <div className="cf-right-col col-xs-12">
-                      <div className="align-right pt-10">
-                        <button className="submit_btn btn btn-mod btn-medium btn-round btn-mask" id="submit_btn">Submit Message</button>
+                    <div className="col-xs-12 col-sm-6 reset-col ">
+                      <div className="align-right">
+                        <button className={`submit_btn btn btn-mod btn-medium btn-round btn-mask ${small ? 'btn-full': ''}`} id="submit_btn">Submit Message</button>
                       </div>
                     </div>
-                    <div className="form-tip pt-20 col-xs-12">
-                      <i className="fa fa-info-circle" /> All the fields are required
-                    </div>
+
+                    {small
+                      ? <div className="form-tip pt-20 col-xs-12 col-sm-6">
+                          <i className="fa fa-info-circle" /> All the fields are required
+                        </div>
+                      : null
+                    }
                   </div>
                   <div id="result" />
                 </form>

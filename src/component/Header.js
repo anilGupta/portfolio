@@ -59,17 +59,17 @@ class Header extends Component{
   }
 
   render(){
-     const { toggleMenu, openMenu, height, width } = this.props,
+     const { width, light } = this.props,
            { scrolled, open, transparent, dark} = this.state,
-             small  = width < 768
+             small  = width < 768;
 
      return <header>
-       <nav className={`main-nav stick-fixed ${dark? 'dark': ''} ${scrolled ? 'js-transparent small-height': transparent ? 'js-transparent': 'transparent'} ${small ? 'mobile-on': ''}`} ref={el => { el ? this.navBar = el: null}}>
+       <nav className={`main-nav stick-fixed ${dark? 'dark': ''} ${light ? 'light': ''} ${scrolled ? 'js-transparent small-height': transparent ? 'js-transparent': 'transparent'} ${small ? 'mobile-on': ''}`} ref={el => { el ? this.navBar = el: null}}>
          <FlareAnimation bottom light>
            <div className="full-wrapper relative clearfix">
              <div className="nav-logo-wrap local-scroll">
                <NavLink to="/" className={`logo ${scrolled ? 'small-height': ''}`} >
-                 <img src={`/assets/images/${scrolled ? 'logo-dark': 'logo-light'}.png`} alt="home page" />
+                 <img src={`/assets/images/${(scrolled || light) ? 'logo-dark': 'logo-light'}.png`} alt="home page" />
                </NavLink>
              </div>
              {small
@@ -78,8 +78,8 @@ class Header extends Component{
                  <ul className="clearlist">
                    {Config.menu.map(({id, name, url}) =>
                      <li key={id} >
-                       <NavLink to={url} activeClassName={'active'} className="mn-has-sub" >
-                         {(url == '/download-cv' && !small) ? <span className="btn btn-mod btn-circle"><i className="fa fa-cloud-download"/> {name}</span>: name}
+                       <NavLink to={url} activeClassName={'active'} className="mn-has-sub" exact={true} >
+                         {(url === '/download-cv' && !small) ? <span className="btn btn-mod btn-circle"><i className="fa fa-cloud-download"/> {name}</span>: name}
                        </NavLink>
                      </li>
                    )}
