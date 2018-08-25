@@ -16,10 +16,6 @@
      .flare{
        position: absolute;
        transition: all 1s ease;
-       //background: -moz-linear-gradient(top, rgba(0, 0, 0, 0) 0%, #000 75%, #000 100%);
-       //background: -webkit-linear-gradient(top, rgba(0, 0, 0, 0) 0%, #000 75%, #000 100%);
-       //filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00ffffff', endColorstr='#ffffff', GradientType=0);
-       //background: linear-gradient(to bottom, rgba(0, 0, 0, 0) 0%, #000 75%, #000 100%);
        animation-timing-function: cubic-bezier(0.4, 0.26, 0, 0.97);
        animation-fill-mode: forwards;
      }
@@ -37,6 +33,18 @@
      }
      .flare-right{ right: 0}
      .flare-left{ left: 0}
+
+    @media only screen and (max-width: 767px) {
+      .flare-top, .flare-bottom{
+        width: 40%;
+      }
+
+      .flare-left, .flare-right{
+        top:0;
+        height:40%;
+        width: 1px;
+      }
+    }
   }
 }
 
@@ -90,4 +98,57 @@
   0% { top: calc(100%); }
   60% { top: calc(100% + 20%); }
   100% { top:  -20%; }
+}
+
+@media only screen and (max-width: 767px) {
+  @keyframes flare-top {
+    0% { left: calc(100%); }
+    60% { left: calc(100% + 40%); }
+    100% { left:  -40%; }
+  }
+
+  @keyframes flare-top-reverse {
+    0% { left: -40%; }
+    60% { left: calc(100% + 40%); }
+    100% { left: calc(100%); }
+  }
+
+  @keyframes flare-bottom {
+    0% { left: -40%; }
+    60% { left: calc(100% + 40%); }
+    100% { left: calc(100%); }
+  }
+
+  @keyframes flare-bottom-reverse {
+    0% { left: calc(100%); }
+    60% { left: calc(100% + 40%); }
+    100% { left:  -40%; }
+  }
+
+
+
+  @keyframes flare-left {
+    0% { top: -40%; }
+    60% { top: calc(100% + 40%); }
+    100% { top: calc(100%); }
+  }
+
+  @keyframes flare-left-reverse {
+    0% { top: calc(100%); }
+    60% { top: calc(100% + 40%); }
+    100% { top:  -40%; }
+  }
+
+
+  @keyframes flare-right{
+    0% { top: calc(100%); }
+    60% { top: calc(100% + 40%); }
+    100% { top: -40%; }
+  }
+
+  @keyframes flare-right-reverse {
+    0% { top: calc(100%); }
+    60% { top: calc(100% + 40%); }
+    100% { top:  -40%; }
+  }
 }
