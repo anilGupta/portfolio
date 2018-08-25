@@ -25,7 +25,7 @@
      }
      .flare-top, .flare-bottom{
          left:0;
-         width: 5%;
+         width: 20%;
          height: 1px;
      }
      .flare-top{ top: 0 }
@@ -42,27 +42,27 @@
 
 
 @keyframes flare-top {
-  0% { left: -20%; }
-  60% { left: calc(100% + 20%); }
-  100% { left: calc(100%); }
-}
-
-@keyframes flare-top-reverse {
   0% { left: calc(100%); }
   60% { left: calc(100% + 20%); }
   100% { left:  -20%; }
 }
 
+@keyframes flare-top-reverse {
+  0% { left: -20%; }
+  60% { left: calc(100% + 20%); }
+  100% { left: calc(100%); }
+}
+
 @keyframes flare-bottom {
-  0% { left: -5%; }
-  60% { left: calc(100% + 5%); }
+  0% { left: -20%; }
+  60% { left: calc(100% + 20%); }
   100% { left: calc(100%); }
 }
 
 @keyframes flare-bottom-reverse {
   0% { left: calc(100%); }
-  60% { left: calc(100% + 5%); }
-  100% { left:  -5%; }
+  60% { left: calc(100% + 20%); }
+  100% { left:  -20%; }
 }
 
 

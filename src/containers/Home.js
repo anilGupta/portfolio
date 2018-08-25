@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import autobind from 'autobind-decorator';
 import { fetchBrandIfNeeded, fetchSkillIfNeed } from "../actions/userActions";
 import Waypoint from 'react-waypoint';
-import { Section, Divider, ProgressBar, Spinner, BrandsList, FloatTexts, LineAnimation, WordAnimation, SVGTextAnimation,  ImageDistortion } from '../component/Index';
+import { Section, Divider, ProgressBar, Spinner, BrandsList, FloatTexts, LineAnimation, WordAnimation, SVGTextAnimation,  ImageDistortion, FlareAnimation } from '../component/Index';
 
 @connect(
   state =>{ return {user: state.user, app: state.app}},
@@ -62,7 +62,13 @@ class Home extends Component{
               <div className="row mt-60 mt-xs-20">
                 <div className="col-sm-5 col-lg-5 text-center">
                   {small
-                    ? <div className="mobile-avatar-wrapper" style={{ backgroundImage: `url('/assets/images/mobile-avatar.jpg')`}} />
+                    ? <div className="mobile-avatar-wrapper" >
+                      <FlareAnimation light all zIndex={10} ><div>
+                        <div className="avatar-image" style={{ backgroundImage: `url('/assets/images/mobile-avatar.jpg')`}} >
+                            <img src="/assets/images/blank.png" />
+                        </div>
+                         </div></FlareAnimation>
+                      </div>
                     : <ImageDistortion image1={'/assets/images/me.jpg'} image2={'/assets/images/0.jpg'} displacement={'/assets/images/fuse1.jpg'} small={small} />
                   }
                 </div>
@@ -168,7 +174,7 @@ class Home extends Component{
             <div className="align-center">
               <h3 className="banner-heading font-alt">Want to discuss your new project?</h3>
               <div>
-                <a href="mailto:anil6080@gmail.com" className="btn btn-mod btn-w btn-medium btn-round">Lets tallk</a>
+                <a href="mailto:anil6080@gmail.com" className="btn btn-mod btn-w btn-medium btn-round">Lets Talk</a>
               </div>
             </div>
         </Section>

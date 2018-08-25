@@ -24,9 +24,9 @@ class FlareAnimation extends Component{
   }
 
   render() {
-    const { children, horizontal=true, reverse=false, color, dark, top, left, right, bottom, light } = this.props,
-            useColor = dark ? "#000" : light ? '#fff': '#'+Math.floor(Math.random()*16777215).toString(16),
-            corners = [top && 'top', left && 'left', bottom && 'bottom', right && 'right'],
+    const { children, horizontal=true, reverse=false, color, dark, top, left, right, bottom, light, all, zIndex=0, small } = this.props,
+            useColor = dark ? "#000" : light ? '#fff': color ? color :'#'+Math.floor(Math.random()*16777215).toString(16),
+            corners = all ? ['top', 'left', 'bottom', 'right'] :[top && 'top', left && 'left', bottom && 'bottom', right && 'right'],
             totalCorners = corners.filter(item => item),
             flares = totalCorners.length ? totalCorners : ['top'];
 
@@ -40,9 +40,10 @@ class FlareAnimation extends Component{
               const style= {
                 background: this.getGradientBackground(useColor, corner),
                 animation: `${reverse ? `flare-${corner}-reverse`: `flare-${corner}`} 4s 0s infinite`,
-                animationDelay : `${Helper.getRandomInt(1, 9, 0.2)}s`
+                animationDelay : `${Helper.getRandomInt(1, 9, 0.2)}s`,
+                zIndex: zIndex ? zIndex: 0,
               };
-              return <div className={`flare flare-${corner}`} style={style} key={key} />
+              return <div className={`flare flare-${corner} ${small ? 'flare-small': ''}`} style={style} key={key} />
             })}
           </div>
         </div>

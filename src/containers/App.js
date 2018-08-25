@@ -61,7 +61,7 @@ class App extends Component{
                  <Footer/>
                </div>
              </div>
-            <BgEffect  />
+           {/* <BgEffect  />*/}
         </div>
       );
   }
