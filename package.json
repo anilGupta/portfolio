@@ -6,7 +6,7 @@
   "author": "Anil",
   "license": "UNLICENSED",
   "scripts": {
-    "build": "npm run clean && SET NODE_ENV=production&&webpack -p",
+    "build": "npm run clean && NODE_ENV=production&&webpack -p",
     "win-build": "npm run clean && .\\node_modules\\.bin\\webpack -p",
     "test": "",
     "serve": "",
@@ -18,7 +18,7 @@
     "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "css-hot-loader": "^1.3.0",
     "gmap3": "^7.2.0",
-    "gsap": "^2.0.1",
+    "gsap": "^2.0.2",
     "jquery": "^3.3.1",
     "paper": "^0.11.5",
     "prop-types": "^15.5.10",

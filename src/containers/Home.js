@@ -56,46 +56,42 @@ class Home extends Component{
 
     return (
       <div>
-        <Section  background="/assets/images/section-bg-1.jpg" id="home" alpha="90" type="dark" parallax={2} container={!small}>
-          <div className="home-content">
-            <div className="home-text">
-              <div className="row mt-60 mt-xs-20">
-                <div className="col-sm-5 col-lg-5 text-center">
-                  {small
-                    ? <div className="mobile-avatar-wrapper" >
-                      <FlareAnimation light all zIndex={10} ><div>
-                        <div className="avatar-image" style={{ backgroundImage: `url('/assets/images/mobile-avatar.jpg')`}} >
-                            <img src="/assets/images/blank.png" />
-                        </div>
-                         </div></FlareAnimation>
-                      </div>
-                    : <ImageDistortion image1={'/assets/images/me.jpg'} image2={'/assets/images/0.jpg'} displacement={'/assets/images/fuse1.jpg'} small={small} />
-                  }
+        <Section  background="/assets/images/section-bg-1.jpg" id="home" alpha="90" type="dark" parallax={2}>
+          <div className="row">
+            <div className="col-sm-6 mt-xs-40">
+              {small
+                ? <div className="mobile-avatar-wrapper" >
+                  <FlareAnimation light all zIndex={10} >
+                    <div>
+                      <div className="avatar-image" style={{ backgroundImage: `url('/assets/images/mobile-avatar.jpg')`}} />
+                    </div>
+                  </FlareAnimation>
                 </div>
-                <div className="col-sm-7 col-lg-6 col-lg-of align-center pt-20 pt-lg-0 mb-xs-30">
-                  <div className="hs-line-15 font-alt">
-                    <SVGTextAnimation />
-                  </div>
-                  <h1 className="font-alt mb-40 mb-xs-20 animated  fadeInRight delay-3s">FullStack Developer</h1>
-                  <div className="section-text white mb-70 mb-xs-40 text-justify">
-                    <p>
-                      <span className="dropcap font-alt">M</span>
-                      <FloatTexts>y name is Anil Gupta, I am a creative, highly motivated software engineer with over 7+ years of experience working with  JavaScript, NodeJS, PHP, and related technologies.</FloatTexts>
-                    </p>
+                : <ImageDistortion image1={'/assets/images/me.jpg'} image2={'/assets/images/0.jpg'} displacement={'/assets/images/fuse1.jpg'} small={small} />
+              }
+            </div>
+            <div className="col-sm-6 col-lg-5 align-center pt-20 pt-lg-0 mb-xs-30">
+              <div>
+                <SVGTextAnimation />
+              </div>
+              <h1 className="font-alt mb-40 mb-xs-20 animated  fadeInRight delay-3s">FullStack Developer</h1>
+              <div className="section-text white mb-70 mb-xs-40 text-justify">
+                <p>
+                  <span className="dropcap font-alt">M</span>
+                  <FloatTexts>y name is Anil Gupta, I am a creative, highly motivated software engineer with over 7+ years of experience working with  JavaScript, NodeJS, PHP, and related technologies.</FloatTexts>
+                </p>
 
-                    <LineAnimation dealy="1">
-                      I thrive in a challenging, fast-paced environment. An enthusiastic team player with phenomenal time management skills and a can-do attitude
-                    </LineAnimation>
-                    <hr className="white mb-30" />
-                      <div>
-                        <h4 className="font-alt mt-0 mb-20">Profile</h4>
-                        <div><strong style={{display:'inline-block', minWidth: '80px'}}>Age </strong>: 28</div>
-                        <div><strong style={{display:'inline-block', minWidth: '80px'}}>Address </strong>: Antophill, Mumbai, India</div>
-                        <div><strong style={{display:'inline-block', minWidth: '80px'}}>Phone </strong>: +91 9870675742</div>
-                        <div><strong style={{display:'inline-block', minWidth: '80px'}}>Email </strong>: <a href="#">_anil@mail.com</a></div>
-                        <div><strong style={{display:'inline-block', minWidth: '80px'}}>Status </strong>: Available</div>
-                      </div>
-                  </div>
+                <LineAnimation dealy="1">
+                  I thrive in a challenging, fast-paced environment. An enthusiastic team player with phenomenal time management skills and a can-do attitude
+                </LineAnimation>
+                <hr className="white mb-30" />
+                <div>
+                  <h4 className="font-alt mt-0 mb-20">Profile</h4>
+                  <div><strong style={{display:'inline-block', minWidth: '80px'}}>Age </strong>: 28</div>
+                  <div><strong style={{display:'inline-block', minWidth: '80px'}}>Address </strong>: Antophill, Mumbai, India</div>
+                  <div><strong style={{display:'inline-block', minWidth: '80px'}}>Phone </strong>: +91 9870675742</div>
+                  <div><strong style={{display:'inline-block', minWidth: '80px'}}>Email </strong>: <a href="#">_anil@mail.com</a></div>
+                  <div><strong style={{display:'inline-block', minWidth: '80px'}}>Status </strong>: Available</div>
                 </div>
               </div>
             </div>

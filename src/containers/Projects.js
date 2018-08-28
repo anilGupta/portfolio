@@ -70,7 +70,7 @@ class Projects extends Component{
             return (
                     <div>
                       <Section type="light">
-                        <div className="relative">
+                        <div className="relative mt-xs-40">
                           <PortfolioListFilter collection={tags} toggleFilter={toggleFilter} open={showFilterTags} filterTags={filterTags} filterAction={this.handleFilterAction} />
                           <Divider/>
                           <PortfolioList>

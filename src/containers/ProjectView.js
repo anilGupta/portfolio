@@ -76,8 +76,8 @@ class ProjectView extends Component{
        const url=  item && item.url ? item.url.replace("download/", "") : false;
        return {
          src: `${url}l.jpg`,
-         w: 1224,
-         h: 1024,
+         w: item.width ? item.width: 600,
+         h: item.height? item.height: 800,
          title: item.title
        }
      })
@@ -93,7 +93,7 @@ class ProjectView extends Component{
               return <Spinner />
             }
 
-            const { name, summery, tags, _images, _thumbnail, clientName } = activeProject,
+            const { name, summery, tags, _images, _thumbnail, clientName, responsibility=[] } = activeProject,
                   { isOpen, index } = this.state,
                     galleryImages = _images.filter(item => typeof item.url === 'string' && item.url );
 
@@ -132,13 +132,11 @@ class ProjectView extends Component{
                    <h3 className="blog-item-title font-alt mb-10"><a href="#">Responsibility</a></h3>
                    <hr className="mt-0 mb-30"/>
                    <ul>
-                     {res.map((r, i) => <li key={i}><LineAnimation dealy={i * 0.4}>{r}</LineAnimation></li>)}
+                     {responsibility.map((r, i) => <li key={i}><LineAnimation dealy={i * 0.4}>{r}</LineAnimation></li>)}
                    </ul>
 
                    <h5 className="blog-item-title font-alt mb-10"><a href="#">Other Screens</a></h5>
-                   <FlareAnimation >
-                      <hr className="mt-0 mb-20"/>
-                   </FlareAnimation>
+                   <hr className="mt-0 mb-20"/>
                    {small
                      ? <ProjectSlider collection={galleryImages}  onClick={this.togglePhotoSwipe}/>
                      : <Masonry className="row grid-small-gutter clearfix font-alt hover-white hide-titles masonry" id="work-screen-grid" options={{}} >

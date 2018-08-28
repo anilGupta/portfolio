@@ -69,7 +69,7 @@ img:not([draggable]), embed, object, video{
   width: 320px;
   height: 569px;
   position: relative;
-  margin: 15% auto;
+  margin: 5% auto;
 }
 
 .grid__item-img--small{
@@ -107,7 +107,7 @@ img:not([draggable]), embed, object, video{
 }
 
 .mobile-avatar-wrapper{
-  margin:-46px auto 50px;
+  margin: 0 auto 50px;
   display:block;
   width:180px;
   height:180px;

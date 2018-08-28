@@ -62,10 +62,12 @@ class Header extends Component{
      const { width, light } = this.props,
            { scrolled, open, transparent, dark} = this.state,
              small  = width < 768;
+    console.log("light- dark", light);
 
-     return <header>
+
+    return <header>
        <nav className={`main-nav stick-fixed ${dark? 'dark': ''} ${light ? 'light': ''} ${scrolled ? 'js-transparent small-height': transparent ? 'js-transparent': 'transparent'} ${small ? 'mobile-on': ''}`} ref={el => { el ? this.navBar = el: null}}>
-         <FlareAnimation bottom light>
+         <FlareAnimation bottom light={!light} dark={light}>
            <div className="full-wrapper relative clearfix">
              <div className="nav-logo-wrap local-scroll">
                <NavLink to="/" className={`logo ${scrolled ? 'small-height': ''}`} >

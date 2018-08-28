@@ -30,6 +30,14 @@
   cursor: pointer;
 }
 
+@media only screen and (max-width: 480px) {
+  .dropdown-menu{
+     max-height: 350px;
+     overflow: scroll;
+  }
+}
+
+
 #projects-flow{
   .row-nav-animation{margin: 100px 0 60px 0;padding-right: 58px;}
   .play-list-box{position: relative;padding: 0;}

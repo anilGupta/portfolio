@@ -34,8 +34,6 @@ class BgEffect extends Component{
 
   initialize(){
     const { totalParticles } = this.props;
-    console.log('total pars', totalParticles);
-
     for(let index = 0; index < totalParticles; index ++){
       const size = 3 + 15 * Math.random();
       //creating shapes
@@ -56,6 +54,7 @@ class BgEffect extends Component{
 
       }
 
+      const color = '#'+Math.floor(Math.random()*16777215).toString(16);
       //giving structure and styles to shape
       this.paths[index].size = size * 3;
       this.paths[index].selected = false;
@@ -67,7 +66,7 @@ class BgEffect extends Component{
       this.paths[index].speedR = 0.1 + Math.random() * 0.4;
       this.paths[index].posY = 100 + Math.random() * $(window).height() * 3.5;
       this.paths[index].offsetY = 0;
-      this.paths[index].strokeColor = '#fff';
+      this.paths[index].strokeColor = 'hotpink';
       this.paths[index].strokeWidth = 2;
       //this.paths[index].dashArray = [1, 0];
       if(index/3 == parseInt(index/3)){

@@ -508,3 +508,16 @@
       background: rgba(0,0,0, 0.2);
     }
 }
+
+@media only screen and (max-width: 480px){
+  .page-section {
+    padding: 60px 0;
+  }
+}
+
+
+@media only screen and (max-width: 768px){
+  .page-section {
+    padding: 80px 0;
+  }
+}

@@ -34,14 +34,14 @@
      .flare-right{ right: 0}
      .flare-left{ left: 0}
 
-    @media only screen and (max-width: 767px) {
+    @media only screen and (min-width: 767px) {
       .flare-top, .flare-bottom{
-        width: 40%;
+        width: 10%;
       }
 
       .flare-left, .flare-right{
         top:0;
-        height:40%;
+        height:10%;
         width: 1px;
       }
     }
@@ -100,55 +100,55 @@
   100% { top:  -20%; }
 }
 
-@media only screen and (max-width: 767px) {
+@media only screen and (min-width: 767px) {
   @keyframes flare-top {
     0% { left: calc(100%); }
-    60% { left: calc(100% + 40%); }
-    100% { left:  -40%; }
+    60% { left: calc(100% + 10%); }
+    100% { left:  -10%; }
   }
 
   @keyframes flare-top-reverse {
-    0% { left: -40%; }
-    60% { left: calc(100% + 40%); }
+    0% { left: -10%; }
+    60% { left: calc(100% + 10%); }
     100% { left: calc(100%); }
   }
 
   @keyframes flare-bottom {
-    0% { left: -40%; }
-    60% { left: calc(100% + 40%); }
+    0% { left: -10%; }
+    60% { left: calc(100% + 10%); }
     100% { left: calc(100%); }
   }
 
   @keyframes flare-bottom-reverse {
     0% { left: calc(100%); }
-    60% { left: calc(100% + 40%); }
-    100% { left:  -40%; }
+    60% { left: calc(100% + 10%); }
+    100% { left:  -10%; }
   }
 
 
 
   @keyframes flare-left {
-    0% { top: -40%; }
-    60% { top: calc(100% + 40%); }
+    0% { top: -10%; }
+    60% { top: calc(100% + 10%); }
     100% { top: calc(100%); }
   }
 
   @keyframes flare-left-reverse {
     0% { top: calc(100%); }
-    60% { top: calc(100% + 40%); }
-    100% { top:  -40%; }
+    60% { top: calc(100% + 10%); }
+    100% { top: -10%; }
   }
 
 
   @keyframes flare-right{
     0% { top: calc(100%); }
-    60% { top: calc(100% + 40%); }
-    100% { top: -40%; }
+    60% { top: calc(100% + 10%); }
+    100% { top: -10%; }
   }
 
   @keyframes flare-right-reverse {
     0% { top: calc(100%); }
-    60% { top: calc(100% + 40%); }
-    100% { top:  -40%; }
+    60% { top: calc(100% + 10%); }
+    100% { top:  -10%; }
   }
 }

@@ -10,7 +10,7 @@ class FullMenu extends Component{
 
   render(){
     const { openMenu, toggleMenu, small } = this.props;
-    console.log('open menu', openMenu);
+    //console.log('open menu', openMenu);
 
     return (
       <div>

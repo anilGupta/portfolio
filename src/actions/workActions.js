@@ -6,7 +6,7 @@ const
   fetchProjects =() => {
     return dispatch => {
       dispatch(requestProject());
-      const url = `${Config.apiURL}/Projects?filter[include]=tags&filter[include]=brand`;
+      const url = `${Config.apiURL}/Projects?filter[include]=tags&filter[include]=brand&filter[order]=order%20DESC`;
       return Network.get(url).then(result => {
         return dispatch(receiveProject(result));
       })

@@ -43,7 +43,7 @@ class Contact extends Component{
         <Section className="page-section section-mask" background="/assets/images/bg/contact-bg.jpeg" alpha="30" type="light">
             <div className="row">
               <div className="col-md-8 col-md-offset-2">
-                <div className="section-heading align-center mb-120 mb-xs-40">
+                <div className="section-heading align-center mb-120 mb-xs-40 mt-xs-40">
                   <FloatTexts dealy={10}>Contact Me</FloatTexts>
                 </div>
               </div>
