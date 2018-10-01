@@ -18,6 +18,7 @@ import SVGTextAnimation from './SVGTextAnimation';
 import FlareAnimation from './FlareAnimation';
 import ProjectSlider from './ProjectSlider';
 import ImageDistortion from './ImageDistortion';
+import FaceButton from './FadeButton';
 
 export {
   BrandsList,
@@ -39,5 +40,6 @@ export {
   SVGTextAnimation,
   FlareAnimation,
   ProjectSlider,
-  ImageDistortion
+  ImageDistortion,
+  FaceButton
 }

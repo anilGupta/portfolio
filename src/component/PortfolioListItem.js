@@ -2,6 +2,19 @@ import React from 'react';
 import { NavLink } from 'react-router-dom';
 import ImageLoader from '../component/ImageLoader';
 import FlareAnimation from '../component/FlareAnimation';
+import FaceButton from '../component/FadeButton';
+
+const options =  {
+  type: 'triangle',
+  style: 'stroke',
+  size: 4,
+  color: '#1a1a1a',
+  duration: 600,
+  easing: [ 0.2, 1, 0.7, 1 ],
+  oscillationCoefficient: 5,
+  particlesAmountCoefficient: 2,
+  direction: 'left'
+};
 
 const PortfolioListItem = ({loop, data}) => {
   const { name, summery, _thumbnail, tags, endOn, _images } = data,
@@ -22,7 +35,9 @@ const PortfolioListItem = ({loop, data}) => {
                  {images.splice(0, 7).map((img, key) => <img src={`${img.url.replace("download/", "")}s.jpg`} key={key} />)}
                  {images.length ? <span className="more-tile"> + {images.length} more </span> : null }
                </div>
-               <NavLink to={`/project/${id}`} className="btn btn-mod">View Project</NavLink>
+               <FaceButton to={`/project/${id}`} options={options} >
+                 <div className="btn btn-mod">View Project</div>
+               </FaceButton>
              </div>
            </FlareAnimation>
         </div>
