@@ -19,6 +19,7 @@ import FlareAnimation from './FlareAnimation';
 import ProjectSlider from './ProjectSlider';
 import ImageDistortion from './ImageDistortion';
 import FaceButton from './FadeButton';
+import TiltCard from './TiltCard';
 
 export {
   BrandsList,
@@ -41,5 +42,6 @@ export {
   FlareAnimation,
   ProjectSlider,
   ImageDistortion,
-  FaceButton
+  FaceButton,
+  TiltCard
 }
