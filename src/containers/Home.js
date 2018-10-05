@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import autobind from 'autobind-decorator';
 import { fetchBrandIfNeeded, fetchSkillIfNeed } from "../actions/userActions";
 import Waypoint from 'react-waypoint';
-import { Section, Divider, ProgressBar, Spinner, BrandsList, FloatTexts, LineAnimation, WordAnimation, SVGTextAnimation,  ImageDistortion, FlareAnimation } from '../component/Index';
+import { Section, Divider, ProgressBar, Spinner, TiltCard, BrandsList, FloatTexts, LineAnimation, WordAnimation, SVGTextAnimation,  ImageDistortion, FlareAnimation } from '../component/Index';
 
 @connect(
   state =>{ return {user: state.user, app: state.app}},
@@ -53,6 +53,12 @@ class Home extends Component{
               skills.slice(0, Math.round(skills.length/2)),
               skills.slice(Math.round(skills.length/2), skills.length)
             ];
+
+    /*return <div>
+        <Section>
+            <TiltCard />
+        </Section>
+    </div>*/
 
     return (
       <div>

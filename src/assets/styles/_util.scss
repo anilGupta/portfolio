@@ -3,7 +3,7 @@
 .align-right{ text-align:right !important; }
 .left{float:left !important;}
 .right{float:right !important;}
-.relative{position:relative;}
+.relative{position:relative; z-index: 99}
 .hidden{display:none;}
 .inline-block{display:inline-block;}
 .white{ color: #fff !important; }

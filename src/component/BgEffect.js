@@ -28,6 +28,23 @@ class BgEffect extends Component{
      paper.setup(this.canvas);
   }
 
+  getShape(type){
+    switch(type){
+      case "heart": {
+        const heartPath = "m 0,0 c -23.041766,0.83580444 -45.957506,-13.636713 -53.214216,-35.870795 -9.044427,-25.923826 -5.460719,-56.569647 12.160635,-78.160115 22.650703,-29.04655 48.0826046,-55.79652 72.034504,-83.76112 8.809983,-10.03071 17.624834,-20.05716 26.446077,-30.07797 31.190897,35.92782 63.19026,71.17456 93.65203,107.72333 13.43897,15.76905 22.6092,35.778594 21.45879,56.840754 0.48464,23.638597 -10.75406,49.609557 -33.86758,58.7248057 C 112.36925,6.1811385 80.265186,-2.4521544 61.834,-23.816 57.726053,-27.744191 52.686989,-24.33721 49.898807,-20.558818 36.779203,-7.4375533 18.610104,0.25470281 0,0 Z m 57.425,-235.439 c -32.685154,37.5809 -66.2375677,74.43048 -98.145369,112.67407 -14.124002,16.53702 -23.327559,37.678088 -22.178691,59.699254 -0.431137,24.929611 11.342458,51.986317 35.279683,62.35280613 C 0.56303289,11.862969 35.755937,3.1381833 56.076,-19.751 c 7.408437,0.521947 12.572556,12.0397848 20.578869,14.5057566 26.919311,16.3635164 67.173411,13.9333199 86.956051,-12.4756016 15.52317,-21.084605 17.17501,-50.11562 9.71392,-74.576731 -10.04597,-26.327994 -31.5674,-45.682854 -49.13526,-66.974994 -22.22828,-25.41207 -44.467143,-50.815 -66.76458,-76.16643 z";
+        return new paper.Path(heartPath)
+      }
+
+      case "mount": {
+        const p1 = 'm 11.339286,0.2677 c 3.270838,5.6653767 6.541676,11.330753 9.812514,16.99613 -6.541676,0 -13.0833519,0 -19.6250279,0 C 4.7976101,11.598453 8.068448,5.9330767 11.339286,0.2677 Z m 0,-2.15829 C 7.445325,4.85393 3.5513641,11.59845 -0.3425969,18.34297 c 7.787922,0 15.5758439,0 23.3637659,0 C 19.127208,11.59845 15.233247,4.85393 11.339286,-1.89059 Z',
+              p2 = 'm 17.971152,1.34684 c 3.27084,5.6653767 6.54168,11.330753 9.81252,16.99613 -6.541677,0 -13.083353,0 -19.6250299,0 C 11.429479,12.677593 14.700315,7.0122167 17.971152,1.34684 Z m 0,-2.1583 c -3.89396,6.7445233 -7.78792,13.489047 -11.6818799,20.23357 7.7879229,0 15.5758469,0 23.3637699,0 C 25.759079,12.677587 21.865115,5.9330633 17.971152,-0.81146 Z';
+          return new paper.CompoundPath(new paper.Path(p1), new paper.Path(p2) );
+      }
+
+    }
+  }
+
+
   runAnimation(){
      paper.view.onFrame = this.animate
   }
@@ -36,46 +53,23 @@ class BgEffect extends Component{
     const { totalParticles } = this.props;
     for(let index = 0; index < totalParticles; index ++){
       const size = 3 + 15 * Math.random();
-      //creating shapes
-      if(index/3 != parseInt(index/3)){
-        this.paths[index] = new paper.Path.RegularPolygon(new paper.Point(size, size), parseInt( 3 + Math.random() * 6 ), size);
-      }else{
-        //if(index/2 != parseInt(index/2)){
-           const pathData1 = 'M17.8,8.6c-0.1-0.9-2.2-1.2-4.6-0.6c-2,0.5-3.7,0.8-4.2,0.9c0.5,0,2.2,0.3,4.3,0.6C15.7,9.9,17.9,9.5,17.8,8.6tz';
-           const pathData2 = 'M5.6,17.3c0.9,0.3,1.9-1.5,2.4-4c0.4-2,0.7-3.7,0.9-4.2C8.7,9.6,7.8,11,6.7,12.8C5.2,14.8,4.7,16.9,5.6,17.3z';
-           const pathData3 = 'M0,7.8c-0.1,0.9,1.9,1.5,4.4,1.3c2-0.2,3.7-0.2,4.3-0.2C8.2,8.8,6.6,8.3,4.6,7.6C2.3,6.8,0,6.9,0,7.8z';
-           const pathData4 = 'M2.5,2.5C1.9,3.2,3.1,4.9,5.2,6.3c1.7,1.1,3.1,2.1,3.5,2.5C8.4,8.4,7.4,7,6.2,5.3C4.9,3.2,3.2,1.9,2.5,2.5z';
-           const pathData5 = 'M9.1,4.4C9.3,1.9,8.7-0.1,7.8,0c-0.9,0.1-1,2.3-0.2,4.6c0.7,2,1.2,3.6,1.3,4.1C8.8,8.2,8.9,6.5,9.1,4.4z';
-           const pathData6 = 'M9.1,4.4C9.3,1.9,8.7-0.1,7.8,0c-0.9,0.1-1,2.3-0.2,4.6c0.7,2,1.2,3.6,1.3,4.1C8.8,8.2,8.9,6.5,9.1,4.4z';
-           this.paths[index] = new paper.CompoundPath(new paper.Path(pathData1), new paper.Path(pathData2), new paper.Path(pathData3), new paper.Path(pathData4), new paper.Path(pathData5), new paper.Path(pathData6));
-        //}else{
-          //this.paths[index] = new paper.Path.Rectangle([size * 0.75, size * 0.75], [size, size]);
-        //}
-
-      }
-
-      const color = '#'+Math.floor(Math.random()*16777215).toString(16);
-      //giving structure and styles to shape
-      this.paths[index].size = size * 3;
-      this.paths[index].selected = false;
-      this.paths[index].rotate( (360/totalParticles) * index);
-      this.paths[index].randomX = 3 + Math.random() * 30;
-      this.paths[index].randomY = 3 + Math.random() * 30;
-      this.paths[index].speedX = 0.5 + Math.random() * 2;
-      this.paths[index].speedY = 0.5 + Math.random() * 2;
-      this.paths[index].speedR = 0.1 + Math.random() * 0.4;
-      this.paths[index].posY = 100 + Math.random() * $(window).height() * 3.5;
-      this.paths[index].offsetY = 0;
-      this.paths[index].strokeColor = 'hotpink';
-      this.paths[index].strokeWidth = 2;
-      //this.paths[index].dashArray = [1, 0];
-      if(index/3 == parseInt(index/3)){
-        this.paths[index].smooth();
-      }
+        this.paths[index] = index % 4 === 0 ? this.getShape('mount'): new paper.Path.RegularPolygon(new paper.Point(size, size), parseInt( 3 + Math.random() * 6 ), size);
+        const color = '#'+Math.floor(Math.random()* 16777215).toString(16);
+        this.paths[index].size = size * 3;
+        this.paths[index].selected = false;
+        this.paths[index].rotate( (360/totalParticles) * index);
+        this.paths[index].randomX = 3 + Math.random() * 30;
+        this.paths[index].randomY = 3 + Math.random() * 30;
+        this.paths[index].speedX = 0.5 + Math.random() * 2;
+        this.paths[index].speedY = 0.5 + Math.random() * 2;
+        this.paths[index].speedR = 0.1 + Math.random() * 0.4;
+        this.paths[index].posY = 100 + Math.random() * $(window).height() * 3.5;
+        this.paths[index].offsetY = 0;
+        this.paths[index].strokeColor = "hotpink";
+        this.paths[index].strokeWidth = 2;
+        //this.paths[index].dashArray = [1, 0];
+        //this.paths[index].smooth();
     }
-
-    console.log(this.paths);
-
   }
 
   animate(event){
