@@ -49,13 +49,19 @@ class BgEffect extends Component{
      paper.view.onFrame = this.animate
   }
 
+  getColor(){
+     const colors = ['#00BFFF', '#fff', '#ff4793', '#33FFDD', '#ffd541', '#FF6133', "#000"];
+     return colors[Math.floor(Math.random() * colors.length)]
+  }
+
   initialize(){
     const { totalParticles } = this.props;
     for(let index = 0; index < totalParticles; index ++){
       const size = 3 + 15 * Math.random();
         this.paths[index] = index % 4 === 0 ? this.getShape('mount'): new paper.Path.RegularPolygon(new paper.Point(size, size), parseInt( 3 + Math.random() * 6 ), size);
-        const color = '#'+Math.floor(Math.random()* 16777215).toString(16);
-        this.paths[index].size = size * 3;
+        //const color = '#'+Math.floor(Math.random()* 16777215).toString(16);
+        const color = this.getColor();
+        this.paths[index].size = size * 5;
         this.paths[index].selected = false;
         this.paths[index].rotate( (360/totalParticles) * index);
         this.paths[index].randomX = 3 + Math.random() * 30;
@@ -65,8 +71,8 @@ class BgEffect extends Component{
         this.paths[index].speedR = 0.1 + Math.random() * 0.4;
         this.paths[index].posY = 100 + Math.random() * $(window).height() * 3.5;
         this.paths[index].offsetY = 0;
-        this.paths[index].strokeColor = "hotpink";
-        this.paths[index].strokeWidth = 2;
+        this.paths[index].strokeColor = color;
+        this.paths[index].strokeWidth = index % 4 === 0 ? 1: 2;
         //this.paths[index].dashArray = [1, 0];
         //this.paths[index].smooth();
     }
