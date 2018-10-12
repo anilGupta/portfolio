@@ -372,7 +372,6 @@ class PortfolioList extends Component{
     this.items = null;
   }
 
-
   componentDidMount(){
      this.resetStyle();
      this.animate('Sobek');

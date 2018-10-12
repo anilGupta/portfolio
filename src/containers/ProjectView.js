@@ -176,7 +176,7 @@ class ProjectView extends Component{
         <Divider/>
         <div className="work-navigation clearfix">
           {pagination.map((item, key) =>{
-            return  <NavLink key={key} to="#" className={item.className} onClick={this.goToProject.bind(this, item.title, activeProject.id)}><span><i className={`fa fa-${item.icon}`} />&nbsp;{item.title}</span></NavLink>
+            return  <NavLink key={key} to="#" className={`${item.className} relative`} onClick={this.goToProject.bind(this, item.title, activeProject.id)}><span><i className={`fa fa-${item.icon}`} />&nbsp;{item.title}</span></NavLink>
           })}
         </div>
       </div>

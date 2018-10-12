@@ -50,7 +50,7 @@ class BgEffect extends Component{
   }
 
   getColor(){
-     const colors = ['#00BFFF', '#fff', '#ff4793', '#33FFDD', '#ffd541', '#FF6133', "#000"];
+     const colors = ['#55FF5A', '#ff4793', '#33FFDD', '#ffd541', '#FF6133' ];
      return colors[Math.floor(Math.random() * colors.length)]
   }
 
