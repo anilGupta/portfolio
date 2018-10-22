@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { fetchProjectIfNeeded } from "../actions/workActions";
 import autobind from 'autobind-decorator';
-import { Section, Divider, Tags, Spinner, FloatTexts, WordAnimation, FlareAnimation, LineAnimation, ProjectSlider } from '../component/Index';
+import { Section, Divider, Tags, Spinner, FloatTexts, WordAnimation, FlareAnimation, LineAnimation, ProjectSlider, MasonryList } from '../component/Index';
 import Masonry from 'react-masonry-component';
 import 'react-photoswipe/lib/photoswipe.css';
 import {PhotoSwipe} from 'react-photoswipe';
@@ -139,17 +139,16 @@ class ProjectView extends Component{
                    <hr className="mt-0 mb-20"/>
                    {small
                      ? <ProjectSlider collection={galleryImages}  onClick={this.togglePhotoSwipe}/>
-                     : <Masonry className="row grid-small-gutter clearfix font-alt hover-white hide-titles masonry" id="work-screen-grid" options={{}} >
+                     : <MasonryList className="row grid-small-gutter clearfix font-alt hover-white hide-titles masonry"  id="work-screen-grid" key={id} itemSelector="project-item-thumb" >
                          {galleryImages.map((item, key) => {
                            const url=  item && item.url ? item.url.replace("download/", "") : false;
-                           return <div className="col-xs-2" key={key}>
+                           return <div className="col-xs-2 project-item-thumb" key={key}>
                              <div className="work-grid-thumb">
                                <img src={`${url}m.jpg`} alt="" onClick={this.togglePhotoSwipe.bind(this, key)} />
                              </div>
                            </div>
                          })}
-                      </Masonry>
-
+                      </MasonryList>
                    }
 
                  </div>

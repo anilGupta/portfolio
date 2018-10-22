@@ -5,7 +5,6 @@ import Divider from './Divider';
 import GoogleMap from './GoogleMap';
 import Section from './Section';
 import ProgressBar from './ProgressBar';
-import PortfolioList from './PortfolioList';
 import PortfolioListItem from './PortfolioListItem';
 import PortfolioListFilter from './PortfolioListFilter';
 import Tags from './Tags';
@@ -18,8 +17,9 @@ import SVGTextAnimation from './SVGTextAnimation';
 import FlareAnimation from './FlareAnimation';
 import ProjectSlider from './ProjectSlider';
 import ImageDistortion from './ImageDistortion';
-import FaceButton from './FadeButton';
+import FadeButton from './FadeButton';
 import TiltCard from './TiltCard';
+import MasonryList from './MasonryList';
 
 export {
   BrandsList,
@@ -29,7 +29,6 @@ export {
   GoogleMap,
   Section,
   ProgressBar,
-  PortfolioList,
   PortfolioListItem,
   PortfolioListFilter,
   Tags,
@@ -42,6 +41,7 @@ export {
   FlareAnimation,
   ProjectSlider,
   ImageDistortion,
-  FaceButton,
-  TiltCard
+  FadeButton,
+  TiltCard,
+  MasonryList
 }

@@ -23,6 +23,7 @@ const PortfolioListItem = ({loop, data}) => {
           tagNames = tags.map(tag => `#${tag.name}`),
           images = _images.concat().filter(img => img.url);
 
+
   const id = Math.floor(Math.random() * 7) + 1;
   return <div className={`col-sm-4 project-item ${loop%3 === 1 ? 'center': ''} ${loop%3===2 ? 'end': ''} ${loop%3===0 ? 'start': ''}`}>
            <FlareAnimation  all zIndex={1} >
@@ -35,7 +36,7 @@ const PortfolioListItem = ({loop, data}) => {
                  {images.splice(0, 7).map((img, key) => <img src={`${img.url.replace("download/", "")}s.jpg`} key={key} />)}
                  {images.length ? <span className="more-tile"> + {images.length} more </span> : null }
                </div>
-               <FaceButton to={`/project/${id}`} options={options} >
+               <FaceButton to={`/project/${data.id}`} options={options} >
                  <div className="btn btn-mod">View Project</div>
                </FaceButton>
              </div>

@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { fetchProjectIfNeeded, filterProject, toggleFilter } from "../actions/workActions";
 import { fetchSkillIfNeed, fetchTagsIfNeeded } from "../actions/userActions";
-import { Section, Divider, PortfolioList, PortfolioListItem, PortfolioListFilter, Spinner } from '../component/Index';
+import { Section, Divider, MasonryList, PortfolioListItem, PortfolioListFilter, Spinner } from '../component/Index';
 import autobind from 'autobind-decorator';
 
 
@@ -73,9 +73,9 @@ class Projects extends Component{
                         <div className="relative mt-xs-40">
                           <PortfolioListFilter collection={tags} toggleFilter={toggleFilter} open={showFilterTags} filterTags={filterTags} filterAction={this.handleFilterAction} />
                           <Divider/>
-                          <PortfolioList>
-                            {activeProject.filter(item => item._thumbnail).map((item, key) => <PortfolioListItem data={item} key={key} loop={key} />)}
-                          </PortfolioList>
+                          <MasonryList id="work-grid" className="project-list" itemSelector="project-item" items={activeProject.length}>
+                            {activeProject.map((item, key) => <PortfolioListItem data={item} key={key} loop={key} />)}
+                          </MasonryList>
                           <hr />
                           {totalItems < projects.length ?  <button className="btn btn-mod btn-medium btn-gray btn-full" onClick={this.loadNext}> Load More</button> : null }
                         </div>

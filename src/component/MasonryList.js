@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import Masonry from 'react-masonry-component';
 import anime from 'animejs';
-
-
 const effects = {
   'Hapi': {
     animeOpts: {
@@ -365,16 +363,42 @@ const effects = {
   }
 }
 
-class PortfolioList extends Component{
+class MasonryList extends Component{
   constructor(props) {
     super(props);
     this.el = null;
     this.items = null;
+    this.cacheElements = this.cacheElements.bind(this);
+    this.resetStyle = this.resetStyle.bind(this);
+    this.animate = this.animate.bind(this);
+  }
+
+  static defaultProps={
+     animationName: 'Sobek'
   }
 
   componentDidMount(){
+     this.cacheElements();
      this.resetStyle();
-     this.animate('Sobek');
+     this.animate(this.props.animationName);
+  }
+
+  componentDidUpdate(prevProps){
+    if(this.props.items && prevProps.items !== this.props.items){
+      this.cacheElements(prevProps.items, this.props.items);
+      this.resetStyle();
+      this.animate(this.props.animationName);
+    }
+  }
+
+  cacheElements(from=0, to){
+    const { id, itemSelector }= this.props,
+            allItems = Array.from(this.el.querySelectorAll(`.${itemSelector}`));
+            if(to){
+               this.items = allItems.slice(from, to)
+            }else{
+               this.items = allItems;
+            }
   }
 
   resetStyle(){
@@ -476,13 +500,12 @@ class PortfolioList extends Component{
   }
 
   render(){
-    const { children } = this.props,
+    const { children, id, itemSelector, className='project-list' } = this.props,
             options = { transitionDuration: 0 };
-    return <Masonry id="work-grid" options={options} className="project-list" ref={el => {
-                this.el = document.querySelector("#work-grid")
-                this.items = this.el.querySelectorAll(".project-item")
-           }} >{children}</Masonry>
+    return <Masonry id={id} options={options} className={className} ref={el => {
+      this.el = document.querySelector(`#${id}`);
+    }} >{children}</Masonry>
   }
 }
 
-export default PortfolioList
+export default MasonryList
