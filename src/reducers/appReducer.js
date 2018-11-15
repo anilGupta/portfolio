@@ -3,6 +3,7 @@ import types from '../constants/ActionType';
 const initialState = {
   height: 0,
   width: 0,
+  model: false
 };
 
 const appReducer = (state = initialState, action) => {
@@ -14,8 +15,12 @@ const appReducer = (state = initialState, action) => {
         width: action.width,
       };
 
+    case types.TOGGLE_MODEL:
     default:
-      return state;
+      return {
+        ...state,
+        model: action.toggle
+      };
   }
 };
 

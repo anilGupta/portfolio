@@ -6,14 +6,20 @@ const windowResize = (height, width) => ({
     height,
     width,
   }),
+  togglePhotoGallery = (toggle) => {
+    return {
+      type: types.TOGGLE_MODEL,
+      toggle
+    }
+  },
   initialize = () => (dispatch) => {
-
-    dispatch(windowResize(...helper.getViewPort()));
-    window.onresize = () => {
-        dispatch(windowResize(window.innerHeight, window.innerWidth));
-    };
-};
+       dispatch(windowResize(...helper.getViewPort()));
+       window.onresize = () => {
+          dispatch(windowResize(window.innerHeight, window.innerWidth));
+       }
+  };
 
 export {
-  initialize
+  initialize,
+  togglePhotoGallery
 }

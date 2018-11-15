@@ -47,7 +47,7 @@ class App extends Component{
               light =  pathname.includes('projects');
 
     return (
-        <div className="appear-animate">
+        <div className={`appear-animate ${app.model ? '': 'non-model'}`}>
              <div className="page" id="top">
                <Header toggleMenu={this.toggleMenu} openMenu={openMenu} {...app} light={light}/>
                <div>

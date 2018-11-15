@@ -3,7 +3,7 @@
 .align-right{ text-align:right !important; }
 .left{float:left !important;}
 .right{float:right !important;}
-.relative{position:relative; z-index: 99}
+
 .hidden{display:none;}
 .inline-block{display:inline-block;}
 .white{ color: #fff !important; }
@@ -81,4 +81,13 @@
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+}
+
+.non-model{
+  .relative{position:relative; z-index: 99}
+}
+
+
+.slideItem{
+  img { width: 100%}
 }

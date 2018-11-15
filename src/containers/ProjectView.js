@@ -3,6 +3,7 @@ import {NavLink} from 'react-router-dom';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import { fetchProjectIfNeeded } from "../actions/workActions";
+import { togglePhotoGallery } from "../actions/appActions";
 import autobind from 'autobind-decorator';
 import { Section, Divider, Tags, Spinner, FloatTexts, WordAnimation, FlareAnimation, LineAnimation, ProjectSlider, MasonryList } from '../component/Index';
 import Masonry from 'react-masonry-component';
@@ -13,7 +14,8 @@ import {PhotoSwipe} from 'react-photoswipe';
 @connect(
   state =>{ return {user: state.user, work: state.work, app: state.app}},
   dispatch => ( bindActionCreators({
-    fetchProjectIfNeeded
+    fetchProjectIfNeeded,
+    togglePhotoGallery
   }, dispatch))
 )
 class ProjectView extends Component{
@@ -67,7 +69,8 @@ class ProjectView extends Component{
      this.setState({
        isOpen :  !this.state.isOpen,
        index
-     })
+     });
+     this.props.togglePhotoGallery(!this.state.isOpen)
   }
 
   @autobind
@@ -137,12 +140,12 @@ class ProjectView extends Component{
 
                    <h5 className="blog-item-title font-alt mb-10"><a href="#">Other Screens</a></h5>
                    <hr className="mt-0 mb-20"/>
-                   {small
+                   {!small
                      ? <ProjectSlider collection={galleryImages}  onClick={this.togglePhotoSwipe}/>
                      : <MasonryList className="row grid-small-gutter clearfix font-alt hover-white hide-titles masonry"  id="work-screen-grid" key={id} itemSelector="project-item-thumb" >
                          {galleryImages.map((item, key) => {
                            const url=  item && item.url ? item.url.replace("download/", "") : false;
-                           return <div className="col-xs-2 project-item-thumb" key={key}>
+                           return <div className={`col-xs-${small ? '6': '2'} project-item-thumb`} key={key}>
                              <div className="work-grid-thumb">
                                <img src={`${url}m.jpg`} alt="" onClick={this.togglePhotoSwipe.bind(this, key)} />
                              </div>
@@ -165,7 +168,7 @@ class ProjectView extends Component{
                  </div>
                </div>
                <div className="row">
-                 <PhotoSwipe isOpen={isOpen} items={this.getPhotoSwipeItems(galleryImages)} options={{ index }} onClose={this.togglePhotoSwipe}/>
+                 <PhotoSwipe isOpen={isOpen} items={this.getPhotoSwipeItems(galleryImages)} options={{ index, closeOnScroll: false, modal: true  }} onClose={this.togglePhotoSwipe}/>
                </div>
              </div>
            </div>
