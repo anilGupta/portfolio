@@ -78,7 +78,7 @@ class ProjectView extends Component{
      return items.map(item => {
        const url=  item && item.url ? item.url.replace("download/", "") : false;
        return {
-         src: `${url}l.jpg`,
+         src: `${url}.jpg`,
          w: item.width ? item.width: 600,
          h: item.height? item.height: 800,
          title: item.title
@@ -96,9 +96,11 @@ class ProjectView extends Component{
               return <Spinner />
             }
 
-            const { name, summery, tags, _images, _thumbnail, clientName, responsibility=[] } = activeProject,
+            const { name, summery, tags, _images, _thumbnail, clientName, responsibility=[], role, teamSize } = activeProject,
                   { isOpen, index } = this.state,
                     galleryImages = _images.filter(item => typeof item.url === 'string' && item.url );
+                    console.log(activeProject)
+
 
     return (
       <div>
@@ -110,7 +112,7 @@ class ProjectView extends Component{
                   <FloatTexts>{name}</FloatTexts>
                 </h2>
                 <h1 className="hs-line-8 no-transp font-alt mb-50 mb-xs-30">
-                  <WordAnimation>{summery}</WordAnimation>
+                  <WordAnimation key={id}>{summery}</WordAnimation>
                 </h1>
               </div>
             </div>
@@ -127,32 +129,33 @@ class ProjectView extends Component{
                  <div className="col-md-9 col-sm-6 mb-sm-50 mb-xs-30">
                    <h3 className="blog-item-title font-alt mb-10"><a href="#">Description</a></h3>
                    <p>
-                     <LineAnimation>
+                     <LineAnimation key={id}>
                        {summery}
                      </LineAnimation>
                    </p>
 
                    <h3 className="blog-item-title font-alt mb-10"><a href="#">Responsibility</a></h3>
                    <hr className="mt-0 mb-30"/>
-                   <ul>
-                     {responsibility.map((r, i) => <li key={i}><LineAnimation dealy={i * 0.4}>{r}</LineAnimation></li>)}
+                   <ul className="list-items">
+                     {responsibility.map((r, i) => <li key={i}><LineAnimation dealy={i * 0.4}  key={`${id}-${i}`}>{r}</LineAnimation></li>)}
                    </ul>
 
                    <h5 className="blog-item-title font-alt mb-10"><a href="#">Other Screens</a></h5>
                    <hr className="mt-0 mb-20"/>
-                   {!small
+                   <MasonryList className="row grid-small-gutter clearfix font-alt hover-white hide-titles masonry"  id="work-screen-grid" key={id} itemSelector="project-item-thumb" >
+                     {galleryImages.map((item, key) => {
+                       const url=  item && item.url ? item.url.replace("download/", "") : false;
+                       return <div className={`col-xs-${small ? '6': '2'} project-item-thumb`} key={key}>
+                         <div className="work-grid-thumb">
+                           <img src={`${url}l.jpg`} alt="" onClick={this.togglePhotoSwipe.bind(this, key)} />
+                         </div>
+                       </div>
+                     })}
+                   </MasonryList>
+                   {/*{small
                      ? <ProjectSlider collection={galleryImages}  onClick={this.togglePhotoSwipe}/>
-                     : <MasonryList className="row grid-small-gutter clearfix font-alt hover-white hide-titles masonry"  id="work-screen-grid" key={id} itemSelector="project-item-thumb" >
-                         {galleryImages.map((item, key) => {
-                           const url=  item && item.url ? item.url.replace("download/", "") : false;
-                           return <div className={`col-xs-${small ? '6': '2'} project-item-thumb`} key={key}>
-                             <div className="work-grid-thumb">
-                               <img src={`${url}m.jpg`} alt="" onClick={this.togglePhotoSwipe.bind(this, key)} />
-                             </div>
-                           </div>
-                         })}
-                      </MasonryList>
-                   }
+                     :
+                   }*/}
 
                  </div>
                  <div className="col-md-3 mb-sm-50 mb-xs-30">
@@ -160,8 +163,10 @@ class ProjectView extends Component{
                    <div className="work-detail">
                      <h5 className="widget-title font-alt">Project Details</h5>
                      <div className="work-full-detail">
+                       <p><strong>Role:</strong>{role}</p>
                        <p><strong>Client:</strong>{clientName}</p>
-                       <p><strong>Date:</strong>1th Februery, 2014</p>
+                       <p><strong>Team Size:</strong>{teamSize}</p>
+
                        {/* <p><strong>Link:</strong><a href="#" target="_blank">www.rhythm.bestlooker.pro</a></p>*/}
                      </div>
                    </div>
