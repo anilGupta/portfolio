@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import helper from '../utils/helper'
 
 class LineAnimation extends Component{
 
@@ -62,7 +61,7 @@ class LineAnimation extends Component{
                       }: {};
                     return (
                       <div className="line-wrapper" key={layer} style={{ transitionDelay: `${key*dealy}s`, }}>
-                        <div className="inner-text" style={style}>{line}</div>
+                        <div className="inner-text" style={style}>{line.replace(/&amp;/g, '&')}</div>
                       </div>
                     )
                   })}

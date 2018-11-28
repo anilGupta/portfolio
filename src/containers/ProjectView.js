@@ -96,10 +96,10 @@ class ProjectView extends Component{
               return <Spinner />
             }
 
-            const { name, summery, tags, _images, _thumbnail, clientName, responsibility=[], role, teamSize } = activeProject,
+            const { name, summery, _tags, _images, _thumbnail, clientName, responsibility=[], role, teamSize } = activeProject,
                   { isOpen, index } = this.state,
                     galleryImages = _images.filter(item => typeof item.url === 'string' && item.url );
-                    console.log(activeProject)
+                    console.log(activeProject);
 
 
     return (
@@ -159,7 +159,7 @@ class ProjectView extends Component{
 
                  </div>
                  <div className="col-md-3 mb-sm-50 mb-xs-30">
-                   <Tags collection={tags} />
+                   <Tags collection={_tags} />
                    <div className="work-detail">
                      <h5 className="widget-title font-alt">Project Details</h5>
                      <div className="work-full-detail">

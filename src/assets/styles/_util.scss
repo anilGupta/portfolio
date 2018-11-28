@@ -91,3 +91,18 @@
 .slideItem{
   img { width: 100%}
 }
+
+.reset-filter{
+   text-align: right;
+   a{
+     font-size: 18px;
+     font-weight: 100;
+     text-decoration: none;
+     position: absolute;
+     right: 1px;
+     line-height: 52px;
+     &:hover{
+        text-decoration: line-through;
+     }
+   }
+}

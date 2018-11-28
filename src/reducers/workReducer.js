@@ -20,10 +20,11 @@ const initialState = {
               });
 
             case types.FILTER_PROJECT:
-              const tags = action.operation == 'ADD' ? [...state.filterTags, action.tag ]:  state.filterTags.filter(item => item.code != action.tag.code),
+              const tags = action.operation === 'ADD' ? [...state.filterTags, action.tag ]:  state.filterTags.filter(item => item.code != action.tag.code),
                     filterIds = tags.map(tag => tag.id),
                     projects = tags.length ? state.allProjects.filter(project => {
-                        const containIds = project.tags.map(tag => tag.id);
+                        const hasTags = project._tags ? project._tags: [];
+                        const containIds = hasTags.filter(tag => +tag.id > 0).map(tag => +tag.id);
                         return filterIds.every(filterId => containIds.includes(filterId));
                       }): state.allProjects;
 

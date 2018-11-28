@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
+import { NavLink } from 'react-router-dom';
 import { fetchProjectIfNeeded, filterProject, toggleFilter } from "../actions/workActions";
 import { fetchSkillIfNeed, fetchTagsIfNeeded } from "../actions/userActions";
 import { Section, Divider, MasonryList, PortfolioListItem, PortfolioListFilter, Spinner } from '../component/Index';
@@ -60,17 +61,26 @@ class Projects extends Component{
   }
 
   render() {
-    const { work: { projects, projectsLoading, filterTags, showFilterTags }, user: { tags, tagsLoading}, toggleFilter, match } = this.props,
+    const { work: { projects, projectsLoading, filterTags, showFilterTags }, user: { tags, tagsLoading}, toggleFilter, match: { params } } = this.props,
           { pageNo, pageLimit } = this.state,
-            totalItems = pageNo * pageLimit;
+            totalItems = pageNo * pageLimit,
+            tagId = params && params.tagId ? params.tagId: false;
             if(projectsLoading || tagsLoading){
               return <Spinner />
             }
-            const activeProject = projects.slice(0, totalItems);
+
+            const filterProjects =   tagId ? projects.filter(({_tags=[]}) => {
+                const matchTags = _tags.filter(tag => tag.code === tagId) || [];
+                      return matchTags.length
+                  }) : projects,
+                  activeProject = filterProjects.slice(0, totalItems);
+
+
             return (
                     <div>
                       <Section type="light">
                         <div className="relative mt-xs-40">
+                          {tagId && <div className="reset-filter"> <NavLink to={`/projects`} >RESET "{tagId}"</NavLink></div>}
                           <PortfolioListFilter collection={tags} toggleFilter={toggleFilter} open={showFilterTags} filterTags={filterTags} filterAction={this.handleFilterAction} />
                           <Divider/>
                           <MasonryList id="work-grid" className="project-list" itemSelector="project-item" items={activeProject.length}>

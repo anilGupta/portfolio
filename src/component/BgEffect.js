@@ -56,11 +56,12 @@ class BgEffect extends Component{
 
   initialize(){
     const { totalParticles } = this.props;
+    const color = this.getColor();
     for(let index = 0; index < totalParticles; index ++){
       const size = 3 + 15 * Math.random();
         this.paths[index] = index % 4 === 0 ? this.getShape('mount'): new paper.Path.RegularPolygon(new paper.Point(size, size), parseInt( 3 + Math.random() * 6 ), size);
         //const color = '#'+Math.floor(Math.random()* 16777215).toString(16);
-        const color = this.getColor();
+        //const color = this.getColor();
         this.paths[index].size = size * 5;
         this.paths[index].selected = false;
         this.paths[index].rotate( (360/totalParticles) * index);

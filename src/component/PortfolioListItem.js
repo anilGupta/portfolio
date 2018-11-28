@@ -17,10 +17,10 @@ const options =  {
 };
 
 const PortfolioListItem = ({loop, data}) => {
-  const { name, summery, _thumbnail, tags, endOn, _images } = data,
+  const { name, summery, _thumbnail, _tags=[], endOn, _images, role } = data,
           src = _thumbnail && _thumbnail.url ? _thumbnail.url.replace("download/", "") : false,
           date = endOn ? new Date(endOn).toDateString(): '',
-          tagNames = tags.map(tag => `#${tag.name}`),
+          tagNames = _tags.map(tag => `-> ${tag.name}`),
           images = _images.concat().filter(img => img.url);
 
 
@@ -29,8 +29,8 @@ const PortfolioListItem = ({loop, data}) => {
            <FlareAnimation  all zIndex={1} >
              <div className="project-content">
                <h3 className="project-title font-alt">{name}</h3>
-               <div className="project-info"><i className="fa fa-calendar-o"/> {date}</div>
-               <div className="project-info"><i className="fa fa-tags"/> {tagNames.join(", ")}</div>
+               <div className="project-info"><i className="fa fa-terminal"/>  {role}</div>
+              {/* <div className="project-info"><i className="fa fa-tags"/> {tagNames.join(", ")}</div>*/}
                <div className="project-details">{summery}</div>
                <div className="project-thumb-wrapper">
                  {images.splice(0, 7).map((img, key) => <img src={`${img.url.replace("download/", "")}s.jpg`} key={key} />)}

@@ -44,7 +44,7 @@ class GoogleMap extends Component{
         `<div>
               <h2 class="section-title font-alt" style="margin:5px">Anil Gupta</h2>
               <hr style="margin: 1px 0" />
-              <p style="margin:5px">57, S.M. Road, Antophill church, Mumbai - 400037</p>
+              <p style="margin:5px">\Antophill, Mumbai - 400037</p>
           </div>`
     });
     this.marker.addListener('click', ()=>{
