@@ -6,7 +6,10 @@ import { connect } from 'react-redux';
 import { Header, Footer, BgEffect } from '../component/Index';
 import { Home, About, Contact, Projects, ProjectView} from './Index';
 import autobind from 'autobind-decorator';
+import Config from '../constants/Config';
+import ReactGA from 'react-ga';
 
+ReactGA.initialize(Config.googleTrackingId);
 
 @connect(
   state =>{ return {app: state.app}},
@@ -26,6 +29,11 @@ class App extends Component{
 
   componentWillMount(){
     this.props.initialize();
+    const { history} = this.props;
+            history.listen(({ pathname})=>{
+              ReactGA.pageview(pathname);
+            });
+            ReactGA.pageview(location.pathname);
   }
 
   componentWillReceiveProps(prevProps) {

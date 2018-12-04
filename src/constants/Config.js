@@ -1,4 +1,5 @@
 const Config = {
+   googleTrackingId: 'UA-130408596-1',
    menu : [
      { id:1, name: 'about', url: '/'},
      { id:3, name: 'projects', url: '/projects'},
