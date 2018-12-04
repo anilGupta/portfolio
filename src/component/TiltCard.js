@@ -263,7 +263,7 @@ class TiltCard extends Component{
     this.DOM.animatable.caption = this.DOM.el.querySelector('.tilter__caption');
     this.DOM.animatable.overlay = this.DOM.el.querySelector('.tilter__deco--overlay');
     this.DOM.animatable.shine = this.DOM.el.querySelector('.tilter__deco--shine > div');
-    console.log(this.DOM)
+    //console.log(this.DOM)
   }
 
   componentDidMount(){

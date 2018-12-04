@@ -43,8 +43,6 @@ class Home extends Component{
 
   @autobind
   toggleModal(open){
-    console.log("close modal");
-
     this.setState({
         modal: open == this.state.model ? false: open
      })

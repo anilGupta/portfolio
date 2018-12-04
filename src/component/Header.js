@@ -62,7 +62,6 @@ class Header extends Component{
      const { width, light } = this.props,
            { scrolled, open, transparent, dark} = this.state,
              small  = width < 768;
-    console.log("light- dark", light);
 
 
     return <header>
