@@ -365,8 +365,8 @@ class TiltCard extends Component{
 
   render(){
 
-   const { bgImage='https://tympanus.net/Development/TiltHoverEffects/img/5.jpg', title, description } = this.props;
-   return <section >
+   const { bgImage='https://tympanus.net/Development/TiltHoverEffects/img/1.jpg', title, description, children } = this.props;
+   return <section>
             <a href="#" className="tilter tilter--3" ref={this.cacheElements}>
              <figure className="tilter__figure">
                <img className="tilter__image" src={bgImage} alt="img05" />
@@ -374,7 +374,7 @@ class TiltCard extends Component{
                <div className="tilter__deco tilter__deco--overlay"/>
                <figcaption className="tilter__caption">
                  <h3 className="tilter__title">{title}</h3>
-                 <p className="tilter__description">{description}</p>
+                 {description ? <p className="tilter__description">{description}</p>: children }
                </figcaption>
              </figure>
            </a>

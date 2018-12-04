@@ -359,3 +359,16 @@
   width: 100%;
   z-index: 25;
 }
+
+.small-block{
+  display: inline-block;
+  min-width: 80px
+}
+
+
+.industry-experience{
+   &:hover, td, td:hover{
+     cursor: pointer !important;
+   }
+
+}

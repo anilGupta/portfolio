@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import autobind from 'autobind-decorator';
 import { fetchBrandIfNeeded, fetchSkillIfNeed } from "../actions/userActions";
 import Waypoint from 'react-waypoint';
-import { Section, Divider, ProgressBar, Spinner, TiltCard, BrandsList, FloatTexts, LineAnimation, WordAnimation, SVGTextAnimation,  ImageDistortion, FlareAnimation } from '../component/Index';
+import { Section, Divider, ProgressBar, Spinner, TiltCard, BrandsList, FloatTexts, LineAnimation, WordAnimation, SVGTextAnimation,  ImageDistortion, FlareAnimation, Modal } from '../component/Index';
 
 @connect(
   state =>{ return {user: state.user, app: state.app}},
@@ -26,7 +26,8 @@ class Home extends Component{
   }
 
   state ={
-    animateSkills: false
+    animateSkills: false,
+    modal: false
   };
 
   componentWillMount(){
@@ -40,9 +41,18 @@ class Home extends Component{
       })
   }
 
+  @autobind
+  toggleModal(open){
+    console.log("close modal");
+
+    this.setState({
+        modal: open == this.state.model ? false: open
+     })
+  }
+
   render() {
     const { user: { brands, skills, brandsLoading, skillsLoading}, app: { width }} = this.props,
-          { animateSkills } = this.state,
+          { animateSkills, modal } = this.state,
             small = width < 768;
 
             if((brandsLoading || skillsLoading) && !brands.length){
@@ -61,7 +71,7 @@ class Home extends Component{
     </div>*/
 
     return (
-      <div>
+      <div style={{ overflow: open ? 'hidden': 'auto'}}>
         <Section  background="/assets/images/section-bg-1.jpg" id="home" alpha="90" type="dark" parallax={2}>
           <div className="row">
             <div className="col-sm-6 mt-xs-40">
@@ -93,11 +103,11 @@ class Home extends Component{
                 <hr className="white mb-30" />
                 <div>
                   <h4 className="font-alt mt-0 mb-20">Profile</h4>
-                  <div><strong style={{display:'inline-block', minWidth: '80px'}}>Age </strong>: 28</div>
-                  <div><strong style={{display:'inline-block', minWidth: '80px'}}>Address </strong>: Antophill, Mumbai, India</div>
-                  <div><strong style={{display:'inline-block', minWidth: '80px'}}>Phone </strong>: +91 9870675742</div>
-                  <div><strong style={{display:'inline-block', minWidth: '80px'}}>Email </strong>: <a href="#">_anil@mail.com</a></div>
-                  <div><strong style={{display:'inline-block', minWidth: '80px'}}>Status </strong>: Available</div>
+                  <div><strong className="small-block">Age </strong>: 28</div>
+                  <div><strong className="small-block">Address </strong>: Antophill, Mumbai, India</div>
+                  <div><strong className="small-block">Phone </strong>: +91 9870675742</div>
+                  <div><strong className="small-block">Email </strong>: <a href="#">_anil@mail.com</a></div>
+                  <div><strong className="small-block">Status </strong>: Available</div>
                 </div>
               </div>
             </div>
@@ -110,17 +120,45 @@ class Home extends Component{
                 <h2 className="section-title font-alt align-center mt-0 mb-70 mb-sm-40">AGENCY EXPERIENCE</h2>
                 <table className="table table-hover">
                   <tbody>
-                    <tr>
+                    <tr onClick={this.toggleModal.bind(this, !modal ? 'nw18': false)} className="industry-experience">
                       <td className="">Network18 <div className="small"> Senior Software Engineer, Lead Developer </div></td>
                       <td className="align-right small">Dec 2016 — Present</td>
+                      <Modal open={modal === 'nw18'} close={this.toggleModal.bind(this, false)} title="Network18 - Senior Software Engineer" >
+                          <div>
+                             <ul>
+                                <li>Involved in a product design under the high level management</li>
+                                <li>Keep an eye on the performance review for the existing products</li>
+                                <li>R&D for the upcoming products</li>
+                             </ul>
+                          </div>
+                      </Modal>
                     </tr>
-                    <tr>
+                    <tr onClick={this.toggleModal.bind(this, !modal ? 'zee': false)} className="industry-experience">
                       <td>ZEE Digital Convergence Limited<div className="small">  Senior Software Engineer, Lead Developer</div></td>
                       <td className="align-right small">May 2015 — Dec 2016</td>
+                      <Modal open={modal === 'zee'} close={this.toggleModal.bind(this, false)} title="Zee Entertainment - Senior Software Engineer" >
+                        <div>
+                          <ul>
+                            <li>Worked on organization's own product development </li>
+                            <li>Designed the basic architecture of a product after understanding the business
+                              requirement with the help of Project Manager</li>
+                          </ul>
+                        </div>
+                      </Modal>
                     </tr>
-                    <tr>
+                    <tr onClick={this.toggleModal.bind(this, !modal ? 'mt': false)} className="industry-experience">
                       <td> Mediatech Interactive <div className="small">Web Developer, Backend Developer</div></td>
                       <td className="align-right small">Aug 2010 — May 2013</td>
+                      <Modal open={modal === 'mt'} close={this.toggleModal.bind(this, false)} title="Mediatech - Software Engineer" >
+                        <div>
+                          <ul>
+                            <li>Able to work under high pressure and tight deadlines</li>
+                            <li>Handled multiple projects at the same time</li>
+                            <li>Did excellent development under minimal supervision</li>
+                            <li>Followed standard designed pattern, coding best practices</li>
+                          </ul>
+                        </div>
+                      </Modal>
                     </tr>
                   </tbody>
                 </table>
@@ -131,7 +169,7 @@ class Home extends Component{
                   <tbody>
                     <tr>
                       <td> Master of Computer Application <div className="small">Mumbai University, India</div></td>
-                      <td className="align-right">2015–2016</td>
+                      <td className="align-right">2010–2014</td>
                     </tr>
                     <tr>
                       <td>BSC Computer Science <div className="small">SIWS College, Mumbai</div></td>
@@ -139,7 +177,7 @@ class Home extends Component{
                     </tr>
                     <tr>
                       <td>HSC Science <div className="small">SIWS College, Mumbai</div></td>
-                      <td className="align-right"> 2004–2010 </td>
+                      <td className="align-right"> 2004–2006 </td>
                     </tr>
                   </tbody>
                 </table>

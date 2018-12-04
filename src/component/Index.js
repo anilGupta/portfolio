@@ -20,6 +20,7 @@ import ImageDistortion from './ImageDistortion';
 import FadeButton from './FadeButton';
 import TiltCard from './TiltCard';
 import MasonryList from './MasonryList';
+import Modal from './Modal';
 
 export {
   BrandsList,
@@ -43,5 +44,6 @@ export {
   ImageDistortion,
   FadeButton,
   TiltCard,
-  MasonryList
+  MasonryList,
+  Modal
 }
