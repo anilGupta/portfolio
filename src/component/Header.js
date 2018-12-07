@@ -84,6 +84,9 @@ class Header extends Component{
                        </NavLink>
                      </li>
                    )}
+                   <li>
+                     <a href="/resume.pdf"> <span className="btn btn-mod btn-circle"><i className="fa fa-cloud-download"/>Download CV</span></a>
+                   </li>
                  </ul>
                </div>
              }

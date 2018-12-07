@@ -77,7 +77,7 @@ class Home extends Component{
                 ? <div className="mobile-avatar-wrapper" >
                   <FlareAnimation light all zIndex={10} >
                     <div>
-                      <div className="avatar-image" style={{ backgroundImage: `url('/assets/images/mobile-avatar.jpg')`}} />
+                      <div className="avatar-image" style={{ backgroundImage: `url('/assets/images/mobile-avatar-1.jpg')`}} />
                     </div>
                   </FlareAnimation>
                 </div>

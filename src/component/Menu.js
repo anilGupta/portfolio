@@ -27,6 +27,9 @@ class FullMenu extends Component{
                       </NavLink>
                     </li>
                   )}
+                  <li>
+                    <a href="/resume.pdf">Download CV</a>
+                  </li>
                 </ul>
                 <div className="fm-social-links">
                   {Config.social.map(({id, name, url}) => <NavLink to={url} target="_blank" key={id} title={name}><i className={`fa fa-${name.toLowerCase()}`} /></NavLink>)}

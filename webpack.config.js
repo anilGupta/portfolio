@@ -13,7 +13,8 @@ const HtmlWebpackPluginConfig = new HtmlWebpackPlugin({
 const HMRConfig = new webpack.HotModuleReplacementPlugin();
 const CopyAssetPluginConfig = new CopyWebpackPlugin([
   { from: './src/assets/images', to: './assets/images' },
-  { from: './src/404.html', to: './404.html' }
+  { from: './src/404.html', to: './404.html' },
+  { from: './src/resume.pdf', to: './resume.pdf' }
 ]);
 const ExtractTextPluginConfig = new ExtractTextPlugin({ filename: 'style.css', disable: false, allChunks: true, publicPath: "" });
 
